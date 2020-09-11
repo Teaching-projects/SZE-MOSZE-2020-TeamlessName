@@ -1,6 +1,4 @@
-#SZE-MOSZE-2020-TeamlessName
-
-# MOSZE_base
+# SZE-MOSZE-2020-TeamlessName
 
 ## University Project, basic role-playing game
 
