@@ -8,7 +8,17 @@ BaseUnit::BaseUnit(std::string nm, int hp, int dmg) : Name{ nm }, HP{hp}, DMG{dm
 bool BaseUnit::gotHit(int dam)
 {
 	HP = HP - dam;
-	if (HP < 0)
+	if (HP <= 0)
+	{
+		HP = 0;
 		return false;
+	}
+		
 	return true;
+}
+
+//Show current HP and DMG
+std::string BaseUnit::ShowStats()
+{
+	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
 }

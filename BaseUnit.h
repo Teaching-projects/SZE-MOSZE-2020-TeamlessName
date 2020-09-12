@@ -14,6 +14,7 @@ public:
 	BaseUnit(std::string nm, int hp, int dmg);
 
 	bool gotHit(int dam);
+	std::string ShowStats(); 
 
 	int getHP() { return HP; }
 	int getDMG() { return DMG; }
