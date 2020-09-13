@@ -4,27 +4,28 @@
 //Everything happens here for now
 int main(int argc, char *argv[])
 {
-	if (argc < 7){
-		std::cout << "Incorrect starting arguments.\nYou should start like this.:\nPROGRAM.EXE CHARACTER1 HP DMG CHARACTER2 HP DMG" << std::endl;
+    std::string errormsg = "Incorrect starting arguments.\nYou should start like this.:\nPROGRAM.EXE CHARACTER1 HP DMG CHARACTER2 HP DMG";
+	if (argc != 7){
+		std::cout << errormsg << std::endl;
 		std::cin.get();
 		return 1;
 	}
-
-	try
-	{
-		std::stoi(argv[2]);
-		std::stoi(argv[3]);
-		std::stoi(argv[5]);
-		std::stoi(argv[6]);
-	}
-	catch (std::exception e)
-	{
-		std::cout << "Incorrect starting arguments.\nYou should start like this.:\nPROGRAM.EXE CHARACTER1 HP DMG CHARACTER2 HP DMG" << std::endl;
-		std::cin.get();
-		return 1;
-	}
-
-
+	else
+    {
+        try
+        {
+            std::stoi(argv[2]);
+            std::stoi(argv[3]);
+            std::stoi(argv[5]);
+            std::stoi(argv[6]);
+        }
+        catch (std::exception e)
+        {
+            std::cout << errormsg << std::endl;
+            std::cin.get();
+            return 1;
+        }
+    }
 
 	BaseUnit Unit1(argv[1], std::stoi(argv[2]), std::stoi(argv[3]));
 	BaseUnit Unit2(argv[4], std::stoi(argv[5]), std::stoi(argv[6]));
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
 	BaseUnit* tmp;
 
 	std::cout << Unit1.ShowStats() << std::endl;
-	std::cout << Unit2.ShowStats() << std::endl;
+	std::cout << Unit2.ShowStats();
 
 	//Fighting loop, might end up in a separate class later
 	while (true)
@@ -48,7 +49,7 @@ int main(int argc, char *argv[])
 		}
 
 		std::cout << Unit1.ShowStats() << std::endl;
-		std::cout << Unit2.ShowStats() << std::endl;
+		std::cout << Unit2.ShowStats();
 
 		tmp = attacker;
 		attacker = defender;
@@ -56,7 +57,7 @@ int main(int argc, char *argv[])
 	}
 	std::cout << Unit1.ShowStats() << std::endl;
 	std::cout << Unit2.ShowStats() << std::endl;
-	std::cout << defender->getName() << " died, " << attacker->getName() << " wins";
+	std::cout << defender->getName() << " died. " << attacker->getName() << " wins.";
 
 	std::cin.get();
 }
