@@ -7,17 +7,17 @@ class BaseUnit
 {
 private:
 	int HP; //health ponits (current or max, may change during developement, according to the task)
-	int DMG; //damage, the amount this unit hits with
-	std::string Name;
+	const int DMG; //damage, the amount this unit hits with
+	const std::string Name;
 
 public:
-	BaseUnit(std::string nm, int hp, int dmg);
+	BaseUnit(const std::string& nm, int hp, int dmg);
 
 	bool gotHit(int dam);
-	std::string ShowStats(); 
+	const std::string showStats() const; 
 
-	int getHP() { return HP; }
-	int getDMG() { return DMG; }
-	std::string getName() { return Name; }
+	const int getHP() const { return HP; }
+	const int getDMG() const { return DMG; }
+	const std::string getName() const { return Name; }
 
 };
