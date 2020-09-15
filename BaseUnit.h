@@ -11,7 +11,7 @@ private:
 	const std::string Name;
 
 public:
-	BaseUnit(const std::string& nm, int hp, int dmg);
+	BaseUnit(const std::string& nm, int hp, const int dmg);
 
 	bool gotHit(int dam);
 	const std::string showStats() const; 

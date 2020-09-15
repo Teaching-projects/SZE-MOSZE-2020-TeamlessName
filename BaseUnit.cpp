@@ -1,6 +1,6 @@
 #include "BaseUnit.h"
 
-BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, HP{hp}, DMG{dmg}
+BaseUnit::BaseUnit(const std::string& nm, int hp, const int dmg) : Name{ nm }, HP{hp}, DMG{dmg}
 {
 }
 

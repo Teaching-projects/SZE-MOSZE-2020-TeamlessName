@@ -4,7 +4,7 @@
 //Everything happens here for now
 int main(int argc, char *argv[])
 {
-    std::string errormsg = "Incorrect starting arguments.\nYou should start like this.:\nPROGRAM.EXE CHARACTER1 HP DMG CHARACTER2 HP DMG";
+    const std::string errormsg = "Incorrect starting arguments.\nYou should start like this.:\nPROGRAM.EXE CHARACTER1 HP DMG CHARACTER2 HP DMG";
 	if (argc != 7){
 		std::cout << errormsg << std::endl;
 		std::cin.get();
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 			std::cout << Unit2.showStats() << std::endl;
 			std::cout << defender->getName() << " died. " << attacker->getName() << " wins.";
         }
-        catch (const std::exception& e)
+        catch (const std::exception& )
         {
             std::cout << errormsg << std::endl;
             std::cin.get();
