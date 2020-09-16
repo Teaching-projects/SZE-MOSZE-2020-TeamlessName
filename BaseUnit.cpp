@@ -1,6 +1,6 @@
 #include "BaseUnit.h"
 
-BaseUnit::BaseUnit(const std::string& nm, int hp, const int dmg) : Name{ nm }, HP{hp}, DMG{dmg}
+BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, HP{hp}, DMG{dmg}
 {
 }
 
@@ -18,7 +18,8 @@ bool BaseUnit::gotHit(int dam)
 }
 
 //Show current HP and DMG
-const std::string BaseUnit::showStats() const
+const std::string& BaseUnit::showStats()
 {
-	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
+	stats = Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);;
+	return stats;
 }
