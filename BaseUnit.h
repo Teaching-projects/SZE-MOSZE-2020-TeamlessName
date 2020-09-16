@@ -13,7 +13,7 @@ private:
 public:
 	BaseUnit(const std::string& nm, int hp, int dmg);
 
-	void gotHit(BaseUnit&);
+	void gotHit(const BaseUnit&);
 	std::string showStats() const; 
 
 	const int getHP() const { return HP; }
