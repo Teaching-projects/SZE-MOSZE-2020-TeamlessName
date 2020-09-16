@@ -10,13 +10,11 @@ private:
 	const int DMG; //damage, the amount this unit hits with
 	const std::string Name;
 
-	std::string stats;
-
 public:
 	BaseUnit(const std::string& nm, int hp, int dmg);
 
 	bool gotHit(int dam);
-	const std::string& showStats(); 
+	std::string showStats() const; 
 
 	const int getHP() const { return HP; }
 	const int getDMG() const { return DMG; }

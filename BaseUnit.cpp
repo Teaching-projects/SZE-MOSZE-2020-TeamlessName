@@ -18,8 +18,7 @@ bool BaseUnit::gotHit(int dam)
 }
 
 //Show current HP and DMG
-const std::string& BaseUnit::showStats()
+std::string BaseUnit::showStats() const
 {
-	stats = Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);;
-	return stats;
+	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
 }
