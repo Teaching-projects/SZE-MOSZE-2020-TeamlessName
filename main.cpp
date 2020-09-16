@@ -30,7 +30,8 @@ int main(int argc, char *argv[])
 				std::cin.get();
 
 				std::cout << attacker->getName() << " -> " << defender->getName() << std::endl;
-				if (!defender->gotHit(attacker->getDMG()))
+				defender->gotHit(*attacker);
+				if (defender->isDead())
 				{
 					break;
 				}

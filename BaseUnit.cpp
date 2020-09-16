@@ -5,20 +5,26 @@ BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, HP{hp},
 }
 
 //decreasing the HP of the suffering unit, return with false if it dies
-bool BaseUnit::gotHit(int dam)
+void BaseUnit::gotHit(BaseUnit& other)
 {
-	HP = HP - dam;
+	HP = HP - other.getDMG();
 	if (HP <= 0)
 	{
 		HP = 0;
-		return false;
 	}
-		
-	return true;
 }
 
 //Show current HP and DMG
 std::string BaseUnit::showStats() const
 {
 	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
+}
+
+bool BaseUnit::isDead() const
+{
+	if (HP == 0)
+	{
+		return true;
+	}
+	return false;
 }

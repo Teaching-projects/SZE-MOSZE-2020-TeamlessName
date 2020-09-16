@@ -13,11 +13,12 @@ private:
 public:
 	BaseUnit(const std::string& nm, int hp, int dmg);
 
-	bool gotHit(int dam);
+	void gotHit(BaseUnit&);
 	std::string showStats() const; 
 
 	const int getHP() const { return HP; }
 	const int getDMG() const { return DMG; }
 	const std::string& getName() const { return Name; }
+	bool isDead() const;
 
 };
