@@ -1,0 +1,6 @@
+Rick wins. Remaining HP:10
+Rick wins. Remaining HP:20
+Morty wins. Remaining HP:10
+Morty wins. Remaining HP:25
+Jerry wins. Remaining HP:10
+Jerry wins. Remaining HP:10
