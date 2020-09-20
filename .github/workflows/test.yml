@@ -1,13 +1,11 @@
 name: Test workflow
 
-on:
-	push
+on: push
 
 jobs:
-	build:
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v2
-			- run: g++ -std=c++17 *.cpp
-			- run: ./test.sh
-			- run: diff output.txt good_output.txt
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: g++ -std=c++17 *.cpp
