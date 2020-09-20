@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 			attacker = defender;
 			defender = tmp;
 		}
-		std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHP() << std::endl;
+		std::cout << attacker->getName() << " loses. Remaining HP:" << attacker->getHP() << std::endl;
     }
 	catch (int a )
 	{
