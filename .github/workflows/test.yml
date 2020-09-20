@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build
         run: g++ -std=c++17 *.cpp
-	  - name: Run test
-	    run: ./test.sh
-	  - name: diff
-	    run: diff output.txt good_output.txt
+      - name: Run test
+        run: ./test.sh
+      - name: diff
+        run: diff output.txt good_output.txt
