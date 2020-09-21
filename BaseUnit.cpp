@@ -27,7 +27,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 
 	if (!infile.is_open())
 	{
-		throw 2;  //Unable to open file, throw exception value 2
+		throw(file_name);
 	}
 
 	std::string line;
@@ -67,6 +67,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 				std::string shp = line.substr(pos + 2, line.size());
 				shp.pop_back();
 				hp = std::stoi(shp);
+
 				continue;
 			}
 			
@@ -89,6 +90,11 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 	}
 
 	infile.close();
+
+	if (nm == "" || hp == -1 || dm == -1)
+	{
+		throw(4); //Invalid contents 
+	}
 
 	return BaseUnit(nm,hp,dm);
 }
