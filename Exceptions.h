@@ -13,7 +13,10 @@ public:
 
 	}
 
-	const std::string& getFileName() const { return FileName; }
+	const char* what() const throw() override
+	{
+		return FileName.c_str();
+	}
 };
 
 //Missing or unindentified parameters
@@ -40,23 +43,23 @@ public:
 		}
 	}
 
-	const std::string& getMessage() const
+	const char* what() const throw() override
 	{
-		return message;
+		return message.c_str();
 	}
 };
-//Used to replace of the invalid_argument exception thrown by std::stoi()
-class StoiException : public std::exception
+//Used to replace of the invalid_argument exception thrown by std::stoi(), or when string in units file was formatted incorrectly
+class InterpretException : public std::exception
 {
 	std::string message;
 public:
-	StoiException(const std::string& fname, const std::string& type)
+	InterpretException(const std::string& fname, const std::string& type)
 	{
-		message = "In file <" + fname + "> the value associated with <" + type + "> parameter cannot be converted to int";
+		message = "In file <" + fname + "> the value associated with <" + type + "> parameter cannot be interpreted properly";
 	}
 
-	const std::string& getMessage() const
+	const char* what() const throw() override
 	{
-		return message;
+		return message.c_str();
 	}
 };

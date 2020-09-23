@@ -37,20 +37,23 @@ int main(int argc, char *argv[])
     }
 	catch (const NoFileException& noFile )
 	{
-		std::cout << "Unable to open file " << noFile.getFileName() << std::endl;
+		std::cout << "Unable to open file " << noFile.what() << std::endl;
+		std::cin.get();
         return 2; //No such file
     }
-	catch (const StoiException& stoiExc)
+	catch (const InterpretException& stoiExc)
 	{
-		std::cout << stoiExc.getMessage() << std::endl;
+		std::cout << stoiExc.what() << std::endl;
+		std::cin.get();
 		return 3; //stoi exception
 	}
 	catch (const InvalidContentOfFileException& invContents)
 	{
-		std::cout << invContents.getMessage() << std::endl;
+		std::cout << invContents.what() << std::endl;
+		std::cin.get();
 		return 4; //No name, hp or dmg
 	}
-	
+	std::cin.get();
 
 	return 0;
 }

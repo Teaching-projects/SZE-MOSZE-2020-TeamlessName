@@ -1,6 +1,7 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
 #include <fstream>
+#include <iostream>
 
 
 BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, HP{hp}, DMG{dmg}
@@ -41,19 +42,38 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 	{
 		std::getline(infile, line);
 
-		size_t pos;
+		size_t posFront;
+		size_t posBack;
 
 		//find name
 		if (nm == "")
 		{
-			pos = line.find("name");
+			std::string snm;
+			posFront = line.find("\"name\"");
+			posBack = line.find(",");
 
-			if (pos != std::string::npos)
+			if (posFront != std::string::npos && posBack != std::string::npos)
 			{
-				pos = line.find(":");
-				nm = line.substr(pos + 3, line.size());
-				nm.pop_back();
-				nm.pop_back();
+				posFront = line.find(":");
+				if (posFront == std::string::npos)
+				{
+					throw InterpretException(file_name, "name");
+				}
+				
+				snm = line.substr(posFront, posBack);
+				posFront = snm.find("\"");
+				if (posFront == std::string::npos)
+				{
+					throw InterpretException(file_name, "name");
+				}
+				snm = snm.substr(posFront+1, snm.size());
+
+				posBack = snm.find("\"");
+				if (posBack == std::string::npos)
+				{
+					throw InterpretException(file_name, "name");
+				}
+				nm = snm.substr(0, posBack);
 
 				continue;
 			}
@@ -61,11 +81,34 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 		//find hp
 		if (hp == -1)
 		{
-			pos = line.find("hp");
-			if (pos != std::string::npos)
+			posFront = line.find("\"hp\"");
+			if (posFront != std::string::npos)
 			{
-				pos = line.find(":");
-				std::string shp = line.substr(pos + 2, line.size());
+				posFront = line.find(":");
+				posBack = line.find(",");
+
+				if (posFront == std::string::npos || posBack == std::string::npos)
+				{
+					throw(InterpretException(file_name, "hp"));
+				}
+
+
+				std::string shp = line.substr(posFront+1, posBack);
+
+				const std::string WHITESPACES = " \t\v";
+				
+
+				while (true)
+				{
+					if (WHITESPACES.find(shp[0]) != std::string::npos)
+					{
+						shp.erase(shp.begin());
+					}
+					else
+					{
+						break;
+					}
+				}
 				shp.pop_back();
 
 				//try to convert hp
@@ -75,7 +118,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 				}
 				catch (const std::invalid_argument&)
 				{
-					throw(StoiException(file_name, "hp"));  //replace invalid_argument exception with own
+					throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
 				}
 
 				continue;
@@ -85,12 +128,27 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 		//find dmg
 		if (dm == -1)
 		{
-			pos = line.find("dmg");
+			posFront = line.find("\"dmg\"");
 
-			if (pos != std::string::npos)
+			if (posFront != std::string::npos)
 			{
-				pos = line.find(":");
-				std::string sdm = line.substr(pos + 2, line.size());
+				posFront = line.find(":");
+				std::string sdm = line.substr(posFront+1, line.size());
+
+				const std::string WHITESPACES = " \t\v";
+
+
+				while (true)
+				{
+					if (WHITESPACES.find(sdm[0]) != std::string::npos)
+					{
+						sdm.erase(sdm.begin());
+					}
+					else
+					{
+						break;
+					}
+				}
 				
 				//try to convert dmg
 				try
@@ -99,7 +157,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 				}
 				catch (const std::invalid_argument&)
 				{
-					throw(StoiException(file_name, "dmg"));  //replace invalid_argument exception with own
+					throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
 				}
 
 				continue;
