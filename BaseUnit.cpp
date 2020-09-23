@@ -1,4 +1,5 @@
 #include "BaseUnit.h"
+#include "Exceptions.h"
 #include <fstream>
 
 
@@ -27,7 +28,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 
 	if (!infile.is_open())
 	{
-		throw(file_name);
+		throw(NoFileException(file_name)); //File does not exist
 	}
 
 	std::string line;
@@ -66,7 +67,16 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 				pos = line.find(":");
 				std::string shp = line.substr(pos + 2, line.size());
 				shp.pop_back();
-				hp = std::stoi(shp);
+
+				//try to convert hp
+				try
+				{
+					hp = std::stoi(shp);
+				}
+				catch (const std::invalid_argument&)
+				{
+					throw(StoiException(file_name, "hp"));  //replace invalid_argument exception with own
+				}
 
 				continue;
 			}
@@ -81,7 +91,16 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 			{
 				pos = line.find(":");
 				std::string sdm = line.substr(pos + 2, line.size());
-				dm = std::stoi(sdm);
+				
+				//try to convert dmg
+				try
+				{
+					dm = std::stoi(sdm);
+				}
+				catch (const std::invalid_argument&)
+				{
+					throw(StoiException(file_name, "dmg"));  //replace invalid_argument exception with own
+				}
 
 				continue;
 			}
@@ -93,7 +112,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 
 	if (nm == "" || hp == -1 || dm == -1)
 	{
-		throw(4); //Invalid contents 
+		throw(InvalidContentOfFileException(file_name, nm, hp, dm)); //Invalid or missing contents 
 	}
 
 	return BaseUnit(nm,hp,dm);

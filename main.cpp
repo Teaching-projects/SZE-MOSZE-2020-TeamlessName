@@ -1,7 +1,6 @@
 #include <iostream>
 #include "BaseUnit.h"
-
-#include <fstream>
+#include "Exceptions.h"
 
 //Everything happens here for now
 int main(int argc, char *argv[])
@@ -36,21 +35,22 @@ int main(int argc, char *argv[])
 		}
 		std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHP() << std::endl;
     }
-	catch (const std::string& file_name )
+	catch (const NoFileException& noFile )
 	{
-		std::cout << "Unable to open file " << file_name<< std::endl;
+		std::cout << "Unable to open file " << noFile.getFileName() << std::endl;
         return 2; //No such file
     }
-	catch (const std::exception& e)
+	catch (const StoiException& stoiExc)
 	{
-		std::cout << "Invalid file syntax" << std::endl;
+		std::cout << stoiExc.getMessage() << std::endl;
 		return 3; //stoi exception
 	}
-	catch (int)
+	catch (const InvalidContentOfFileException& invContents)
 	{
-		std::cout << "Invalid file contents" << std::endl;
+		std::cout << invContents.getMessage() << std::endl;
 		return 4; //No name, hp or dmg
 	}
 	
+
 	return 0;
 }
