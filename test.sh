@@ -4,7 +4,7 @@ FILE=output.txt
 
 if test -f $FILE
 then
-	rm output.txt
+	rm $FILE
 fi
 
 for u1 in units/* 
@@ -13,7 +13,7 @@ do
 	do
 		if [ $u1 != $u2 ]
 		then
-			./a.out $u1 $u2 >> output.txt
+			./a.out $u1 $u2 >> $FILE
 		fi
 	done
 done
