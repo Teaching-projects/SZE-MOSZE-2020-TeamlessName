@@ -1,7 +1,6 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
 #include <fstream>
-#include <iostream>
 
 
 BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, HP{hp}, DMG{dmg}
@@ -66,7 +65,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 				{
 					throw InterpretException(file_name, "name");
 				}
-				snm = snm.substr(posFront+1, snm.size());
+				snm = snm.substr(posFront+1);
 
 				posBack = snm.find("\"");
 				if (posBack == std::string::npos)
@@ -94,21 +93,6 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 
 
 				std::string shp = line.substr(posFront+1, posBack);
-
-				const std::string WHITESPACES = " \t\v";
-				
-
-				while (true)
-				{
-					if (WHITESPACES.find(shp[0]) != std::string::npos)
-					{
-						shp.erase(shp.begin());
-					}
-					else
-					{
-						break;
-					}
-				}
 				shp.pop_back();
 
 				//try to convert hp
@@ -133,22 +117,8 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 			if (posFront != std::string::npos)
 			{
 				posFront = line.find(":");
-				std::string sdm = line.substr(posFront+1, line.size());
+				std::string sdm = line.substr(posFront+1);
 
-				const std::string WHITESPACES = " \t\v";
-
-
-				while (true)
-				{
-					if (WHITESPACES.find(sdm[0]) != std::string::npos)
-					{
-						sdm.erase(sdm.begin());
-					}
-					else
-					{
-						break;
-					}
-				}
 				
 				//try to convert dmg
 				try

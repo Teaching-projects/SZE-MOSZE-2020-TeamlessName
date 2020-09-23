@@ -38,22 +38,18 @@ int main(int argc, char *argv[])
 	catch (const NoFileException& noFile )
 	{
 		std::cout << "Unable to open file " << noFile.what() << std::endl;
-		std::cin.get();
         return 2; //No such file
     }
-	catch (const InterpretException& stoiExc)
+	catch (const InterpretException& interExc)
 	{
-		std::cout << stoiExc.what() << std::endl;
-		std::cin.get();
-		return 3; //stoi exception
+		std::cout << interExc.what() << std::endl;
+		return 3; //invalid formatting or variable type
 	}
 	catch (const InvalidContentOfFileException& invContents)
 	{
 		std::cout << invContents.what() << std::endl;
-		std::cin.get();
 		return 4; //No name, hp or dmg
 	}
-	std::cin.get();
 
 	return 0;
 }
