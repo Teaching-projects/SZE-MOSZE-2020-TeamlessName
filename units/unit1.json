@@ -1,5 +1,6 @@
 {
 	"name" : "Rick",
 	"hp" : 70,
-	"dmg" : 30
+	"dmg" : 30,
+	"attackspeed" : 2.0
 }

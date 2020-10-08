@@ -25,10 +25,10 @@ class InvalidContentOfFileException : public std::exception
 	std::string message;
 
 public:
-	InvalidContentOfFileException(const std::string&fname, const std::string& name, int hp, int dmg)
+	InvalidContentOfFileException(const std::string&fname, const std::string& name, int hp, int dmg, float as)
 	{
 		message = "In file <" + fname + "> the following unit parameters are not present or unreadable:\n";
-		
+
 		if (name == "")
 		{
 			message += "name\n";
@@ -40,6 +40,10 @@ public:
 		if (dmg == -1)
 		{
 			message += "dmg";
+		}
+		if (as == -1.0)
+		{
+			message += "attackspeed";
 		}
 	}
 
