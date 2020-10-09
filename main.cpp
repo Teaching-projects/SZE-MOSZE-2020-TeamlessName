@@ -2,6 +2,7 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
 
+
 //Everything happens here for now
 int main(int argc, char *argv[])
 {
@@ -43,12 +44,17 @@ int main(int argc, char *argv[])
 	catch (const InterpretException& interExc)
 	{
 		std::cout << interExc.what() << std::endl;
-		return 3; //invalid formatting or variable type
+		return 3; //Invalid variable type
 	}
 	catch (const InvalidContentOfFileException& invContents)
 	{
 		std::cout << invContents.what() << std::endl;
 		return 4; //No name, hp or dmg
+	}
+	catch (const FileFormatException& fileForm)
+	{
+		std::cout << fileForm.what() << std::endl;
+		return 5; //Invalid file formatting
 	}
 
 	return 0;

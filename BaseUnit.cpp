@@ -1,6 +1,9 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
+#include "JsonParser.h"
+#include <map>
 #include <fstream>
+
 
 
 BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, HP{hp}, DMG{dmg}
@@ -22,6 +25,7 @@ std::string BaseUnit::showStats() const
 {
 	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
 }
+
 BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 {
 	std::fstream infile(file_name);
@@ -30,117 +34,56 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 	{
 		throw(NoFileException(file_name)); //File does not exist
 	}
-
-	std::string line;
-	std::string nm = "";
-	int hp = -1;
-	int dm = -1;
-
-	//loop to identify unit attributes
-	while (!infile.eof())
+	std::map<std::string, std::string> attributes;
+	try
 	{
-		std::getline(infile, line);
-
-		size_t posFront;
-		size_t posBack;
-
-		//find name
-		if (nm == "")
-		{
-			std::string snm;
-			posFront = line.find("\"name\"");
-			posBack = line.find(",");
-
-			if (posFront != std::string::npos && posBack != std::string::npos)
-			{
-				posFront = line.find(":");
-				if (posFront == std::string::npos)
-				{
-					throw InterpretException(file_name, "name");
-				}
-				
-				snm = line.substr(posFront, posBack);
-				posFront = snm.find("\"");
-				if (posFront == std::string::npos)
-				{
-					throw InterpretException(file_name, "name");
-				}
-				snm = snm.substr(posFront+1);
-
-				posBack = snm.find("\"");
-				if (posBack == std::string::npos)
-				{
-					throw InterpretException(file_name, "name");
-				}
-				nm = snm.substr(0, posBack);
-
-				continue;
-			}
-		}
-		//find hp
-		if (hp == -1)
-		{
-			posFront = line.find("\"hp\"");
-			if (posFront != std::string::npos)
-			{
-				posFront = line.find(":");
-				posBack = line.find(",");
-
-				if (posFront == std::string::npos || posBack == std::string::npos)
-				{
-					throw(InterpretException(file_name, "hp"));
-				}
-
-
-				std::string shp = line.substr(posFront+1, posBack);
-				shp.pop_back();
-
-				//try to convert hp
-				try
-				{
-					hp = std::stoi(shp);
-				}
-				catch (const std::invalid_argument&)
-				{
-					throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
-				}
-
-				continue;
-			}
-			
-		}
-		//find dmg
-		if (dm == -1)
-		{
-			posFront = line.find("\"dmg\"");
-
-			if (posFront != std::string::npos)
-			{
-				posFront = line.find(":");
-				std::string sdm = line.substr(posFront+1);
-
-				
-				//try to convert dmg
-				try
-				{
-					dm = std::stoi(sdm);
-				}
-				catch (const std::invalid_argument&)
-				{
-					throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
-				}
-
-				continue;
-			}
-		}
-
+		attributes = JsonParser::parseJson(infile);
+	}
+	catch (const InputFormatException& format) //catch primitive exception
+	{
+		infile.close();
+		throw(FileFormatException(file_name, format.what())); //throw a more meaningful exception, storing place of error
 	}
 
 	infile.close();
 
+	std::string nm = "";
+	int hp = -1;
+	int dm = -1; 
+
+	if (attributes.find("name") != attributes.end())
+	{
+		nm = attributes["name"];
+	}
+
+	if (attributes.find("hp") != attributes.end())
+	{
+		try
+		{
+			hp = std::stoi(attributes["hp"]);
+		}
+		catch (const std::invalid_argument&)
+		{
+			throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
+		}
+	}
+
+	if (attributes.find("dmg") != attributes.end())
+	{
+		try
+		{
+			dm = std::stoi(attributes["dmg"]);
+		}
+		catch (const std::invalid_argument&)
+		{
+			throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
+		}
+	}
+
+
 	if (nm == "" || hp == -1 || dm == -1)
 	{
-		throw(InvalidContentOfFileException(file_name, nm, hp, dm)); //Invalid or missing contents 
+		throw(InvalidContentOfFileException(file_name, nm, hp, dm)); // missing contents 
 	}
 
 	return BaseUnit(nm,hp,dm);
