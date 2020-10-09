@@ -179,3 +179,54 @@ bool BaseUnit::isDead() const
 	}
 	return false;
 }
+void BaseUnit::Attack(BaseUnit &enemy)
+{
+    BaseUnit* fUnit;
+    BaseUnit* sUnit;
+    float fasterUnitCD;
+
+    if (getAS() < enemy.getAS())
+    {
+        fasterUnitCD = getAS();
+        fUnit = this;
+        sUnit = &enemy;
+    }
+    else
+    {
+        fasterUnitCD = enemy.getAS();
+        fUnit = &enemy;
+        sUnit = this;
+    }
+
+    enemy.gotHit(*this);
+    gotHit(enemy);
+    float timer = 0.0;
+
+    while (!isDead() && !enemy.isDead())
+    {
+        timer += fasterUnitCD;
+        if (sUnit->getAS() < timer)
+        {
+            fUnit->gotHit(*sUnit);
+            if (!fUnit->isDead())
+            {
+                sUnit->gotHit(*fUnit);
+                timer -= sUnit->getAS();
+            }
+        }
+        else if (sUnit->getAS() > timer)
+        {
+            sUnit->gotHit(*fUnit);
+        }
+        else //sUnit.getAS == timer
+        {
+            enemy.gotHit(*this);
+            if (!enemy.isDead())
+            {
+                gotHit(enemy);
+            }
+            timer = 0.0;
+        }
+        timer += fasterUnitCD;
+    }
+}

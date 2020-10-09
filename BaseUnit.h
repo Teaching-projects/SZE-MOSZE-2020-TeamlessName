@@ -14,7 +14,7 @@ private:
 public:
 	BaseUnit(const std::string& nm, int hp, int dmg, float as);
 
-	void gotHit(const BaseUnit&);
+	void Attack(BaseUnit&);
 	std::string showStats() const;
 
 	static BaseUnit parseUnit(const std::string&);
@@ -24,5 +24,7 @@ public:
 	const float getAS() const { return AS; }
 	const std::string& getName() const { return Name; }
 	bool isDead() const;
+private:
+    void gotHit(const BaseUnit&);
 
 };
