@@ -2,6 +2,8 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
 
+#include "JsonParser.h"
+#include <string>
 
 //Everything happens here for now
 int main(int argc, char *argv[])
@@ -10,7 +12,7 @@ int main(int argc, char *argv[])
 		std::cout << "Incorrect starting arguments.\nYou should start like this:\nPROGRAM.EXE UNITFILE1 UNITFILE2" << std::endl;
 		return 1; //Error in cmdline args
 	}
-    
+
     try
     {
 

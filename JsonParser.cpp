@@ -1,6 +1,10 @@
 #include "JsonParser.h"
 #include "Exceptions.h"
 
+#include <sstream>
+#include <fstream>
+
+#include <iostream>
 
 std::map<std::string, std::string> JsonParser::parseJson(std::istream & instream)
 {
@@ -33,6 +37,30 @@ std::map<std::string, std::string> JsonParser::parseJson(std::istream & instream
 
 	}
 	
+	return content;
+}
+
+std::map<std::string, std::string> JsonParser::parseJson(std::string & fname)
+{
+	//string holds the data
+	if (fname[0] == '{')
+	{
+		std::stringstream sstream;
+		sstream << fname;
+		
+		return parseJson(sstream);
+	}
+
+	//string is the file name
+	std::ifstream infile(fname);
+	if (!infile.is_open())
+	{
+		throw(NoFileException(fname)); //File does not exist
+	}
+
+	std::map<std::string, std::string> content;
+	content = parseJson(infile);
+	infile.close();
 
 	return content;
 }
