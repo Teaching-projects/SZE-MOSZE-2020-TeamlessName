@@ -10,7 +10,7 @@ jobs:
   doxygen:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
       - run: sudo apt-get install doxygen
       - run: sudo apt-get install graphviz
       - run: doxygen doxconf
@@ -22,5 +22,4 @@ jobs:
           REPO: self
           BRANCH: gh-pages
           FOLDER: DOCS/html
-          CLEAN: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
