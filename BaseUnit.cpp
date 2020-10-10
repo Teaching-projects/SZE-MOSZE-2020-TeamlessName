@@ -17,11 +17,7 @@ void BaseUnit::gotHit(const BaseUnit& other)
 	}
 }
 
-//Show current HP and DMG
-std::string BaseUnit::showStats() const
-{
-	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
-}
+
 BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 {
 	std::fstream infile(file_name);
