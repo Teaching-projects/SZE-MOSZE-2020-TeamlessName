@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 		std::cout << "Incorrect starting arguments.\nYou should start like this:\nPROGRAM.EXE UNITFILE1 UNITFILE2" << std::endl;
 		return 1; //Error in cmdline args
 	}
-    
+
     try
     {
 
@@ -19,21 +19,15 @@ int main(int argc, char *argv[])
 		BaseUnit* attacker = &Unit1;
 		BaseUnit* defender = &Unit2;
 
-		//Fighting loop, might end up in a separate class later
-		while (true)
-		{
-			defender->gotHit(*attacker);
-			if (defender->isDead())
-			{
-				break;
-			}
-				
-
-			BaseUnit* tmp = attacker;
-			attacker = defender;
-			defender = tmp;
-		}
-		std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHP() << std::endl;
+        attacker->Attack(*defender);
+        if (attacker->getHP()==0)
+        {
+            std::cout << defender->getName() << " wins. Remaining HP:" << defender->getHP() << std::endl;
+        }
+        else if (defender->getHP()==0)
+        {
+            std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHP() << std::endl;
+        }
     }
 	catch (const NoFileException& noFile )
 	{
