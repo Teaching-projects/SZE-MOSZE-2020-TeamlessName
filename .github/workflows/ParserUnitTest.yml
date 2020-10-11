@@ -13,9 +13,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build
-        run: cd test
-        run: cmake CMakeLists.txt
-        run: make
+        run: cd test && cmake CMakeLists.txt && make
       - name: Run test
-        run: cd test
-        run: ./runTest
+        run: cd test &&./runTest
