@@ -15,7 +15,7 @@ jobs:
       - name: Build
         run: cd test
         run: cmake CMakeLists.txt
-		run: make
+        run: make
       - name: Run test
         run: cd test
         run: ./runTest
