@@ -6,16 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-	  - name: Install gtest
-	    run: sudo apt install libgtest-dev
-	  - name: Install Cmake
-	    run: sudo apt install cmake
+      - name: Install gtest
+        run: sudo apt install libgtest-dev
+      - name: Install Cmake
+        run: sudo apt install cmake
       - uses: actions/checkout@v2
 
       - name: Build
-	    run: cd test
+        run: cd test
         run: cmake CMakeLists.txt
 		run: make
       - name: Run test
-		run: cd test
+        run: cd test
         run: ./runTest
