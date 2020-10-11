@@ -1,0 +1,7 @@
+{
+	"name"  :         "Rick",
+	"hp":70,
+  "dmg"           :          30,
+  "mana"      :               14.25,
+  "SpecialAttribute"     :    "NeedsAStringForIt"
+}

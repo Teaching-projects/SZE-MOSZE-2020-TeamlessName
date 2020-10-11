@@ -2,8 +2,7 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
 
-#include "JsonParser.h"
-#include <string>
+
 
 //Everything happens here for now
 int main(int argc, char *argv[])

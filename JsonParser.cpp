@@ -4,7 +4,6 @@
 #include <sstream>
 #include <fstream>
 
-#include <iostream>
 
 std::map<std::string, std::string> JsonParser::parseJson(std::istream & instream)
 {
