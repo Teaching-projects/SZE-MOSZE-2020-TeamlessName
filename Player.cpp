@@ -1,42 +1,29 @@
-#include "BaseUnit.h"
+#include "Player.h"
 #include "Exceptions.h"
+#include <math.h>
 #include <fstream>
 
+int Player::XPgap = 100;
 
-BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, maxHP{hp}, DMG{dmg}, HP{maxHP}
+Player::Player(const std::string & nm, int hp, int dmg) : BaseUnit(nm, hp, dmg), XP(0)
 {
 }
 
-//decreasing the HP of the suffering unit
-int BaseUnit::gotHit(const BaseUnit& other)
+void Player::levelUp()
 {
-	int sufferedDamage = other.getDMG();
-
-	if (sufferedDamage >= HP)
+	while (XP >= XPgap)
 	{
-		sufferedDamage = HP;
-		HP = 0;
+		maxHP = std::lround(HP * 1.1);
+		DMG = std::lround(DMG * 1.1);
+		HP = maxHP;
+
+		XP = XP - XPgap;
 	}
-	else
-	{
-		HP = HP - sufferedDamage;
 
-	}
-	return sufferedDamage;
+	
 }
 
-//Show current HP and DMG
-std::string BaseUnit::showStats() const
-{
-	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
-}
-
-void BaseUnit::causeDamage(int)
-{
-	//Interface, used in Player class only.
-}
-
-BaseUnit BaseUnit::parseUnit(const std::string& file_name)
+Player Player::parsePlayer(const std::string &file_name)
 {
 	std::fstream infile(file_name);
 
@@ -72,14 +59,14 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 				{
 					throw InterpretException(file_name, "name");
 				}
-				
+
 				snm = line.substr(posFront, posBack);
 				posFront = snm.find("\"");
 				if (posFront == std::string::npos)
 				{
 					throw InterpretException(file_name, "name");
 				}
-				snm = snm.substr(posFront+1);
+				snm = snm.substr(posFront + 1);
 
 				posBack = snm.find("\"");
 				if (posBack == std::string::npos)
@@ -106,7 +93,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 				}
 
 
-				std::string shp = line.substr(posFront+1, posBack);
+				std::string shp = line.substr(posFront + 1, posBack);
 				shp.pop_back();
 
 				//try to convert hp
@@ -121,7 +108,7 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 
 				continue;
 			}
-			
+
 		}
 		//find dmg
 		if (dm == -1)
@@ -131,9 +118,9 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 			if (posFront != std::string::npos)
 			{
 				posFront = line.find(":");
-				std::string sdm = line.substr(posFront+1);
+				std::string sdm = line.substr(posFront + 1);
 
-				
+
 				//try to convert dmg
 				try
 				{
@@ -157,14 +144,11 @@ BaseUnit BaseUnit::parseUnit(const std::string& file_name)
 		throw(InvalidContentOfFileException(file_name, nm, hp, dm)); //Invalid or missing contents 
 	}
 
-	return BaseUnit(nm,hp,dm);
+	return Player(nm, hp, dm);
 }
-//returns with true if the unit has 0 HP
-bool BaseUnit::isDead() const
+
+void Player::causeDamage(int caused)
 {
-	if (HP == 0)
-	{
-		return true;
-	}
-	return false;
+	XP += caused;
+	levelUp();
 }

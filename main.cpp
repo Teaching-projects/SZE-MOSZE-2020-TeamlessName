@@ -2,6 +2,7 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
 
+#include "Player.h"
 //Everything happens here for now
 int main(int argc, char *argv[])
 {
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
     {
 
 		BaseUnit Unit1 = BaseUnit::parseUnit(argv[1]);
-		BaseUnit Unit2 = BaseUnit::parseUnit(argv[2]);
+		Player Unit2 = Player::parsePlayer(argv[2]);
 
 		BaseUnit* attacker = &Unit1;
 		BaseUnit* defender = &Unit2;
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
 		//Fighting loop, might end up in a separate class later
 		while (true)
 		{
-			defender->gotHit(*attacker);
+			attacker->causeDamage(defender->gotHit(*attacker));
 			if (defender->isDead())
 			{
 				break;

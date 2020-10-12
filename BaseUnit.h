@@ -5,16 +5,18 @@
 // Base of all unit types, specialized units may derive from this
 class BaseUnit
 {
-private:
-	int HP; //health ponits (current or max, may change during developement, according to the task)
-	const int DMG; //damage, the amount this unit hits with
+protected:
+	int maxHP; //maximum health points
+	int HP; //current health ponits 
+	int DMG; //damage, the amount this unit hits with
 	const std::string Name;
 
 public:
 	BaseUnit(const std::string& nm, int hp, int dmg);
 
-	void gotHit(const BaseUnit&);
-	std::string showStats() const; 
+	int gotHit(const BaseUnit&);
+	std::string showStats() const;
+	virtual void causeDamage(int);
 
 	static BaseUnit parseUnit(const std::string&);
 
