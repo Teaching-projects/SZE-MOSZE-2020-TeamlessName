@@ -3,13 +3,23 @@ name: Test workflow
 on: push
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cppcheck
+        run: cppcheck *.cpp --enable=warning --error-exitcode=1
+      - name: Cppcheck report
+        run: cppcheck *.cpp --enable=warning --output-file=checkreport
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            path: ./checkreport.txt
       - name: Build
-        run: g++ -std=c++17 *.cpp
-      - name: Run test
+        run: g++ -Wall -Werror *.cpp
+      - name: Memory check
+        run: valgrind --error-exitcode=1 ./a.out units/unit1.json units/unit2.json
+      - name: Run Test
         run: ./test.sh
-      - name: diff
+      - name: Diff
         run: diff output.txt good_output.txt
