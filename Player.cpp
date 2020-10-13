@@ -14,7 +14,7 @@ void Player::levelUp()
 {
 	while (XP >= XPgap)
 	{
-		maxHP = std::lround(HP * 1.1);
+		maxHP = std::lround(maxHP * 1.1);
 		DMG = std::lround(DMG * 1.1);
 		HP = maxHP;
 		Lvl++;
@@ -33,7 +33,12 @@ Player Player::parsePlayer(const std::string &file_name)
 
 void Player::causeDamage(BaseUnit* enemy)
 {
-	XP = std::min(DMG, enemy->getHP());
+	XP += std::min(DMG, enemy->getHP());
 	enemy->gotHit(*this);
 	levelUp();
+}
+std::string Player::showStats() const {
+
+	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG) 
+		+ " EXP: " + std::to_string(XP) + " LVL: " + std::to_string(Lvl);
 }

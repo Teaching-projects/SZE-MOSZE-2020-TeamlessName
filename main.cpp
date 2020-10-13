@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
     try
     {
 
-		BaseUnit Unit1 = BaseUnit::parseUnit(argv[1]);
-		Player Unit2 = Player::parsePlayer(argv[2]);
+		Player Unit1 = Player::parsePlayer(argv[1]);
+		BaseUnit Unit2 = Player::parsePlayer(argv[2]);
 
 		BaseUnit* attacker = &Unit1;
 		BaseUnit* defender = &Unit2;
@@ -28,13 +28,13 @@ int main(int argc, char *argv[])
 			{
 				break;
 			}
-				
+
 
 			BaseUnit* tmp = attacker;
 			attacker = defender;
 			defender = tmp;
 		}
-		std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHP() << std::endl;
+		std::cout << "The Winner: " << attacker->showStats() << std::endl;
     }
 	catch (const NoFileException& noFile )
 	{

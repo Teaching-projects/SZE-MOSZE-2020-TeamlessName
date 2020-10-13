@@ -15,6 +15,6 @@ public:
 	void causeDamage(BaseUnit*) override;
 	int getLvl() const { return Lvl; }
 	int getXP() const { return XP; }
-
+	std::string showStats() const override;
 };
 
