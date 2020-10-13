@@ -8,21 +8,10 @@ BaseUnit::BaseUnit(const std::string& nm, int hp, int dmg) : Name{ nm }, maxHP{h
 }
 
 //decreasing the HP of the suffering unit
-int BaseUnit::gotHit(const BaseUnit& other)
+void BaseUnit::gotHit(const BaseUnit& other)
 {
-	int sufferedDamage = other.getDMG();
-
-	if (sufferedDamage >= HP)
-	{
-		sufferedDamage = HP;
-		HP = 0;
-	}
-	else
-	{
-		HP = HP - sufferedDamage;
-
-	}
-	return sufferedDamage;
+	if (other.getDMG() >= HP) HP = 0;
+	else HP = HP - other.getDMG();
 }
 
 //Show current HP and DMG
