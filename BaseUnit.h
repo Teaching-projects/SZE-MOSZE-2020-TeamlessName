@@ -16,10 +16,9 @@ public:
 
 	int gotHit(const BaseUnit&);
 	std::string showStats() const;
-	virtual void causeDamage(int);
+	virtual void causeDamage(BaseUnit*);
 
 	static BaseUnit parseUnit(const std::string&);
-
 	const int getHP() const { return HP; }
 	const int getDMG() const { return DMG; }
 	const std::string& getName() const { return Name; }

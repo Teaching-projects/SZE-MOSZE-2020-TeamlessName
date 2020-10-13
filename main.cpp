@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		//Fighting loop, might end up in a separate class later
 		while (true)
 		{
-			attacker->causeDamage(defender->gotHit(*attacker));
+			attacker->causeDamage(defender);
 			if (defender->isDead())
 			{
 				break;

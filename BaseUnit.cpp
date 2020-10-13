@@ -31,9 +31,9 @@ std::string BaseUnit::showStats() const
 	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
 }
 
-void BaseUnit::causeDamage(int)
+void BaseUnit::causeDamage(BaseUnit* enemy)
 {
-	//Interface, used in Player class only.
+	enemy->gotHit(*this);
 }
 
 BaseUnit BaseUnit::parseUnit(const std::string& file_name)
