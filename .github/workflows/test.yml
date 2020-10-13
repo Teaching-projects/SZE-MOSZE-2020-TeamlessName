@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install
+        run: sudo apt-get install -y valgrind cppcheck
       - name: Cppcheck
         run: cppcheck *.cpp --enable=warning --error-exitcode=1
       - name: Cppcheck report
