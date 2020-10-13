@@ -6,10 +6,11 @@
 class BaseUnit
 {
 protected:
-	int maxHP; //maximum health points
-	int HP; //current health ponits 
-	int DMG; //damage, the amount this unit hits with
 	const std::string Name;
+	int maxHP; //maximum health points
+	int DMG; //damage, the amount this unit hits with
+	int HP; //current health ponits 
+
 
 public:
 	BaseUnit(const std::string& nm, int hp, int dmg);
