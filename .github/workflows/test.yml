@@ -12,7 +12,7 @@ jobs:
       - name: Cppcheck
         run: cppcheck *.cpp --enable=warning --error-exitcode=1
       - name: Cppcheck report
-        run: cppcheck *.cpp --enable=warning --output-file=checkreport
+        run: cppcheck *.cpp --enable=warning --output-file=checkreport.txt
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
