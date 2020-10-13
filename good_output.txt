@@ -1,6 +1,6 @@
-Rick wins. Remaining HP:10
-Rick wins. Remaining HP:20
-Morty wins. Remaining HP:10
-Morty wins. Remaining HP:25
-Jerry wins. Remaining HP:10
-Jerry wins. Remaining HP:10
+The Winner: Rick: HP:77 DMG: 33 EXP: 0 LVL: 2
+The Winner: Rick: HP:20 DMG: 30 EXP: 70 LVL: 1
+The Winner: Morty: HP:10 DMG: 20 EXP: 70 LVL: 1
+The Winner: Morty: HP:25 DMG: 20 EXP: 70 LVL: 1
+The Winner: Jerry: HP:10 DMG: 25 EXP: 70 LVL: 1
+The Winner: Jerry: HP:77 DMG: 28 EXP: 0 LVL: 2
