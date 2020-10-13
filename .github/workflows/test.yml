@@ -16,6 +16,7 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
+            name: checkreport
             path: ./checkreport.txt
       - name: Build
         run: g++ -Wall -Werror *.cpp
