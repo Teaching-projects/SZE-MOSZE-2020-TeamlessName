@@ -22,7 +22,7 @@ TEST(ParserTest, TestString)
 //Testing with file name as string
 TEST(ParserTest, TestFileName)
 {
-	std::string input = "../../unit_Test1.json";
+	std::string input = "unit_Test1.json";
 	std::map<std::string, std::string> expected;
 	expected.insert(std::pair<std::string, std::string>("name", "Rick"));
 	expected.insert(std::pair<std::string, std::string>("hp", "70"));
@@ -37,7 +37,7 @@ TEST(ParserTest, TestFileName)
 //Testing with fstream
 TEST(ParserTest, TestIstream)
 {
-	std::string fname = "../unit_Test1.json";
+	std::string fname = "unit_Test1.json";
 	std::map<std::string, std::string> expected;
 	expected.insert(std::pair<std::string, std::string>("name", "Rick"));
 	expected.insert(std::pair<std::string, std::string>("hp", "70"));
