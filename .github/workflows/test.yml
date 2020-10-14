@@ -10,7 +10,7 @@ jobs:
       - name: Install
         run: sudo apt-get install -y valgrind cppcheck
       - name: Cppcheck
-        run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1
+        run: cppcheck *.cpp --enable=warning --error-exitcode=1
       - name: Cppcheck report
         run: cppcheck *.cpp --enable=warning,style,performance --output-file=checkreport.txt
       - name: Archive artifacts
