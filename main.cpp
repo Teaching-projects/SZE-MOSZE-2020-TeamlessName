@@ -3,13 +3,14 @@
 #include "Exceptions.h"
 
 
+enum ReturnCodes {OK, Cmdline, NoFileExc, InterpretExc, ContentExc, FileFormatExc };
 
 //Everything happens here for now
 int main(int argc, char *argv[])
 {
 	if (argc != 3){
 		std::cout << "Incorrect starting arguments.\nYou should start like this:\nPROGRAM.EXE UNITFILE1 UNITFILE2" << std::endl;
-		return 1; //Error in cmdline args
+		return Cmdline; //Error in cmdline args
 	}
 
     try
@@ -40,23 +41,23 @@ int main(int argc, char *argv[])
 	catch (const NoFileException& noFile )
 	{
 		std::cout << "Unable to open file " << noFile.what() << std::endl;
-        return 2; //No such file
+        return NoFileExc; //No such file
     }
 	catch (const InterpretException& interExc)
 	{
 		std::cout << interExc.what() << std::endl;
-		return 3; //Invalid variable type
+		return InterpretExc; //Invalid variable type
 	}
 	catch (const InvalidContentOfFileException& invContents)
 	{
 		std::cout << invContents.what() << std::endl;
-		return 4; //No name, hp or dmg
+		return ContentExc; //No name, hp or dmg
 	}
 	catch (const FileFormatException& fileForm)
 	{
 		std::cout << fileForm.what() << std::endl;
-		return 5; //Invalid file formatting
+		return FileFormatExc; //Invalid file formatting
 	}
 
-	return 0;
+	return OK;
 }

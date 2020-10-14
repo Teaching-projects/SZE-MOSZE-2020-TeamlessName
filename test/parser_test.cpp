@@ -3,6 +3,7 @@
 #include <map>
 #include <fstream>
 #include "../JsonParser.h"
+#include "../Exceptions.h"
 
 //testing with all data in the string
 TEST(ParserTest, TestString)
@@ -13,7 +14,7 @@ TEST(ParserTest, TestString)
 	expected.insert(std::pair<std::string, std::string>("hp", "150"));
 	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
 	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
-	std::map<std::string, std::string> testMap = JsonParser::parseJson(input);
+	std::map<std::string, std::string> testMap = JsonParser::parseString(input);
 
 	ASSERT_EQ(expected, testMap);
 }
@@ -34,9 +35,9 @@ TEST(ParserTest, TestFileName)
 }
 
 //Testing with fstream
-TEST(ParserTest, istream)
+TEST(ParserTest, TestIstream)
 {
-	std::string fname = "../../unit_Test1.json";
+	std::string fname = "../unit_Test1.json";
 	std::map<std::string, std::string> expected;
 	expected.insert(std::pair<std::string, std::string>("name", "Rick"));
 	expected.insert(std::pair<std::string, std::string>("hp", "70"));
@@ -52,6 +53,66 @@ TEST(ParserTest, istream)
 
 	ASSERT_EQ(expected, testMap);
 }
+
+//Missing colon
+TEST(ParserTest, TestMissingColon)
+{
+									//No ':' between key and value
+	std::string input = "{\n\t\"name\"\t     \"isName\",\n\t\"hp\":150,\n\t\"dmg\"   \t\t :\t200,\n\t\"SomethingSpecial\" : 22.45\n}";
+	std::map<std::string, std::string> expected;
+	expected.insert(std::pair<std::string, std::string>("name", "isName"));
+	expected.insert(std::pair<std::string, std::string>("hp", "150"));
+	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
+	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
+	try
+	{
+		std::map<std::string, std::string> testMap = JsonParser::parseString(input);
+	}
+	catch(const InputFormatException& formExc)
+	{
+		std::string miss = formExc.what();
+		ASSERT_EQ(":", miss);
+	}
+}
+
+//Missing Quote mark
+TEST(ParserTest, TestMissingQuoteMark)
+{
+														//no quotemark closing for hp
+	std::string input = "{\n\t\"name\"\t:  \"isName\",\n\t\"hp:150,\n\t\"dmg\"   \t\t :\t200,\n\t\"SomethingSpecial\" : 22.45\n}";
+	std::map<std::string, std::string> expected;
+	expected.insert(std::pair<std::string, std::string>("name", "isName"));
+	expected.insert(std::pair<std::string, std::string>("hp", "150"));
+	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
+	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
+	try
+	{
+		std::map<std::string, std::string> testMap = JsonParser::parseString(input);
+	}
+	catch (const InputFormatException& formExc)
+	{
+		std::string miss = formExc.what();
+		ASSERT_EQ("\"", miss);
+	}
+}
+
+//Missing file
+TEST(ParserTest, TestMissingFile)
+{
+	std::string fname = "../../Nonexistent_unit_Test1.json";
+	try
+	{
+		std::map<std::string, std::string> testMap = JsonParser::parseJson(fname);
+	}
+	catch(const NoFileException& NoFile)
+	{
+		std::string file = NoFile.what();
+
+		ASSERT_EQ(file, fname);
+	}
+}
+
+
 
 int main(int argc, char** argv)
 {

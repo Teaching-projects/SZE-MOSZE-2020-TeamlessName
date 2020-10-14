@@ -41,16 +41,6 @@ std::map<std::string, std::string> JsonParser::parseJson(std::istream & instream
 
 std::map<std::string, std::string> JsonParser::parseJson(std::string & fname)
 {
-	//string holds the data
-	if (fname[0] == '{')
-	{
-		std::stringstream sstream;
-		sstream << fname;
-		
-		return parseJson(sstream);
-	}
-
-	//string is the file name
 	std::ifstream infile(fname);
 	if (!infile.is_open())
 	{
@@ -62,4 +52,12 @@ std::map<std::string, std::string> JsonParser::parseJson(std::string & fname)
 	infile.close();
 
 	return content;
+}
+
+std::map<std::string, std::string> JsonParser::parseString(std::string & data)
+{
+	std::stringstream sstream;
+	sstream << data;
+
+	return parseJson(sstream);
 }
