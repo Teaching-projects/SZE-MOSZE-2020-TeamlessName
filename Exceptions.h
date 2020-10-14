@@ -8,7 +8,7 @@ class NoFileException : public std::exception
 	std::string FileName;
 
 public:
-	NoFileException(const std::string& fname) : FileName {fname}
+	explicit NoFileException(const std::string& fname) : FileName {fname}
 	{
 
 	}
@@ -25,9 +25,9 @@ class InvalidContentOfFileException : public std::exception
 	std::string message;
 
 public:
-	InvalidContentOfFileException(const std::string&fname, const std::string& name, int hp, int dmg)
+	InvalidContentOfFileException(const std::string&fname, const std::string& name, int hp, int dmg) : 
+		message("In file <" + fname + "> the following unit parameters are not present or unreadable:\n")
 	{
-		message = "In file <" + fname + "> the following unit parameters are not present or unreadable:\n";
 		
 		if (name == "")
 		{
@@ -53,9 +53,9 @@ class InterpretException : public std::exception
 {
 	std::string message;
 public:
-	InterpretException(const std::string& fname, const std::string& type)
+	InterpretException(const std::string& fname, const std::string& type) :
+	message("In file <" + fname + "> the value associated with <" + type + "> parameter cannot be interpreted properly")
 	{
-		message = "In file <" + fname + "> the value associated with <" + type + "> parameter cannot be interpreted properly";
 	}
 
 	const char* what() const throw() override
