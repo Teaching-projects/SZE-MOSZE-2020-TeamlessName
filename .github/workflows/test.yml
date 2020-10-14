@@ -10,9 +10,9 @@ jobs:
       - name: Install
         run: sudo apt-get install -y valgrind cppcheck
       - name: Cppcheck
-        run: cppcheck *.cpp --enable=warning --error-exitcode=1
+        run: cppcheck *.cpp --enable=warning,style,performance --error-exitcode=1
       - name: Cppcheck report
-        run: cppcheck *.cpp --enable=warning --output-file=checkreport.txt
+        run: cppcheck *.cpp --enable=warning,style,performance --output-file=checkreport.txt
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: g++ -Wall -Werror *.cpp
       - name: Memory check
-        run: valgrind --error-exitcode=1 ./a.out units/unit1.json units/unit2.json
+        run: valgrind --leak-check=full --error-exitcode=1 ./a.out units/unit1.json units/unit2.json
       - name: Run Test
         run: ./test.sh
       - name: Diff

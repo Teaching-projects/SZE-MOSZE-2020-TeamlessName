@@ -14,7 +14,6 @@ protected:
 
 public:
 	BaseUnit(const std::string& nm, int hp, int dmg);
-
 	void gotHit(const BaseUnit&);
 	virtual std::string showStats() const;
 	virtual void causeDamage(BaseUnit*);
