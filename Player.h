@@ -9,7 +9,7 @@ private:
 	int Lvl = 1;
 	void levelUp();
 public:
-	Player(const std::string& nm, int hp, int dmg);
+	Player(const std::string& nm, int hp, int dmg,float as);
 	static Player parsePlayer(const std::string&);
 	void causeDamage(BaseUnit*) override;
 	int getLvl() const { return Lvl; }
