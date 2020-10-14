@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     {
 
 		Player Unit1 = Player::parsePlayer(argv[1]);
-		BaseUnit Unit2 = Player::parseUnit(argv[2]);
+		BaseUnit Unit2 = BaseUnit::parseUnit(argv[2]);
 
 		BaseUnit* attacker = &Unit1;
 		BaseUnit* defender = &Unit2;
