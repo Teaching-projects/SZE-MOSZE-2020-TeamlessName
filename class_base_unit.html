@@ -63,6 +63,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_base_unit-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BaseUnit Class Reference</div>  </div>
@@ -73,6 +74,14 @@ $(function() {
  <a href="class_base_unit.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_base_unit_8h_source.html">BaseUnit.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for BaseUnit:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_base_unit__inherit__graph.png" border="0" usemap="#_base_unit_inherit__map" alt="Inheritance graph"/></div>
+<map name="_base_unit_inherit__map" id="_base_unit_inherit__map">
+<area shape="rect" id="node2" href="class_player.html" title="Player" alt="" coords="14,80,73,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -80,9 +89,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#ac8e244be3eb247fbfe89661b612b0ad6">BaseUnit</a> (const std::string &amp;nm, int hp, int dmg, float as)</td></tr>
 <tr class="memdesc:ac8e244be3eb247fbfe89661b612b0ad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor set the attributes of unit. <br /></td></tr>
 <tr class="separator:ac8e244be3eb247fbfe89661b612b0ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a660741468a1c98eb8f240442da31faaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#a660741468a1c98eb8f240442da31faaf">Attack</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> &amp;)</td></tr>
-<tr class="memdesc:a660741468a1c98eb8f240442da31faaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit attacks other unit. This method do the full combat between the 2 units.  <a href="#a660741468a1c98eb8f240442da31faaf">More...</a><br /></td></tr>
-<tr class="separator:a660741468a1c98eb8f240442da31faaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed733471d18a109ef64e5ec01af1976e"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#aed733471d18a109ef64e5ec01af1976e">showStats</a> () const</td></tr>
+<tr class="memdesc:aed733471d18a109ef64e5ec01af1976e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shows stats of Unit.  <a href="#aed733471d18a109ef64e5ec01af1976e">More...</a><br /></td></tr>
+<tr class="separator:aed733471d18a109ef64e5ec01af1976e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14098b3cb79e31651de0822ccb4b29cd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#a14098b3cb79e31651de0822ccb4b29cd">causeDamage</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> *)</td></tr>
+<tr class="memdesc:a14098b3cb79e31651de0822ccb4b29cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deals damage to enemy unit.  <a href="#a14098b3cb79e31651de0822ccb4b29cd">More...</a><br /></td></tr>
+<tr class="separator:a14098b3cb79e31651de0822ccb4b29cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad369f7fc335d9e67dc0ffe752d30f3d6"><td class="memItemLeft" align="right" valign="top"><a id="ad369f7fc335d9e67dc0ffe752d30f3d6"></a>
 const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#ad369f7fc335d9e67dc0ffe752d30f3d6">getHP</a> () const</td></tr>
 <tr class="memdesc:ad369f7fc335d9e67dc0ffe752d30f3d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const Getter of Unit's health points. <br /></td></tr>
@@ -99,15 +111,44 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#ad087f7cbc40a5669af8b6b9a38dc8754">getName</a> () const</td></tr>
 <tr class="memdesc:ad087f7cbc40a5669af8b6b9a38dc8754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const Getter of Unit's name. <br /></td></tr>
 <tr class="separator:ad087f7cbc40a5669af8b6b9a38dc8754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a660741468a1c98eb8f240442da31faaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#a660741468a1c98eb8f240442da31faaf">Attack</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> &amp;)</td></tr>
+<tr class="memdesc:a660741468a1c98eb8f240442da31faaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit attacks other unit. This method do the full combat between the 2 units.  <a href="#a660741468a1c98eb8f240442da31faaf">More...</a><br /></td></tr>
+<tr class="separator:a660741468a1c98eb8f240442da31faaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab41ca7b8187c8a6072dd2204a3e7988e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#ab41ca7b8187c8a6072dd2204a3e7988e">isDead</a> () const</td></tr>
 <tr class="memdesc:ab41ca7b8187c8a6072dd2204a3e7988e"><td class="mdescLeft">&#160;</td><td class="mdescRight">If unit is dead.  <a href="#ab41ca7b8187c8a6072dd2204a3e7988e">More...</a><br /></td></tr>
 <tr class="separator:ab41ca7b8187c8a6072dd2204a3e7988e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae70866737b6cd34e574697985568777d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#ae70866737b6cd34e574697985568777d">gotHit</a> (const <a class="el" href="class_base_unit.html">BaseUnit</a> &amp;)</td></tr>
+<tr class="memdesc:ae70866737b6cd34e574697985568777d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit getting hit by enemy unit.  <a href="#ae70866737b6cd34e574697985568777d">More...</a><br /></td></tr>
+<tr class="separator:ae70866737b6cd34e574697985568777d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3ba2489c8f9d0182b00aace88b843dc6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_base_unit.html">BaseUnit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#a3ba2489c8f9d0182b00aace88b843dc6">parseUnit</a> (const std::string &amp;)</td></tr>
 <tr class="memdesc:a3ba2489c8f9d0182b00aace88b843dc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit parsing from a file.  <a href="#a3ba2489c8f9d0182b00aace88b843dc6">More...</a><br /></td></tr>
 <tr class="separator:a3ba2489c8f9d0182b00aace88b843dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a2ad274f8b04c193c53558570545bcbee"><td class="memItemLeft" align="right" valign="top"><a id="a2ad274f8b04c193c53558570545bcbee"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#a2ad274f8b04c193c53558570545bcbee">Name</a></td></tr>
+<tr class="memdesc:a2ad274f8b04c193c53558570545bcbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of unit. <br /></td></tr>
+<tr class="separator:a2ad274f8b04c193c53558570545bcbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac490e1432261f04eff5f9b2378e54dd7"><td class="memItemLeft" align="right" valign="top"><a id="ac490e1432261f04eff5f9b2378e54dd7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#ac490e1432261f04eff5f9b2378e54dd7">maxHP</a></td></tr>
+<tr class="memdesc:ac490e1432261f04eff5f9b2378e54dd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum Health ponits of unit. <br /></td></tr>
+<tr class="separator:ac490e1432261f04eff5f9b2378e54dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9fd2ccb49fa8fe29e0f20461533d108"><td class="memItemLeft" align="right" valign="top"><a id="ad9fd2ccb49fa8fe29e0f20461533d108"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#ad9fd2ccb49fa8fe29e0f20461533d108">HP</a></td></tr>
+<tr class="memdesc:ad9fd2ccb49fa8fe29e0f20461533d108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Health ponits of unit. <br /></td></tr>
+<tr class="separator:ad9fd2ccb49fa8fe29e0f20461533d108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a9bc537e93e72bd27a1d59247c0951"><td class="memItemLeft" align="right" valign="top"><a id="a47a9bc537e93e72bd27a1d59247c0951"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#a47a9bc537e93e72bd27a1d59247c0951">DMG</a></td></tr>
+<tr class="memdesc:a47a9bc537e93e72bd27a1d59247c0951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage of unit, the amount this unit hits with. <br /></td></tr>
+<tr class="separator:a47a9bc537e93e72bd27a1d59247c0951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d698a954e248bbd12cc06c79211c68a"><td class="memItemLeft" align="right" valign="top"><a id="a1d698a954e248bbd12cc06c79211c68a"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_unit.html#a1d698a954e248bbd12cc06c79211c68a">AS</a></td></tr>
+<tr class="memdesc:a1d698a954e248bbd12cc06c79211c68a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attackspeed of unit, seconds per attack. <br /></td></tr>
+<tr class="separator:a1d698a954e248bbd12cc06c79211c68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_base_unit.html" title="BaseUnit class. ">BaseUnit</a> class. </p>
@@ -133,6 +174,68 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Enemy</td><td>unit (pointer) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a14098b3cb79e31651de0822ccb4b29cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14098b3cb79e31651de0822ccb4b29cd">&#9670;&nbsp;</a></span>causeDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BaseUnit::causeDamage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_base_unit.html">BaseUnit</a> *&#160;</td>
+          <td class="paramname"><em>enemy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deals damage to enemy unit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Enemy</td><td>Unit (pointer) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_player.html#a8a6c9e42e86ac35f8486bec14d66444a">Player</a>.</p>
+
+</div>
+</div>
+<a id="ae70866737b6cd34e574697985568777d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae70866737b6cd34e574697985568777d">&#9670;&nbsp;</a></span>gotHit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BaseUnit::gotHit </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_base_unit.html">BaseUnit</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unit getting hit by enemy unit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Enemy</td><td>unit </td></tr>
   </table>
   </dd>
 </dl>
@@ -197,6 +300,36 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aed733471d18a109ef64e5ec01af1976e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed733471d18a109ef64e5ec01af1976e">&#9670;&nbsp;</a></span>showStats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string BaseUnit::showStats </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shows stats of Unit. </p>
+<dl class="section return"><dt>Returns</dt><dd>String </dd></dl>
+
+<p>Reimplemented in <a class="el" href="class_player.html#a4191c4ecabb97825cfcbc421a727cf85">Player</a>.</p>
 
 </div>
 </div>
