@@ -19,10 +19,19 @@ protected:
     float AS; ///< Attackspeed of unit, seconds per attack
  
 
-
 public:
     BaseUnit(const std::string& nm, int hp, int dmg, float as); ///< This constructor set the attributes of unit
+    /**
+    * \brief Shows stats of Unit 
+    *
+    * \return String
+    */
     virtual std::string showStats() const;
+    /**
+    * \brief Deals damage to enemy unit
+    *
+    * \param Enemy Unit (pointer)
+    */
     virtual void causeDamage(BaseUnit*);
     /**
     * \brief Unit parsing from a file
