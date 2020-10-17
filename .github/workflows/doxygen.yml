@@ -5,6 +5,7 @@ on:
     branches:
       - attackspeed
       - gh-pages
+      - levelup
 
 jobs:
   doxygen:
