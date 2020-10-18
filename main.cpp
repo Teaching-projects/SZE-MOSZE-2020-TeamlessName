@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 	catch (const InvalidContentOfFileException& invContents)
 	{
 		std::cout << invContents.what() << std::endl;
-		return ContentExc; //No name, hp or dmg
+		return ContentExc; //No name, hp, dmg, or as
 	}
 	catch (const FileFormatException& fileForm)
 	{
