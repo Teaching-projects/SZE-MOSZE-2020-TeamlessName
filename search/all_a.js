@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2dteamlessname',['SZE-MOSZE-2020-TeamlessName',['../autotoc_md0.html',1,'']]],
-  ['showstats',['showStats',['../class_base_unit.html#aed733471d18a109ef64e5ec01af1976e',1,'BaseUnit::showStats()'],['../class_player.html#a4191c4ecabb97825cfcbc421a727cf85',1,'Player::showStats()']]]
+  ['name',['Name',['../class_base_unit.html#a2ad274f8b04c193c53558570545bcbee',1,'BaseUnit']]],
+  ['nofileexception',['NoFileException',['../class_no_file_exception.html',1,'NoFileException'],['../class_no_file_exception.html#a5d179353b800ead237cdf34f049bcbcd',1,'NoFileException::NoFileException()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['parseunit',['parseUnit',['../class_base_unit.html#a3ba2489c8f9d0182b00aace88b843dc6',1,'BaseUnit']]]
+  ['nofileexception',['NoFileException',['../class_no_file_exception.html#a5d179353b800ead237cdf34f049bcbcd',1,'NoFileException']]]
 ];

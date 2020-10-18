@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_interpret_exception.html" title="InterpretException class inherited from std::exception. " alt="" coords="5,31,133,57"/>
-<area shape="rect" id="node2" href="$class_invalid_content_of_file_exception.html" title="InvalidContentOfFileException class inherited from std::exception. " alt="" coords="181,5,380,32"/>
-<area shape="rect" id="node3" href="$class_no_file_exception.html" title="NoFileException class inherited from std::exception. " alt="" coords="221,56,340,83"/>
+<area shape="rect" id="node2" href="$class_file_format_exception.html" title="FileFormatException class inherited from std::exception. " alt="" coords="160,5,303,32"/>
+<area shape="rect" id="node3" href="$class_input_format_exception.html" title="InputFormatException class inherited from std::exception. " alt="" coords="156,56,307,83"/>
+<area shape="rect" id="node4" href="$class_interpret_exception.html" title="InterpretException class inherited from std::exception. " alt="" coords="167,107,295,133"/>
+<area shape="rect" id="node5" href="$class_invalid_content_of_file_exception.html" title="InvalidContentOfFileException class inherited from std::exception. " alt="" coords="132,157,331,184"/>
+<area shape="rect" id="node6" href="$class_no_file_exception.html" title="NoFileException class inherited from std::exception. " alt="" coords="172,208,291,235"/>
 </map>
