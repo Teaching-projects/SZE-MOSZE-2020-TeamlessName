@@ -1,5 +1,6 @@
 {
 	"name" : "Morty",
 	"hp" : 100,
-	"dmg" : 20
+	"dmg" : 20,
+	"attackspeed" : 1.5
 }

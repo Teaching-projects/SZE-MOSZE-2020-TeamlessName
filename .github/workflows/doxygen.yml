@@ -1,0 +1,26 @@
+name: Doxygen doc
+
+on:
+  push:
+    branches:
+      - attackspeed
+      - gh-pages
+      - levelup
+
+jobs:
+  doxygen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - run: sudo apt-get install doxygen
+      - run: sudo apt-get install graphviz
+      - run: doxygen doxconf
+      - name: Push git subdir as branch
+
+        uses: s0/git-publish-subdir-action@v2.4.0
+
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: DOCS/html
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -13,3 +13,7 @@ For example.:
 ./a.out unit1.json unit2.json
 
 After starting program (with correct arguments) the program simulates the fight, then prints out the winners name and remaining hp.
+
+## Doxygen Doc
+
+link: https://teaching-projects.github.io/SZE-MOSZE-2020-TeamlessName/
