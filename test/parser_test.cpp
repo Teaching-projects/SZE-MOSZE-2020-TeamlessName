@@ -64,15 +64,8 @@ TEST(ParserTest, TestMissingColon)
 	expected.insert(std::pair<std::string, std::string>("hp", "150"));
 	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
 	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
-	try
-	{
-		std::map<std::string, std::string> testMap = JsonParser::parseString(input);
-	}
-	catch(const InputFormatException& formExc)
-	{
-		std::string miss = formExc.what();
-		ASSERT_EQ(":", miss);
-	}
+	
+	ASSERT_THROW(JsonParser::parseString(input), InputFormatException);
 }
 
 //Missing Quote mark
@@ -85,31 +78,15 @@ TEST(ParserTest, TestMissingQuoteMark)
 	expected.insert(std::pair<std::string, std::string>("hp", "150"));
 	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
 	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
-	try
-	{
-		std::map<std::string, std::string> testMap = JsonParser::parseString(input);
-	}
-	catch (const InputFormatException& formExc)
-	{
-		std::string miss = formExc.what();
-		ASSERT_EQ("\"", miss);
-	}
+
+	ASSERT_THROW(JsonParser::parseString(input), InputFormatException);
 }
 
 //Missing file
 TEST(ParserTest, TestMissingFile)
 {
 	std::string fname = "../../Nonexistent_unit_Test1.json";
-	try
-	{
-		std::map<std::string, std::string> testMap = JsonParser::parseJson(fname);
-	}
-	catch(const NoFileException& NoFile)
-	{
-		std::string file = NoFile.what();
-
-		ASSERT_EQ(file, fname);
-	}
+	ASSERT_THROW(JsonParser::parseJson(fname), NoFileException);
 }
 
 
