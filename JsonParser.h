@@ -26,7 +26,7 @@ public:
 	/**
 	* \brief Parsing from a file
 	*
-	* \param unit JSON textfile's name (string)
+	* \param string JSON textfile's name
 	*
 	* \return Map of key-value pairs
 	*/
