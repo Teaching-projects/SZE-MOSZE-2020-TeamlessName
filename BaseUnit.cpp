@@ -1,9 +1,13 @@
 #include "BaseUnit.h"
 #include "Exceptions.h"
+#include "JsonParser.h"
+#include <map>
 #include <fstream>
 
 
+
 BaseUnit::BaseUnit(const std::string & nm, int hp, int dmg, float as) : Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, AS{ as }
+
 {
 }
 //decreasing the HP of the suffering unit
@@ -31,138 +35,70 @@ BaseUnit BaseUnit::parseUnit(const std::string & file_name)
 	{
 		throw(NoFileException(file_name)); //File does not exist
 	}
+	std::map<std::string, std::string> attributes;
+	try
+	{
+		attributes = JsonParser::parseJson(infile);
+	}
+	catch (const InputFormatException& format) //catch primitive exception
+	{
+		infile.close();
+		throw(FileFormatException(file_name, format.what())); //throw a more meaningful exception, storing place of error
+	}
 
-	std::string line;
+	infile.close();
+
 	std::string nm = "";
 	int hp = -1;
 	int dm = -1;
 	float as = -1.0;
 
-	//loop to identify unit attributes
-	while (!infile.eof())
+	if (attributes.find("name") != attributes.end())
 	{
-		std::getline(infile, line);
+		nm = attributes["name"];
+	}
 
-		size_t posFront;
-		size_t posBack;
-
-		//find name
-		if (nm == "")
+	if (attributes.find("hp") != attributes.end())
+	{
+		try
 		{
-			std::string snm;
-			posFront = line.find("\"name\"");
-			posBack = line.find(",");
-
-			if (posFront != std::string::npos && posBack != std::string::npos)
-			{
-				posFront = line.find(":");
-				if (posFront == std::string::npos)
-				{
-					throw InterpretException(file_name, "name");
-				}
-
-				snm = line.substr(posFront, posBack);
-				posFront = snm.find("\"");
-				if (posFront == std::string::npos)
-				{
-					throw InterpretException(file_name, "name");
-				}
-				snm = snm.substr(posFront + 1);
-
-				posBack = snm.find("\"");
-				if (posBack == std::string::npos)
-				{
-					throw InterpretException(file_name, "name");
-				}
-				nm = snm.substr(0, posBack);
-
-				continue;
-			}
-		}
-		//find hp
-		if (hp == -1)
-		{
-			posFront = line.find("\"hp\"");
-			if (posFront != std::string::npos)
-			{
-				posFront = line.find(":");
-				posBack = line.find(",");
-
-				if (posFront == std::string::npos || posBack == std::string::npos)
-				{
-					throw(InterpretException(file_name, "hp"));
-				}
-
-
-				std::string shp = line.substr(posFront + 1, posBack);
-				shp.pop_back();
-
-				//try to convert hp
-				try
-				{
-					hp = std::stoi(shp);
-				}
-				catch (const std::invalid_argument&)
-				{
-					throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
-				}
-
-				continue;
-			}
+			hp = std::stoi(attributes["hp"]);
+			
 
 		}
-		//find dmg
-		if (dm == -1)
+		catch (const std::invalid_argument&)
 		{
-			posFront = line.find("\"dmg\"");
-
-			if (posFront != std::string::npos)
-			{
-				posFront = line.find(":");
-				std::string sdm = line.substr(posFront + 1);
-
-
-				//try to convert dmg
-				try
-				{
-					dm = std::stoi(sdm);
-				}
-				catch (const std::invalid_argument&)
-				{
-					throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
-				}
-
-				continue;
-			}
+			throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
 		}
-		//find attackspeed
-		if (as == -1.0)
-		{
-			posFront = line.find("\"attackspeed\"");
+	}
 
-			if (posFront != std::string::npos)
-			{
-				posFront = line.find(":");
-				std::string sattackspeed = line.substr(posFront + 1);
+	if (attributes.find("dmg") != attributes.end())
+	{
+		try
+		{
+			dm = std::stoi(attributes["dmg"]);
+
+		}
+		catch (const std::invalid_argument&)
+		{
+			throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
+		}
 
 
 				//try to convert attackspeed
-				try
-				{
-					as = std::stof(sattackspeed);
-				}
-				catch (const std::invalid_argument&)
-				{
-					throw(InterpretException(file_name, "attackspeed"));  //replace invalid_argument exception with own
-				}
-
-				continue;
-			}
+		try
+		{
+			as = std::stof(attributes["attackspeed"]);
+		}
+		catch (const std::invalid_argument&)
+		{
+			throw(InterpretException(file_name, "attackspeed"));  //replace invalid_argument exception with own
 		}
 
 	}
 
-	infile.close();
+
+
 
 	if (nm == "" || hp == -1 || dm == -1 || as == -1.0)
 	{

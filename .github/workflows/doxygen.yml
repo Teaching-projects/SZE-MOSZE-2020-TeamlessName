@@ -6,6 +6,7 @@ on:
       - attackspeed
       - gh-pages
       - levelup
+      - jsonparser
 
 jobs:
   doxygen:
