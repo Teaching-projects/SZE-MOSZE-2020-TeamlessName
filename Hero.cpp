@@ -1,16 +1,16 @@
-#include "Player.h"
+#include "Hero.h"
 #include "Exceptions.h"
 #include <math.h>
 #include <algorithm>
 #include <fstream>
 
-int Player::XPgap = 100;
+int Hero::XPgap = 100;
 
-Player::Player(const std::string & nm, int hp, int dmg,float as) : BaseUnit(nm, hp, dmg, as), XP(0)
+Hero::Hero(const std::string & nm, int hp, int dmg,float as) : Monster(nm, hp, dmg, as), XP(0)
 {
 }
 
-void Player::levelUp()
+void Hero::levelUp()
 {
 	while (XP >= XPgap)
 	{
@@ -21,24 +21,24 @@ void Player::levelUp()
 		XP = XP - XPgap;
 	}
 
-	
-}
-
-Player Player::parsePlayer(const std::string &file_name)
-{
-	BaseUnit Unit = BaseUnit::parseUnit(file_name);
-	return Player(Unit.getName(), Unit.getHP(), Unit.getDMG(),Unit.getAS());
 
 }
 
-void Player::causeDamage(BaseUnit* enemy)
+Hero Hero::parse(const std::string &file_name)
 {
-	XP += std::min(DMG, enemy->getHP());
+	Monster Unit = Monster::parse(file_name);
+	return Hero(Unit.getName(), Unit.getHealthPoints(), Unit.getDMG(),Unit.getAS());
+
+}
+
+void Hero::causeDamage(Monster* enemy)
+{
+	XP += std::min(DMG, enemy->getHealthPoints());
 	enemy->gotHit(*this);
 	levelUp();
 }
-std::string Player::showStats() const {
+std::string Hero::showStats() const {
 
-	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG) 
+	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG)
 		+ " EXP: " + std::to_string(XP) + " LVL: " + std::to_string(Lvl);
 }
