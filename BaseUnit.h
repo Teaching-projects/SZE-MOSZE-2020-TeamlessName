@@ -17,12 +17,12 @@ protected:
     int HP; ///< Health ponits of unit
     int DMG; ///< Damage of unit, the amount this unit hits with
     float AS; ///< Attackspeed of unit, seconds per attack
- 
+
 
 public:
     BaseUnit(const std::string& nm, int hp, int dmg, float as); ///< This constructor set the attributes of unit
     /**
-    * \brief Shows stats of Unit 
+    * \brief Shows stats of Unit
     *
     * \return String
     */
@@ -50,7 +50,7 @@ public:
     *
     * \param Enemy unit (pointer)
     */
-    void Attack(BaseUnit&);
+    void fightTilDeath(BaseUnit&);
     /**
     * \brief If unit is dead
     *

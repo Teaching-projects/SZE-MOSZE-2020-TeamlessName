@@ -63,7 +63,7 @@ BaseUnit BaseUnit::parseUnit(const std::string & file_name)
 		try
 		{
 			hp = std::stoi(attributes["hp"]);
-			
+
 
 		}
 		catch (const std::invalid_argument&)
@@ -116,7 +116,7 @@ bool BaseUnit::isDead() const
 	}
 	return false;
 }
-void BaseUnit::Attack(BaseUnit& enemy)
+void BaseUnit::fightTilDeath(BaseUnit& enemy)
 {
 	BaseUnit* fUnit;
 	BaseUnit* sUnit;

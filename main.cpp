@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 
 
 
-			attacker->Attack(*defender);
+			attacker->fightTilDeath(*defender);
 		if (attacker->getHP() == 0)
 		{
 			std::cout << defender->getName() << " wins. Remaining HP:" << defender->getHP() << std::endl;
