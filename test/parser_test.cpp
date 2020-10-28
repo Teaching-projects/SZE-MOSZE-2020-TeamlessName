@@ -14,7 +14,7 @@ TEST(ParserTest, TestString)
 	expected.insert(std::pair<std::string, std::string>("hp", "150"));
 	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
 	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
-	std::map<std::string, std::string> testMap = JsonParser::parseFromString(input);
+	std::map<std::string, std::string> testMap = JSON::parseFromString(input);
 
 	ASSERT_EQ(expected, testMap);
 }
@@ -29,7 +29,7 @@ TEST(ParserTest, TestFileName)
 	expected.insert(std::pair<std::string, std::string>("dmg", "30"));
 	expected.insert(std::pair<std::string, std::string>("mana", "14.25"));
 	expected.insert(std::pair<std::string, std::string>("SpecialAttribute", "NeedsAStringForIt"));
-	std::map<std::string, std::string> testMap = JsonParser::parseFromFile(input);
+	std::map<std::string, std::string> testMap = JSON::parseFromFile(input);
 
 	ASSERT_EQ(expected, testMap);
 }
@@ -47,7 +47,7 @@ TEST(ParserTest, TestIstream)
 
 	std::ifstream input(fname);
 
-	std::map<std::string, std::string> testMap = JsonParser::parseFromIstream(input);
+	std::map<std::string, std::string> testMap = JSON::parseFromIstream(input);
 
 	input.close();
 
@@ -65,7 +65,7 @@ TEST(ParserTest, TestMissingColon)
 	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
 	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
 	
-	ASSERT_THROW(JsonParser::parseFromString(input), InputFormatException);
+	ASSERT_THROW(JSON::parseFromString(input), InputFormatException);
 }
 
 //Missing Quote mark
@@ -79,14 +79,14 @@ TEST(ParserTest, TestMissingQuoteMark)
 	expected.insert(std::pair<std::string, std::string>("dmg", "200"));
 	expected.insert(std::pair<std::string, std::string>("SomethingSpecial", "22.45"));
 
-	ASSERT_THROW(JsonParser::parseFromString(input), InputFormatException);
+	ASSERT_THROW(JSON::parseFromString(input), InputFormatException);
 }
 
 //Missing file
 TEST(ParserTest, TestMissingFile)
 {
 	std::string fname = "../../Nonexistent_unit_Test1.json";
-	ASSERT_THROW(JsonParser::parseFromFile(fname), NoFileException);
+	ASSERT_THROW(JSON::parseFromFile(fname), NoFileException);
 }
 
 
