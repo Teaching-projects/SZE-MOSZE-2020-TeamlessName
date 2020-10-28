@@ -1,4 +1,4 @@
-#include "BaseUnit.h"
+#include "Monster.h"
 #include "Exceptions.h"
 #include "JsonParser.h"
 #include <map>
@@ -6,28 +6,28 @@
 
 
 
-BaseUnit::BaseUnit(const std::string & nm, int hp, int dmg, float as) : Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, AS{ as }
+Monster::Monster(const std::string & nm, int hp, int dmg, float as) : Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, AS{ as }
 
 {
 }
 //decreasing the HP of the suffering unit
-void BaseUnit::gotHit(const BaseUnit& other)
+void Monster::gotHit(const Monster& other)
 {
 	if (other.getDMG() >= HP) HP = 0;
 	else HP = HP - other.getDMG();
 }
 //Show current HP and DMG
-std::string BaseUnit::showStats() const
+std::string Monster::showStats() const
 {
 	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
 }
 
-void BaseUnit::causeDamage(BaseUnit* enemy)
+void Monster::causeDamage(Monster* enemy)
 {
 	enemy->gotHit(*this);
 }
 
-BaseUnit BaseUnit::parseUnit(const std::string & file_name)
+Monster Monster::parse(const std::string & file_name)
 {
 	std::fstream infile(file_name);
 
@@ -105,21 +105,21 @@ BaseUnit BaseUnit::parseUnit(const std::string & file_name)
 		throw(InvalidContentOfFileException(file_name, nm, hp, dm, as)); //Invalid or missing contents
 	}
 
-	return BaseUnit(nm, hp, dm, as);
+	return Monster(nm, hp, dm, as);
 }
 //returns with true if the unit has 0 HP
-bool BaseUnit::isDead() const
+bool Monster::isAlive() const
 {
-	if (HP == 0)
+	if (HP > 0)
 	{
 		return true;
 	}
 	return false;
 }
-void BaseUnit::fightTilDeath(BaseUnit& enemy)
+void Monster::fightTilDeath(Monster& enemy)
 {
-	BaseUnit* fUnit;
-	BaseUnit* sUnit;
+	Monster* fUnit;
+	Monster* sUnit;
 	float fasterUnitCD;
 
 	if (getAS() < enemy.getAS())
@@ -139,13 +139,13 @@ void BaseUnit::fightTilDeath(BaseUnit& enemy)
 	gotHit(enemy);
 	float timer = 0.0;
 
-	while (!isDead() && !enemy.isDead())
+	while (isAlive() && enemy.isAlive())
 	{
 		timer += fasterUnitCD;
 		if (sUnit->getAS() < timer)
 		{
 			fUnit->gotHit(*sUnit);
-			if (!fUnit->isDead())
+			if (fUnit->isAlive())
 			{
 				sUnit->gotHit(*fUnit);
 				timer -= sUnit->getAS();
@@ -158,7 +158,7 @@ void BaseUnit::fightTilDeath(BaseUnit& enemy)
 		else //sUnit.getAS == timer
 		{
 			enemy.gotHit(*this);
-			if (!enemy.isDead())
+			if (enemy.isAlive())
 			{
 				gotHit(enemy);
 			}

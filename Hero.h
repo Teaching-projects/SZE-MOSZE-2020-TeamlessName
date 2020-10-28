@@ -1,7 +1,7 @@
 #pragma once
-#include "BaseUnit.h"
+#include "Monster.h"
 
-class Player : public BaseUnit
+class Hero : public Monster
 {
 private:
 	int XP; //The amount of XP that is not used yet for level-up
@@ -9,10 +9,10 @@ private:
 	int Lvl = 1;
 	void levelUp();
 public:
-	Player(const std::string& nm, int hp, int dmg,float as);
-	static Player parsePlayer(const std::string&);
-	void causeDamage(BaseUnit*) override;
-	int getLvl() const { return Lvl; }
+	Hero(const std::string& nm, int hp, int dmg,float as);
+	static Hero parse(const std::string&);
+	void causeDamage(Monster*) override;
+	int getLevel() const { return Lvl; }
 	int getXP() const { return XP; }
 	std::string showStats() const override;
 };

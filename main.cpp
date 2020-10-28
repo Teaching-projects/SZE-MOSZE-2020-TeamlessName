@@ -1,7 +1,7 @@
 #include <iostream>
-#include "BaseUnit.h"
+#include "Monster.h"
 #include "Exceptions.h"
-#include "Player.h"
+#include "Hero.h"
 
 
 enum ReturnCodes {OK, Cmdline, NoFileExc, InterpretExc, ContentExc, FileFormatExc };
@@ -18,22 +18,22 @@ int main(int argc, char* argv[])
 	try
 	{
 
-		Player Unit1 = Player::parsePlayer(argv[1]);
-		BaseUnit Unit2 = BaseUnit::parseUnit(argv[2]);
+		Hero Unit1 = Hero::parse(argv[1]);
+		Monster Unit2 = Monster::parse(argv[2]);
 
-		BaseUnit* attacker = &Unit1;
-		BaseUnit* defender = &Unit2;
+		Monster* attacker = &Unit1;
+		Monster* defender = &Unit2;
 
 
 
 			attacker->fightTilDeath(*defender);
-		if (attacker->getHP() == 0)
+		if (attacker->getHealthPoints() == 0)
 		{
-			std::cout << defender->getName() << " wins. Remaining HP:" << defender->getHP() << std::endl;
+			std::cout << defender->getName() << " wins. Remaining HP:" << defender->getHealthPoints() << std::endl;
 		}
-		else if (defender->getHP() == 0)
+		else if (defender->getHealthPoints() == 0)
 		{
-			std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHP() << std::endl;
+			std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHealthPoints() << std::endl;
 		}
 
 	}

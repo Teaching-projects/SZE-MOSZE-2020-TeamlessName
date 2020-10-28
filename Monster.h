@@ -1,15 +1,15 @@
 /**
- * \class BaseUnit
+ * \class Monster
  *
- * \brief BaseUnit class
+ * \brief Monster class
  *
  * \author kalmar-adam
  *
  */
 #pragma once
 #include<string>
-// Base of all unit types, specialized units may derive from this
-class BaseUnit
+// Base(Monster) of all unit types, specialized units may derive from this
+class Monster
 {
 protected:
     const std::string Name; ///< Name of unit
@@ -20,7 +20,7 @@ protected:
 
 
 public:
-    BaseUnit(const std::string& nm, int hp, int dmg, float as); ///< This constructor set the attributes of unit
+    Monster(const std::string& nm, int hp, int dmg, float as); ///< This constructor set the attributes of unit
     /**
     * \brief Shows stats of Unit
     *
@@ -32,7 +32,7 @@ public:
     *
     * \param Enemy Unit (pointer)
     */
-    virtual void causeDamage(BaseUnit*);
+    virtual void causeDamage(Monster*);
     /**
     * \brief Unit parsing from a file
     *
@@ -40,8 +40,8 @@ public:
     *
     * \return Unit object
     */
-    static BaseUnit parseUnit(const std::string& /** [in] The (string)filename param*/);
-    const int getHP() const { return HP; } ///< Const Getter of Unit's health points
+    static Monster parse(const std::string& /** [in] The (string)filename param*/);
+    const int getHealthPoints() const { return HP; } ///< Const Getter of Unit's health points
     const int getDMG() const { return DMG; } ///< Const Getter of Unit's damage
     const float getAS() const { return AS; } ///< Const Getter of Unit's attackspeed
     const std::string& getName() const { return Name; } ///< Const Getter of Unit's name
@@ -50,17 +50,17 @@ public:
     *
     * \param Enemy unit (pointer)
     */
-    void fightTilDeath(BaseUnit&);
+    void fightTilDeath(Monster&);
     /**
     * \brief If unit is dead
     *
     * \return If unit health point is zero
     */
-    bool isDead() const;
+    bool isAlive() const;
     /**
     * \brief Unit getting hit by enemy unit
     *
     * \param Enemy unit
     */
-    void gotHit(const BaseUnit&);
+    void gotHit(const Monster&);
 };
