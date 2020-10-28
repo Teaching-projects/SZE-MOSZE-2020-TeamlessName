@@ -1,6 +1,6 @@
 #include "Monster.h"
 #include "Exceptions.h"
-#include "JsonParser.h"
+#include "JSON.h"
 #include <map>
 #include <fstream>
 
@@ -38,7 +38,7 @@ Monster Monster::parse(const std::string & file_name)
 	std::map<std::string, std::string> attributes;
 	try
 	{
-		attributes = JsonParser::parseJson(infile);
+		attributes = JSON::parseFromIstream(infile);
 	}
 	catch (const InputFormatException& format) //catch primitive exception
 	{

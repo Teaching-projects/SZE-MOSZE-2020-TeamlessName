@@ -1,4 +1,5 @@
 #include <iostream>
+#include "JSON.h"
 #include "Monster.h"
 #include "Exceptions.h"
 #include "Hero.h"

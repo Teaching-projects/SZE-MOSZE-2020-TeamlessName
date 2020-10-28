@@ -2,6 +2,9 @@
 #include <string>
 #include <map>
 #include <istream>
+#include <exception>
+
+#include <iostream>
 
 
 /**
@@ -10,7 +13,7 @@
  * \brief BaseUnit class
  *
  */
-class JsonParser
+class JSON
 {
 public:
 	/**
@@ -20,7 +23,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::string> parseJson(std::istream& instream); //istream input
+	static std::map<std::string, std::string> parseFromIstream(std::istream& instream); //istream input
 
 
 	/**
@@ -30,7 +33,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::string> parseJson(std::string& fname); //filename input
+	static std::map<std::string, std::string> parseFromFile(std::string& fname); //filename input
 
 	/**
 	* \brief Parsing from a string
@@ -39,5 +42,17 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::string> parseString(std::string& data); //string input
+	static std::map<std::string, std::string> parseFromString(std::string& data); //string input
+
+
+	class ParseException : std::exception
+	{
+		public:
+
+		ParseException()
+		{
+			
+		}
+
+	};
 };
