@@ -27,6 +27,7 @@ int main(int argc, char* argv[])
 
 
 
+
 			attacker->fightTilDeath(*defender);
 		if (attacker->getHealthPoints() == 0)
 		{
@@ -38,7 +39,11 @@ int main(int argc, char* argv[])
 		}
 
 	}
-	catch (const NoFileException& noFile)
+	catch (const JSON::ParseException& e)
+	{
+		return FileFormatExc;
+	}
+	/*catch (const NoFileException& noFile)
 	{
 		std::cout << "Unable to open file " << noFile.what() << std::endl;
         return NoFileExc; //No such file
@@ -57,7 +62,7 @@ int main(int argc, char* argv[])
 	{
 		std::cout << fileForm.what() << std::endl;
 		return FileFormatExc; //Invalid file formatting
-	}
+	}*/
 
 	return OK;
 }

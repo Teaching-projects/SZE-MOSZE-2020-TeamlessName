@@ -5,6 +5,7 @@
 #include <fstream>
 
 
+
 std::map<std::string, std::string> JSON::parseFromIstream(std::istream & instream)
 {
 	std::map<std::string, std::string> content;
@@ -44,7 +45,7 @@ std::map<std::string, std::string> JSON::parseFromIstream(std::istream & instrea
 			line = line.substr(line.find(value)+value.size());
 			line = line.substr(line.find_first_of("\n,")+1);
 
-			if (line.find_first_not_of(",\n\t\"") == std::string::npos || line[line.find_first_not_of(",\n\t\"")] == '}')
+			if (line.find_first_not_of(" ,\n\t\"") == std::string::npos || line[line.find_first_not_of(",\n\t\" ")] == '}')
 			{
 				line = "";
 			}

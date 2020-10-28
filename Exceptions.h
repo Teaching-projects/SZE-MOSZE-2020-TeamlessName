@@ -70,11 +70,11 @@ public:
 		}
 		if (dmg == -1)
 		{
-			message += "dmg";
+			message += "dmg\n";
 		}
 		if (as == -1.0)
 		{
-			message += "attackspeed";
+			message += "attackspeed\n";
 		}
 	}
 	/**
