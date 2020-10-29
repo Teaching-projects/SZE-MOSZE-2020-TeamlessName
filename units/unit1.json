@@ -1,6 +1,6 @@
 {
 	"name" : "Rick",
-	"hp" : 70,
-	"dmg" : 30,
-	"attackspeed" : 2.0
+	"base_health_points" : 70,
+	"base_damage" : 30,
+	"base_attack_cooldown" : 2.0
 }

@@ -60,11 +60,11 @@ Monster Monster::parse(const std::string & file_name)
 		nm = attributes["name"];
 	}
 
-	if (attributes.find("hp") != attributes.end())
+	if (attributes.find("base_health_points") != attributes.end())
 	{
 		try
 		{
-			hp = std::stoi(attributes["hp"]);
+			hp = std::stoi(attributes["base_health_points"]);
 
 
 		}
@@ -75,11 +75,11 @@ Monster Monster::parse(const std::string & file_name)
 		}
 	}
 
-	if (attributes.find("dmg") != attributes.end())
+	if (attributes.find("base_damage") != attributes.end())
 	{
 		try
 		{
-			dm = std::stoi(attributes["dmg"]);
+			dm = std::stoi(attributes["base_damage"]);
 
 		}
 		catch (const std::invalid_argument&)
@@ -92,7 +92,7 @@ Monster Monster::parse(const std::string & file_name)
 				//try to convert attackspeed
 		try
 		{
-			as = std::stof(attributes["attackspeed"]);
+			as = std::stof(attributes["base_attack_cooldown"]);
 		}
 		catch (const std::invalid_argument&)
 		{
