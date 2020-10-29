@@ -141,8 +141,8 @@ void Monster::fightTilDeath(Monster& enemy)
 		sUnit = this;
 	}
 
-	enemy.gotHit(*this);
-	gotHit(enemy);
+	causeDamage(&enemy);
+	enemy.causeDamage(this);
 	float timer = 0.0;
 
 	while (isAlive() && enemy.isAlive())
@@ -150,23 +150,23 @@ void Monster::fightTilDeath(Monster& enemy)
 		timer += fasterUnitCD;
 		if (sUnit->getAS() < timer)
 		{
-			fUnit->gotHit(*sUnit);
+			sUnit->causeDamage(fUnit);
 			if (fUnit->isAlive())
 			{
-				sUnit->gotHit(*fUnit);
+				fUnit->causeDamage(sUnit);
 				timer -= sUnit->getAS();
 			}
 		}
 		else if (sUnit->getAS() > timer)
 		{
-			sUnit->gotHit(*fUnit);
+			fUnit->causeDamage(sUnit);
 		}
 		else //sUnit.getAS == timer
 		{
-			enemy.gotHit(*this);
+			causeDamage(&enemy);
 			if (enemy.isAlive())
 			{
-				gotHit(enemy);
+				enemy.causeDamage(this);
 			}
 			timer = 0.0;
 		}
