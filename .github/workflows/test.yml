@@ -18,8 +18,10 @@ jobs:
         with:
             name: checkreport
             path: ./checkreport.txt
+      - name: New gcc version
+        run: sudo apt --only-upgrade install g++-10 gcc-10
       - name: Build
-        run: g++ -std=c++17 -Wall -Werror *.cpp
+        run: g++-10 -std=c++17 -Wall -Werror *.cpp
       - name: Memory check
         run: valgrind --leak-check=full --error-exitcode=1 ./a.out units/unit1.json units/unit2.json
       - name: Run Test
