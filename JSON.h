@@ -61,6 +61,7 @@ public:
 	JSON operator= (std::map<std::string, std::string>& other)
 	{
 		JSON json(other);
+		return json;
 	}
 
 
