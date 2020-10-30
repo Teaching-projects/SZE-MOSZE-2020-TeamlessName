@@ -1,6 +1,6 @@
 {
 	"name" : "Morty",
-	"base_health_points" : 100,
-	"base_damage" : 20,
-	"base_attack_cooldown" : 1.5
+	"health_points" : 100,
+	"damage" : 20,
+	"attack_cooldown" : 1.5
 }

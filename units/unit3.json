@@ -1,6 +1,6 @@
 {
 	"name" : "Jerry",
-	"base_health_points" : 70,
-	"base_damage" : 25,
-	"base_attack_cooldown" : 1.75
+	"health_points" : 70,
+	"damage" : 25,
+	"cooldown" : 1.75
 }

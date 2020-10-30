@@ -33,8 +33,8 @@ Monster Monster::parse(const std::string & file_name)
 
 	if (!infile.is_open())
 	{
-		//throw(NoFileException(file_name)); //File does not exist
-		throw(JSON::ParseException());
+		throw(NoFileException(file_name)); //File does not exist
+		//throw(JSON::ParseException());
 	}
 	std::map<std::string, std::string> attributes;
 	try
@@ -44,8 +44,8 @@ Monster Monster::parse(const std::string & file_name)
 	catch (const InputFormatException& format) //catch primitive exception
 	{
 		infile.close();
-		//throw(FileFormatException(file_name, format.what())); //throw a more meaningful exception, storing place of error
-		throw(JSON::ParseException());
+		throw(FileFormatException(file_name, format.what())); //throw a more meaningful exception, storing place of error
+		//throw(JSON::ParseException());
 	}
 
 	infile.close();
@@ -60,44 +60,44 @@ Monster Monster::parse(const std::string & file_name)
 		nm = attributes["name"];
 	}
 
-	if (attributes.find("base_health_points") != attributes.end())
+	if (attributes.find("health_points") != attributes.end())
 	{
 		try
 		{
-			hp = std::stoi(attributes["base_health_points"]);
+			hp = std::stoi(attributes["health_points"]);
 
 
 		}
 		catch (const std::invalid_argument&)
 		{
-			//throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
-			throw(JSON::ParseException());
+			throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
+			//throw(JSON::ParseException());
 		}
 	}
 
-	if (attributes.find("base_damage") != attributes.end())
+	if (attributes.find("damage") != attributes.end())
 	{
 		try
 		{
-			dm = std::stoi(attributes["base_damage"]);
+			dm = std::stoi(attributes["damage"]);
 
 		}
 		catch (const std::invalid_argument&)
 		{
-			//throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
-			throw(JSON::ParseException());
+			throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
+			//throw(JSON::ParseException());
 		}
 
 
 				//try to convert attackspeed
 		try
 		{
-			as = std::stof(attributes["base_attack_cooldown"]);
+			as = std::stof(attributes["attack_cooldown"]);
 		}
 		catch (const std::invalid_argument&)
 		{
-			//throw(InterpretException(file_name, "attackspeed"));  //replace invalid_argument exception with own
-			throw(JSON::ParseException());
+			throw(InterpretException(file_name, "attackspeed"));  //replace invalid_argument exception with own
+			//throw(JSON::ParseException());
 		}
 
 	}
@@ -107,8 +107,8 @@ Monster Monster::parse(const std::string & file_name)
 
 	if (nm == "" || hp == -1 || dm == -1 || as == -1.0)
 	{
-		//throw(InvalidContentOfFileException(file_name, nm, hp, dm, as)); //Invalid or missing contents
-		throw(JSON::ParseException());
+		throw(InvalidContentOfFileException(file_name, nm, hp, dm, as)); //Invalid or missing contents
+		//throw(JSON::ParseException());
 	}
 
 	return Monster(nm, hp, dm, as);

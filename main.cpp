@@ -19,14 +19,14 @@ int main(int argc, char* argv[])
 	try
 	{
 
-		Hero Unit1 = Hero::parse(argv[1]);
+		Monster Unit1 = Monster::parse(argv[1]);
 		Monster Unit2 = Monster::parse(argv[2]);
 
 		Monster* attacker = &Unit1;
 		Monster* defender = &Unit2;
 
 
-
+		
 
 			attacker->fightTilDeath(*defender);
 		if (attacker->getHealthPoints() == 0)
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 	{
 		return FileFormatExc;
 	}
-	/*catch (const NoFileException& noFile)
+	catch (const NoFileException& noFile)
 	{
 		std::cout << "Unable to open file " << noFile.what() << std::endl;
         return NoFileExc; //No such file
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 	{
 		std::cout << fileForm.what() << std::endl;
 		return FileFormatExc; //Invalid file formatting
-	}*/
+	}
 
 	return OK;
 }
