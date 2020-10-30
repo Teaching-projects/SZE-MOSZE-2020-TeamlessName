@@ -25,4 +25,4 @@ jobs:
       - name: Run Test
         run: ./test.sh
       - name: Diff
-        run: diff output.txt good_output.txt
+        run: diff ./units/output1.txt Genoutput1.txt && diff ./units/output2.txt Genoutput2.txt

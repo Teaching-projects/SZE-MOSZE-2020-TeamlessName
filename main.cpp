@@ -5,64 +5,75 @@
 #include "Hero.h"
 
 
-enum ReturnCodes {OK, Cmdline, NoFileExc, InterpretExc, ContentExc, FileFormatExc };
+#include <iostream>
+#include <map>
+#include <string>
+#include <filesystem>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
+#include <list>
+
+#include "JSON.h"
+#include "Hero.h"
+#include "Monster.h"
 
 
-//Everything happens here for now
-int main(int argc, char* argv[])
-{
-	if (argc != 3) {
-		std::cout << "Incorrect starting arguments.\nYou should start like this:\nPROGRAM.EXE UNITFILE1 UNITFILE2" << std::endl;
-		return Cmdline; //Error in cmdline args
-	}
-
-	try
-	{
-
-		Monster Unit1 = Monster::parse(argv[1]);
-		Monster Unit2 = Monster::parse(argv[2]);
-
-		Monster* attacker = &Unit1;
-		Monster* defender = &Unit2;
 
 
-		
+const std::map<int,std::string> error_messages = {
+    { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
+    { 2 , "The provided scenario file is not accessible." },
+    { 3 , "The provided scenario file is invalid." },
+    { 4 , "JSON parsing error." }
+};
 
-			attacker->fightTilDeath(*defender);
-		if (attacker->getHealthPoints() == 0)
-		{
-			std::cout << defender->getName() << " wins. Remaining HP:" << defender->getHealthPoints() << std::endl;
-		}
-		else if (defender->getHealthPoints() == 0)
-		{
-			std::cout << attacker->getName() << " wins. Remaining HP:" << attacker->getHealthPoints() << std::endl;
-		}
+void bad_exit(int exitcode){
+    std::cerr 
+        << (error_messages.count(exitcode) ? error_messages.at(exitcode) : "Unknown error")
+        << std::endl;
+    exit(exitcode);
+}
 
-	}
-	catch (const JSON::ParseException& e)
-	{
-		return FileFormatExc;
-	}
-	catch (const NoFileException& noFile)
-	{
-		std::cout << "Unable to open file " << noFile.what() << std::endl;
-        return NoFileExc; //No such file
-    }
-	catch (const InterpretException& interExc)
-	{
-		std::cout << interExc.what() << std::endl;
-		return InterpretExc; //Invalid variable type
-	}
-	catch (const InvalidContentOfFileException& invContents)
-	{
-		std::cout << invContents.what() << std::endl;
-		return ContentExc; //No name, hp, dmg, or as
-	}
-	catch (const FileFormatException& fileForm)
-	{
-		std::cout << fileForm.what() << std::endl;
-		return FileFormatExc; //Invalid file formatting
-	}
+int main(int argc, char** argv){
+    if (argc != 2) bad_exit(1);
+    if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
-	return OK;
+    std::string hero_file;
+    std::list<std::string> monster_files;
+    try {
+        JSON scenario = JSON::parseFromFile(argv[1]); 
+        if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
+        else {
+            hero_file=scenario.get<std::string>("hero");
+            std::istringstream monsters(scenario.get<std::string>("monsters"));
+            std::copy(std::istream_iterator<std::string>(monsters),
+                std::istream_iterator<std::string>(),
+                std::back_inserter(monster_files));
+        }
+    } catch (const JSON::ParseException& e) {bad_exit(4);}
+
+    try { 
+        Hero hero{Hero::parse(hero_file)};
+        std::list<Monster> monsters;
+        for (const auto& monster_file : monster_files)
+            monsters.push_back(Monster::parse(monster_file));        
+
+        while (hero.isAlive() && !monsters.empty()) {
+            std::cout 
+                << hero.getName() << "(" << hero.getLevel()<<")"
+                << " vs "
+                << monsters.front().getName()
+                <<std::endl;
+            hero.fightTilDeath(monsters.front());
+            if (!monsters.front().isAlive()) monsters.pop_front();
+        }
+        std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
+        std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
+                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
+                  << "  DMG: "<<hero.getDamage()<<std::endl
+                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
+                  ;
+    } catch (const JSON::ParseException& e) {bad_exit(4);}
+    return 0;
 }

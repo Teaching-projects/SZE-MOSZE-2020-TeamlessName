@@ -7,8 +7,10 @@
 #include <map>
 
 
-Hero::Hero(const std::string & nm, int hp, int dmg,float as, int xpgap, int hpbonus, int dmgbonus, float cdMulti) 
-		: Monster(nm, hp, dmg, as), XPgap(xpgap), HPbonus(hpbonus), DMGbonus(dmgbonus), CDMultiplier(cdMulti), XP(0)
+
+
+Hero::Hero(const std::string & nm, int hp, int dmg,double cd, int xpgap, int hpbonus, int dmgbonus, double cdMulti) 
+		: Monster(nm, hp, dmg, cd), XPgap(xpgap), HPbonus(hpbonus), DMGbonus(dmgbonus), CDMultiplier(cdMulti), XP(0)
 {
 }
 
@@ -16,9 +18,10 @@ void Hero::levelUp()
 {
 	while (XP >= XPgap)
 	{
-		maxHP = std::lround(maxHP * 1.1);
-		DMG = std::lround(DMG * 1.1);
+		maxHP = std::lround(maxHP + HPbonus);
+		DMG = std::lround(DMG + DMGbonus);
 		HP = maxHP;
+		CD = CD * CDMultiplier;
 		Lvl++;
 		XP = XP - XPgap;
 	}
@@ -26,12 +29,14 @@ void Hero::levelUp()
 
 }
 
-Hero Hero::parse(const std::string &file_name)
+Hero Hero::parse(const std::string &file_nam)
 {
+	std::string file_name = "/units/" + file_nam;
 	std::fstream infile(file_name);
 
 	if (!infile.is_open())
 	{
+		std::cout << file_name;
 		throw(NoFileException(file_name)); //File does not exist
 		//throw(JSON::ParseException());
 	}
@@ -52,11 +57,11 @@ Hero Hero::parse(const std::string &file_name)
 	std::string nm = "";
 	int hp = -1;
 	int dm = -1;
-	float as = -1.0;
+	double cd = -1.0;
 	int xp = -1;
 	int hpb = -1;
 	int dmb = -1;
-	float cdm = -0.1;
+	double cdm = -0.1;
 
 
 	if (attributes.find("name") != attributes.end())
@@ -96,7 +101,7 @@ Hero Hero::parse(const std::string &file_name)
 				//try to convert attackspeed
 		try
 		{
-			as = std::stof(attributes["base_attack_cooldown"]);
+			cd = std::stod(attributes["base_attack_cooldown"]);
 		}
 		catch (const std::invalid_argument&)
 		{
@@ -136,7 +141,7 @@ Hero Hero::parse(const std::string &file_name)
 
 		try
 		{
-			cdm = std::stof(attributes["cooldown_multiplier_per_level"]);
+			cdm = std::stod(attributes["cooldown_multiplier_per_level"]);
 		}
 		catch (const std::invalid_argument&)
 		{
@@ -149,13 +154,13 @@ Hero Hero::parse(const std::string &file_name)
 
 
 
-	if (nm == "" || hp == -1 || dm == -1 || as == -1.0)
+	if (nm == "" || hp == -1 || dm == -1 || cd == -1.0)
 	{
-		throw(InvalidContentOfFileException(file_name, nm, hp, dm, as)); //Invalid or missing contents
+		throw(InvalidContentOfFileException(file_name, nm, hp, dm, cd)); //Invalid or missing contents
 		//throw(JSON::ParseException());
 	}
 
-	return Hero(nm, hp, dm, as, xp, hpb, dmb, cdm);
+	return Hero(nm, hp, dm, cd, xp, hpb, dmb, cdm);
 
 }
 

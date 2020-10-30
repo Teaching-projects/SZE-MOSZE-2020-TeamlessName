@@ -16,16 +16,19 @@
 class JSON
 {
 	std::map<std::string, std::string> scenario;
+public:
 
-
-	JSON(std::map<std::string, std::string>& scen) : scenario(scen)
+	JSON()
 	{
 
 	}
 
 
+	JSON(std::map<std::string, std::string> scen) : scenario(scen)
+	{
 
-public:
+	}
+
 	/**
 	* \brief Parsing from an istream
 	*
@@ -43,7 +46,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::string> parseFromFile(std::string& fname); //filename input
+	static std::map<std::string, std::string> parseFromFile(const std::string& fname); //filename input
 
 	/**
 	* \brief Parsing from a string
@@ -53,6 +56,12 @@ public:
 	* \return Map of key-value pairs
 	*/
 	static std::map<std::string, std::string> parseFromString(std::string& data); //string input
+
+
+	JSON operator= (std::map<std::string, std::string>& other)
+	{
+		JSON json(other);
+	}
 
 
 	template<typename T>
@@ -69,6 +78,14 @@ public:
 
 		return "";
 
+	}
+
+
+	int count(const std::string& key)
+	{
+		if (scenario.count(key)) return 1;
+
+		return 0;
 	}
 	
 

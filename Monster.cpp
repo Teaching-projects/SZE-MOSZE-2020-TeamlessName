@@ -6,7 +6,7 @@
 
 
 
-Monster::Monster(const std::string & nm, int hp, int dmg, float as) : Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, AS{ as }
+Monster::Monster(const std::string & nm, int hp, int dmg, double cd) : Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, CD{ cd }
 
 {
 }
@@ -27,8 +27,9 @@ void Monster::causeDamage(Monster* enemy)
 	enemy->gotHit(*this);
 }
 
-Monster Monster::parse(const std::string & file_name)
+Monster Monster::parse(const std::string & file_nam)
 {
+	std::string file_name = "/units/" + file_nam;
 	std::fstream infile(file_name);
 
 	if (!infile.is_open())
@@ -53,7 +54,7 @@ Monster Monster::parse(const std::string & file_name)
 	std::string nm = "";
 	int hp = -1;
 	int dm = -1;
-	float as = -1.0;
+	double cd = -1.0;
 
 	if (attributes.find("name") != attributes.end())
 	{
@@ -92,7 +93,7 @@ Monster Monster::parse(const std::string & file_name)
 				//try to convert attackspeed
 		try
 		{
-			as = std::stof(attributes["attack_cooldown"]);
+			cd = std::stod(attributes["attack_cooldown"]);
 		}
 		catch (const std::invalid_argument&)
 		{
@@ -105,13 +106,13 @@ Monster Monster::parse(const std::string & file_name)
 
 
 
-	if (nm == "" || hp == -1 || dm == -1 || as == -1.0)
+	if (nm == "" || hp == -1 || dm == -1 || cd == -1.0)
 	{
-		throw(InvalidContentOfFileException(file_name, nm, hp, dm, as)); //Invalid or missing contents
+		throw(InvalidContentOfFileException(file_name, nm, hp, dm, cd)); //Invalid or missing contents
 		//throw(JSON::ParseException());
 	}
 
-	return Monster(nm, hp, dm, as);
+	return Monster(nm, hp, dm, cd);
 }
 //returns with true if the unit has 0 HP
 bool Monster::isAlive() const
@@ -126,42 +127,42 @@ void Monster::fightTilDeath(Monster& enemy)
 {
 	Monster* fUnit;
 	Monster* sUnit;
-	float fasterUnitCD;
+	double fasterUnitCD;
 
-	if (getAS() < enemy.getAS())
+	if (getCD() < enemy.getCD())
 	{
-		fasterUnitCD = getAS();
+		fasterUnitCD = getCD();
 		fUnit = this;
 		sUnit = &enemy;
 	}
 	else
 	{
-		fasterUnitCD = enemy.getAS();
+		fasterUnitCD = enemy.getCD();
 		fUnit = &enemy;
 		sUnit = this;
 	}
 
 	causeDamage(&enemy);
 	enemy.causeDamage(this);
-	float timer = 0.0;
+	double timer = 0.0;
 
 	while (isAlive() && enemy.isAlive())
 	{
 		timer += fasterUnitCD;
-		if (sUnit->getAS() < timer)
+		if (sUnit->getCD() < timer)
 		{
 			sUnit->causeDamage(fUnit);
 			if (fUnit->isAlive())
 			{
 				fUnit->causeDamage(sUnit);
-				timer -= sUnit->getAS();
+				timer -= sUnit->getCD();
 			}
 		}
-		else if (sUnit->getAS() > timer)
+		else if (sUnit->getCD() > timer)
 		{
 			fUnit->causeDamage(sUnit);
 		}
-		else //sUnit.getAS == timer
+		else
 		{
 			causeDamage(&enemy);
 			if (enemy.isAlive())

@@ -50,7 +50,7 @@ class InvalidContentOfFileException : public std::exception
 
 public:
 
-	InvalidContentOfFileException(const std::string & fname, const std::string & name, int hp, int dmg, float as) :
+	InvalidContentOfFileException(const std::string & fname, const std::string & name, int hp, int dmg, double as) :
 		message("In file <" + fname + "> the following unit parameters are not present or unreadable:\n")
 	{
 		/**

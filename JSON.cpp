@@ -57,7 +57,7 @@ std::map<std::string, std::string> JSON::parseFromIstream(std::istream & instrea
 	return content;
 }
 
-std::map<std::string, std::string> JSON::parseFromFile(std::string & fname)
+std::map<std::string, std::string> JSON::parseFromFile(const std::string & fname)
 {
 	std::ifstream infile(fname);
 	if (!infile.is_open())
