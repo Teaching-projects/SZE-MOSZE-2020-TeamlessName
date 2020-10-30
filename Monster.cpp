@@ -29,7 +29,7 @@ void Monster::causeDamage(Monster* enemy)
 
 Monster Monster::parse(const std::string & file_nam)
 {
-	std::string file_name = "/units/" + file_nam;
+	std::string file_name = "./units/" + file_nam;
 	std::fstream infile(file_name);
 
 	if (!infile.is_open())
