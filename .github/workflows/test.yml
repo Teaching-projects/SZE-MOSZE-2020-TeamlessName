@@ -19,7 +19,7 @@ jobs:
             name: checkreport
             path: ./checkreport.txt
       - name: Build
-        run: g++ -Wall -Werror *.cpp
+        run: g++ -std=c++17 -Wall -Werror *.cpp
       - name: Memory check
         run: valgrind --leak-check=full --error-exitcode=1 ./a.out units/unit1.json units/unit2.json
       - name: Run Test
