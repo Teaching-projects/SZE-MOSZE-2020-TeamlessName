@@ -96,7 +96,7 @@ Monster Monster::parse(const std::string & file_name)
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "attackspeed"));  //replace invalid_argument exception with own
+			throw(InterpretException(file_name, "attack_cooldown"));  //replace invalid_argument exception with own
 			//throw(JSON::ParseException());
 		}
 

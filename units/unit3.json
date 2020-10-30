@@ -2,5 +2,5 @@
 	"name" : "Jerry",
 	"health_points" : 70,
 	"damage" : 25,
-	"cooldown" : 1.75
+	"attack_cooldown" : 1.75
 }
