@@ -36,75 +36,37 @@ Monster Monster::parse(const std::string & file_nam)
 	{
 		throw(JSON::ParseException());
 	}
-	std::map<std::string, std::string> attributes;
-	try
-	{
-		attributes = JSON::parseFromIstream(infile);
-	}
-	catch (const InputFormatException&) //catch primitive exception
-	{
-		infile.close();
-		throw(JSON::ParseException());
-	}
-
-	infile.close();
 
 	std::string nm = "";
 	int hp = -1;
 	int dm = -1;
 	double cd = -1.0;
 
-	if (attributes.find("name") != attributes.end())
+
+	try
 	{
-		nm = attributes["name"];
+		JSON attributes = JSON::parseFromIstream(infile);
+		nm = attributes.get<std::string>("name");
+		hp = attributes.get<int>("health_points");
+		dm = attributes.get<int>("damage");
+		cd = attributes.get<double>("attack_cooldown");
 	}
-
-	if (attributes.find("health_points") != attributes.end())
+	catch (const std::out_of_range&)
 	{
-		try
-		{
-			hp = std::stoi(attributes["health_points"]);
-
-
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-	}
-
-	if (attributes.find("damage") != attributes.end())
-	{
-		try
-		{
-			dm = std::stoi(attributes["damage"]);
-
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-
-		//try to convert attackspeed
-		try
-		{
-			cd = std::stod(attributes["attack_cooldown"]);
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-	}
-
-
-
-
-	if (nm == "" || hp == -1 || dm == -1 || cd == -1.0)
-	{
+		infile.close();
 		throw(JSON::ParseException());
 	}
+	catch (const InputFormatException&)
+	{
+		infile.close();
+		throw(JSON::ParseException());
+	}
+	catch (const std::bad_variant_access&)
+	{
+		infile.close();
+		throw(JSON::ParseException());
+	}
+	infile.close();
 
 	return Monster(nm, hp, dm, cd);
 }

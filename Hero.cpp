@@ -8,7 +8,6 @@
 
 
 
-
 Hero::Hero(const std::string & nm, int hp, int dmg,double cd, int xpgap, int hpbonus, int dmgbonus, double cdMulti) 
 		: Monster(nm, hp, dmg, cd), XPgap(xpgap), HPbonus(hpbonus), DMGbonus(dmgbonus), CDMultiplier(cdMulti), XP(0)
 {
@@ -38,18 +37,7 @@ Hero Hero::parse(const std::string &file_nam)
 	{
 		throw(JSON::ParseException());
 	}
-	std::map<std::string, std::string> attributes;
-	try
-	{
-		attributes = JSON::parseFromIstream(infile);
-	}
-	catch (const InputFormatException& ) //catch primitive exception
-	{
-		infile.close();
-		throw(JSON::ParseException());
-	}
 
-	infile.close();
 
 	std::string nm = "";
 	int hp = -1;
@@ -61,93 +49,38 @@ Hero Hero::parse(const std::string &file_nam)
 	double cdm = -0.1;
 
 
-	if (attributes.find("name") != attributes.end())
+	try
 	{
-		nm = attributes["name"];
+		JSON attributes = JSON::parseFromIstream(infile);
+		nm = attributes.get<std::string>("name");
+		hp = attributes.get<int>("base_health_points");
+		dm = attributes.get<int>("base_damage");
+		cd = attributes.get<double>("base_attack_cooldown");
+		xp = attributes.get<int>("experience_per_level");
+		hpb = attributes.get<int>("health_point_bonus_per_level");
+		dmb = attributes.get<int>("damage_bonus_per_level");
+		cdm = attributes.get<double>("cooldown_multiplier_per_level");
 	}
-
-	if (attributes.find("base_health_points") != attributes.end())
-	{
-		try
-		{
-			hp = std::stoi(attributes["base_health_points"]);
-
-
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-	}
-
-	if (attributes.find("base_damage") != attributes.end())
-	{
-		try
-		{
-			dm = std::stoi(attributes["base_damage"]);
-
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-
-		//try to convert attackspeed
-		try
-		{
-			cd = std::stod(attributes["base_attack_cooldown"]);
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-		try
-		{
-			xp = std::stoi(attributes["experience_per_level"]);
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-		try
-		{
-			hpb = std::stoi(attributes["health_point_bonus_per_level"]);
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-		try
-		{
-			dmb = std::stoi(attributes["damage_bonus_per_level"]);
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-		try
-		{
-			cdm = std::stod(attributes["cooldown_multiplier_per_level"]);
-		}
-		catch (const std::invalid_argument&)
-		{
-			throw(JSON::ParseException());
-		}
-
-	}
-
-
-
-
-	if (nm == "" || hp == -1 || dm == -1 || cd == -1.0)
+	catch(const std::out_of_range&)
 	{
 		throw(JSON::ParseException());
 	}
+	catch (const InputFormatException&)
+	{
+		infile.close();
+		throw(JSON::ParseException());
+	}
+	catch (const std::invalid_argument&)
+	{
+		infile.close();
+		throw(JSON::ParseException());
+	}
+	catch (const std::bad_variant_access&)
+	{
+		infile.close();
+		throw(JSON::ParseException());
+	}
+	infile.close();
 
 	return Hero(nm, hp, dm, cd, xp, hpb, dmb, cdm);
 

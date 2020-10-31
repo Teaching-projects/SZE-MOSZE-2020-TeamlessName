@@ -3,7 +3,7 @@
 #include <map>
 #include <istream>
 #include <exception>
-
+#include <variant>
 
 /**
  * \class JSON
@@ -13,7 +13,7 @@
  */
 class JSON
 {
-	std::map<std::string, std::string> content;
+	std::map<std::string, std::variant<std::string, int, double>> content;
 public:
 
 	JSON()
@@ -22,7 +22,7 @@ public:
 	}
 
 
-	JSON(std::map<std::string, std::string> cont) : content(cont)
+	JSON(std::map<std::string, std::variant<std::string, int, double>> cont) : content(cont)
 	{
 
 	}
@@ -34,7 +34,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::string> parseFromIstream(std::istream& instream); //istream input
+	static std::map<std::string, std::variant<std::string, int, double>> parseFromIstream(std::istream& instream); //istream input
 
 
 	/**
@@ -44,7 +44,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::string> parseFromFile(const std::string& fname); //filename input
+	static std::map<std::string, std::variant<std::string, int, double>> parseFromFile(const std::string& fname); //filename input
 
 	/**
 	* \brief Parsing from a string
@@ -53,10 +53,10 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::string> parseFromString(std::string& data); //string input
+	static std::map<std::string, std::variant<std::string, int, double>> parseFromString(std::string& data); //string input
 
 
-	JSON operator= (std::map<std::string, std::string>& other)
+	JSON operator= (std::map<std::string, std::variant<std::string, int, double>> other)
 	{
 		JSON json(other);
 		return json;
@@ -66,7 +66,8 @@ public:
 	template<typename T>
 	T get(const std::string& key)
 	{
-		return content.at(key);
+		T returner = std::get<T>(content.at(key));
+		return returner;
 
 	}
 

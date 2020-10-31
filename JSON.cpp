@@ -4,12 +4,13 @@
 #include <sstream>
 #include <fstream>
 
+enum vartypes {string, integer, doubl};
 
-
-std::map<std::string, std::string> JSON::parseFromIstream(std::istream & instream)
+std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromIstream(std::istream & instream)
 {
-	std::map<std::string, std::string> content;
+	std::map<std::string, std::variant<std::string, int, double>> content;
 	std::string line;
+	int vartype;
 
 	while (std::getline(instream, line))
 	{
@@ -36,10 +37,19 @@ std::map<std::string, std::string> JSON::parseFromIstream(std::istream & instrea
 			{
 				value = value.substr(1);
 				value = value.substr(0, value.find_first_of("\""));
+				vartype = string;
 			}
 			else
 			{
 				value = value.substr(0,value.find_first_of(","));
+				if (value.find('.') != std::string::npos)
+				{
+					vartype = doubl;
+				}
+				else
+				{
+					vartype = integer;
+				}
 			}
 
 			line = line.substr(line.find(value)+value.size());
@@ -49,7 +59,16 @@ std::map<std::string, std::string> JSON::parseFromIstream(std::istream & instrea
 			{
 				line = "";
 			}
-			content.insert(std::pair<std::string, std::string>(key, value));
+			std::variant<std::string, int, double> mapvalue = value;
+			if (vartype == integer)
+			{
+				mapvalue = std::stoi(value);
+			}
+			else if (vartype == doubl)
+			{
+				mapvalue = std::stod(value);
+			}
+			content.insert(std::pair<std::string, std::variant<std::string, int, double>>(key, mapvalue));
 		}
 
 	}
@@ -57,7 +76,7 @@ std::map<std::string, std::string> JSON::parseFromIstream(std::istream & instrea
 	return content;
 }
 
-std::map<std::string, std::string> JSON::parseFromFile(const std::string & fname)
+std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromFile(const std::string & fname)
 {
 	std::ifstream infile(fname);
 	if (!infile.is_open())
@@ -65,14 +84,14 @@ std::map<std::string, std::string> JSON::parseFromFile(const std::string & fname
 		throw(NoFileException(fname)); //File does not exist
 	}
 
-	std::map<std::string, std::string> content;
+	std::map<std::string, std::variant<std::string, int, double>> content;
 	content = parseFromIstream(infile);
 	infile.close();
 
 	return content;
 }
 
-std::map<std::string, std::string> JSON::parseFromString(std::string & data)
+std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromString(std::string & data)
 {
 	std::stringstream sstream;
 	sstream << data;
