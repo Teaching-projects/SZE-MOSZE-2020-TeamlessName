@@ -4,8 +4,6 @@
 #include <istream>
 #include <exception>
 
-#include <iostream>
-
 
 /**
  * \class JSON
@@ -15,7 +13,7 @@
  */
 class JSON
 {
-	std::map<std::string, std::string> scenario;
+	std::map<std::string, std::string> content;
 public:
 
 	JSON()
@@ -24,7 +22,7 @@ public:
 	}
 
 
-	JSON(std::map<std::string, std::string> scen) : scenario(scen)
+	JSON(std::map<std::string, std::string> cont) : content(cont)
 	{
 
 	}
@@ -66,25 +64,16 @@ public:
 
 
 	template<typename T>
-	T get(const std::string& getFile)
+	T get(const std::string& key)
 	{
-		if(getFile == "hero")
-		{
-			return scenario["hero"];
-		}
-		else if (getFile == "monsters")
-		{
-			return scenario["monsters"];
-		}
-
-		return "";
+		return content.at(key);
 
 	}
 
 
 	int count(const std::string& key)
 	{
-		if (scenario.count(key)) return 1;
+		if (content.count(key)) return 1;
 
 		return 0;
 	}

@@ -36,20 +36,17 @@ Hero Hero::parse(const std::string &file_nam)
 
 	if (!infile.is_open())
 	{
-		std::cout << file_name;
-		throw(NoFileException(file_name)); //File does not exist
-		//throw(JSON::ParseException());
+		throw(JSON::ParseException());
 	}
 	std::map<std::string, std::string> attributes;
 	try
 	{
 		attributes = JSON::parseFromIstream(infile);
 	}
-	catch (const InputFormatException& format) //catch primitive exception
+	catch (const InputFormatException& ) //catch primitive exception
 	{
 		infile.close();
-		throw(FileFormatException(file_name, format.what())); //throw a more meaningful exception, storing place of error
-		//throw(JSON::ParseException());
+		throw(JSON::ParseException());
 	}
 
 	infile.close();
@@ -79,8 +76,7 @@ Hero Hero::parse(const std::string &file_nam)
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "hp"));  //replace invalid_argument exception with own
-			//throw(JSON::ParseException());
+			throw(JSON::ParseException());
 		}
 	}
 
@@ -93,20 +89,18 @@ Hero Hero::parse(const std::string &file_nam)
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "dmg"));  //replace invalid_argument exception with own
-			//throw(JSON::ParseException());
+			throw(JSON::ParseException());
 		}
 
 
-				//try to convert attackspeed
+		//try to convert attackspeed
 		try
 		{
 			cd = std::stod(attributes["base_attack_cooldown"]);
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "base_attack_cooldown"));  //replace invalid_argument exception with own
-			//throw(JSON::ParseException());
+			throw(JSON::ParseException());
 		}
 
 		try
@@ -115,8 +109,7 @@ Hero Hero::parse(const std::string &file_nam)
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "experience_per_level"));  //replace invalid_argument exception with own
-			//throw(JSON::ParseException());
+			throw(JSON::ParseException());
 		}
 
 		try
@@ -125,8 +118,7 @@ Hero Hero::parse(const std::string &file_nam)
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "health_point_bonus_per_level"));  //replace invalid_argument exception with own
-			//throw(JSON::ParseException());
+			throw(JSON::ParseException());
 		}
 
 		try
@@ -135,8 +127,7 @@ Hero Hero::parse(const std::string &file_nam)
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "damage_bonus_per_level"));  //replace invalid_argument exception with own
-			//throw(JSON::ParseException());
+			throw(JSON::ParseException());
 		}
 
 		try
@@ -145,8 +136,7 @@ Hero Hero::parse(const std::string &file_nam)
 		}
 		catch (const std::invalid_argument&)
 		{
-			throw(InterpretException(file_name, "cooldown_multiplier_per_level"));  //replace invalid_argument exception with own
-			//throw(JSON::ParseException());
+			throw(JSON::ParseException());
 		}
 
 	}
@@ -156,8 +146,7 @@ Hero Hero::parse(const std::string &file_nam)
 
 	if (nm == "" || hp == -1 || dm == -1 || cd == -1.0)
 	{
-		throw(InvalidContentOfFileException(file_name, nm, hp, dm, cd)); //Invalid or missing contents
-		//throw(JSON::ParseException());
+		throw(JSON::ParseException());
 	}
 
 	return Hero(nm, hp, dm, cd, xp, hpb, dmb, cdm);
