@@ -6,9 +6,9 @@
 
 enum vartypes {string, integer, doubl};
 
-std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromIstream(std::istream & instream)
+MAP JSON::parseFromIstream(std::istream & instream)
 {
-	std::map<std::string, std::variant<std::string, int, double>> content;
+	MAP content;
 	std::string line;
 	int vartype;
 
@@ -76,7 +76,7 @@ std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromIst
 	return content;
 }
 
-std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromFile(const std::string & fname)
+MAP JSON::parseFromFile(const std::string & fname)
 {
 	std::ifstream infile(fname);
 	if (!infile.is_open())
@@ -84,14 +84,14 @@ std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromFil
 		throw(NoFileException(fname)); //File does not exist
 	}
 
-	std::map<std::string, std::variant<std::string, int, double>> content;
+	MAP content;
 	content = parseFromIstream(infile);
 	infile.close();
 
 	return content;
 }
 
-std::map<std::string, std::variant<std::string, int, double>> JSON::parseFromString(std::string & data)
+MAP JSON::parseFromString(std::string & data)
 {
 	std::stringstream sstream;
 	sstream << data;

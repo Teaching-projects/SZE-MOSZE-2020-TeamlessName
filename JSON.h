@@ -11,9 +11,11 @@
  * \brief JSON class
  *
  */
+using MAP = std::map<std::string, std::variant<std::string, int, double>>;
+
 class JSON
 {
-	std::map<std::string, std::variant<std::string, int, double>> content;
+	MAP content;
 public:
 
 	JSON()
@@ -22,7 +24,7 @@ public:
 	}
 
 
-	JSON(std::map<std::string, std::variant<std::string, int, double>> cont) : content(cont)
+	JSON(MAP cont) : content(cont)
 	{
 
 	}
@@ -34,7 +36,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::variant<std::string, int, double>> parseFromIstream(std::istream& instream); //istream input
+	static MAP parseFromIstream(std::istream& instream); //istream input
 
 
 	/**
@@ -44,7 +46,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::variant<std::string, int, double>> parseFromFile(const std::string& fname); //filename input
+	static MAP parseFromFile(const std::string& fname); //filename input
 
 	/**
 	* \brief Parsing from a string
@@ -53,10 +55,10 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::variant<std::string, int, double>> parseFromString(std::string& data); //string input
+	static MAP parseFromString(std::string& data); //string input
 
 
-	JSON operator= (std::map<std::string, std::variant<std::string, int, double>> other)
+	JSON operator= (MAP other)
 	{
 		JSON json(other);
 		return json;
