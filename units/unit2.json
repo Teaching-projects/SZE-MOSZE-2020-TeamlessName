@@ -1,6 +1,6 @@
 {
 	"name" : "Morty",
-	"hp" : 100,
-	"dmg" : 20,
-	"attackspeed" : 1.5
+	"health_points" : 100,
+	"damage" : 20,
+	"attack_cooldown" : 1.5
 }

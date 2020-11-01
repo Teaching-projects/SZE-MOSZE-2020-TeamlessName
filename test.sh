@@ -1,19 +1,17 @@
 #!/bin/bash
 
-FILE=output.txt
+FILE1=Genoutput1.txt
+FILE2=Genoutput2.txt
 
-if test -f $FILE
+if test -f $FILE1
 then
-	rm $FILE
+	rm $FILE1
 fi
 
-for u1 in units/* 
-do
-	for u2 in units/*
-	do
-		if [ $u1 != $u2 ]
-		then
-			./a.out $u1 $u2 >> $FILE
-		fi
-	done
-done
+if test -f $FILE2
+then
+	rm $FILE2
+fi
+
+./a.out ./units/scenario1.json >> $FILE1
+./a.out ./units/scenario2.json >> $FILE2
