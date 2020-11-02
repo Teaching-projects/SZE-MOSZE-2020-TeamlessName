@@ -3,8 +3,6 @@
  *
  * \brief Monster class
  *
- * \author kalmar-adam
- *
  */
 #pragma once
 #include<string>
@@ -20,7 +18,7 @@ protected:
 
 
 public:
-    Monster(const std::string& nm, int hp, int dmg, double cd); ///< This constructor set the attributes of unit
+    Monster(const std::string& nm, int hp, int dmg, double cd); ///< This constructor set the attributes of Monster
     /**
     * \brief Shows stats of Unit
     *
@@ -34,11 +32,11 @@ public:
     */
     virtual void causeDamage(Monster*);
     /**
-    * \brief Unit parsing from a file
+    * \brief Monster parsing from a file
     *
-    * \param unit JSON textfile (string)
+    * \param Monster JSON textfile (string)
     *
-    * \return Unit object
+    * \return Monster object
     */
     static Monster parse(const std::string& /** [in] The (string)filename param*/);
     const int getHealthPoints() const { return HP; } ///< Const Getter of Unit's health points

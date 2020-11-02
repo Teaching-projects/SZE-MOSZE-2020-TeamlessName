@@ -4,7 +4,7 @@
 #include <sstream>
 #include <fstream>
 
-enum vartypes {string, integer, doubl};
+enum vartypes {string, integer, doubl}; ///< enumerate to seperate different datatypes of keys's values
 
 MAP JSON::parseFromIstream(std::istream & instream)
 {
@@ -72,7 +72,7 @@ MAP JSON::parseFromIstream(std::istream & instream)
 		}
 
 	}
-	
+
 	return content;
 }
 
