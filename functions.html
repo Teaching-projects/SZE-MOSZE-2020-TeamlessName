@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPG-Attackspeed: Class Members</title>
+<title>CommandLineRPG: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,10 +21,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">RPG-Attackspeed
+   <div id="projectname">CommandLineRPG
    &#160;<span id="projectnumber">1.0</span>
    </div>
-   <div id="projectbrief">Attackspeed</div>
+   <div id="projectbrief">RPG</div>
   </td>
  </tr>
  </tbody>
@@ -62,39 +62,31 @@ $(function() {
 <div class="contents">
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
-<h3><a id="index_a"></a>- a -</h3><ul>
-<li>AS
-: <a class="el" href="class_base_unit.html#a1d698a954e248bbd12cc06c79211c68a">BaseUnit</a>
-</li>
-<li>Attack()
-: <a class="el" href="class_base_unit.html#a660741468a1c98eb8f240442da31faaf">BaseUnit</a>
-</li>
-</ul>
-
-
-<h3><a id="index_b"></a>- b -</h3><ul>
-<li>BaseUnit()
-: <a class="el" href="class_base_unit.html#ac8e244be3eb247fbfe89661b612b0ad6">BaseUnit</a>
-</li>
-</ul>
-
-
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>causeDamage()
-: <a class="el" href="class_base_unit.html#a14098b3cb79e31651de0822ccb4b29cd">BaseUnit</a>
-, <a class="el" href="class_player.html#a8a6c9e42e86ac35f8486bec14d66444a">Player</a>
+: <a class="el" href="class_hero.html#af2d9c27f8c5ddf91b9124fc7a6fb882f">Hero</a>
+, <a class="el" href="class_monster.html#aa8e777821347df87f71f70460b77e42b">Monster</a>
+</li>
+<li>CD
+: <a class="el" href="class_monster.html#a203c0ccd4d605225feaf888a18db2d18">Monster</a>
+</li>
+<li>count()
+: <a class="el" href="class_j_s_o_n.html#a44010f793e2fd22447f6c86415b40839">JSON</a>
 </li>
 </ul>
 
 
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>DMG
-: <a class="el" href="class_base_unit.html#a47a9bc537e93e72bd27a1d59247c0951">BaseUnit</a>
+: <a class="el" href="class_monster.html#a7bff364d6ef08c37d957a119e410fbe6">Monster</a>
 </li>
 </ul>
 
 
 <h3><a id="index_f"></a>- f -</h3><ul>
+<li>fightTilDeath()
+: <a class="el" href="class_monster.html#aa47d4844baa751a937a2d85ea7dfb54f">Monster</a>
+</li>
 <li>FileFormatException()
 : <a class="el" href="class_file_format_exception.html#a1cf2bd717f9f1b94e71b833029a54b29">FileFormatException</a>
 </li>
@@ -102,27 +94,48 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
-<li>getAS()
-: <a class="el" href="class_base_unit.html#a353ba582eebda54713e8533227f9459c">BaseUnit</a>
+<li>get()
+: <a class="el" href="class_j_s_o_n.html#aebfe4eae3134bdc249f9695c6406bdba">JSON</a>
+</li>
+<li>getAttackCoolDown()
+: <a class="el" href="class_hero.html#af76e70bb236599e7a53096f2cd5e193e">Hero</a>
+</li>
+<li>getCD()
+: <a class="el" href="class_monster.html#a098c64b3d29d78b5cd8b1e59cea6abdf">Monster</a>
+</li>
+<li>getDamage()
+: <a class="el" href="class_hero.html#a4d4d731bdacb38a39813aa65090bb25d">Hero</a>
 </li>
 <li>getDMG()
-: <a class="el" href="class_base_unit.html#a88cf8c5dc793d5828a973ff351686faf">BaseUnit</a>
+: <a class="el" href="class_monster.html#a21cb47e7efbbdf16d842152451bc6948">Monster</a>
 </li>
-<li>getHP()
-: <a class="el" href="class_base_unit.html#ad369f7fc335d9e67dc0ffe752d30f3d6">BaseUnit</a>
+<li>getHealthPoints()
+: <a class="el" href="class_monster.html#adea2d0ab7ba140a95b42f55a7a46eecd">Monster</a>
+</li>
+<li>getLevel()
+: <a class="el" href="class_hero.html#a17e77f3769e62aeb4e1807bbfc720f47">Hero</a>
+</li>
+<li>getMaxHealthPoints()
+: <a class="el" href="class_hero.html#ac6a7deeb6e390a23536d622042f4c48e">Hero</a>
 </li>
 <li>getName()
-: <a class="el" href="class_base_unit.html#ad087f7cbc40a5669af8b6b9a38dc8754">BaseUnit</a>
+: <a class="el" href="class_monster.html#ab853dc1318e5ab1bc315a18bfce19208">Monster</a>
+</li>
+<li>getXP()
+: <a class="el" href="class_hero.html#aac796e16c81d8dd9e0cdbb22c1cef5e3">Hero</a>
 </li>
 <li>gotHit()
-: <a class="el" href="class_base_unit.html#ae70866737b6cd34e574697985568777d">BaseUnit</a>
+: <a class="el" href="class_monster.html#ac73043e8c28dd6e6627549987cae315b">Monster</a>
 </li>
 </ul>
 
 
 <h3><a id="index_h"></a>- h -</h3><ul>
+<li>Hero()
+: <a class="el" href="class_hero.html#af631c89ef78ab19017aaaa79faed99d2">Hero</a>
+</li>
 <li>HP
-: <a class="el" href="class_base_unit.html#ad9fd2ccb49fa8fe29e0f20461533d108">BaseUnit</a>
+: <a class="el" href="class_monster.html#a2547ecce29c3ebe93a9b370b7d7bbdd0">Monster</a>
 </li>
 </ul>
 
@@ -135,24 +148,27 @@ $(function() {
 : <a class="el" href="class_interpret_exception.html#a8e227b214636fe3f4298bd8e3bda6f4c">InterpretException</a>
 </li>
 <li>InvalidContentOfFileException()
-: <a class="el" href="class_invalid_content_of_file_exception.html#a60d07d87188f759a5f454e9be26af48f">InvalidContentOfFileException</a>
+: <a class="el" href="class_invalid_content_of_file_exception.html#a69d94b55f31ee8abcb13e6d29c76a02b">InvalidContentOfFileException</a>
 </li>
-<li>isDead()
-: <a class="el" href="class_base_unit.html#ab41ca7b8187c8a6072dd2204a3e7988e">BaseUnit</a>
+<li>isAlive()
+: <a class="el" href="class_monster.html#a77ad18c44b3fb2df92b30ece4dc7847b">Monster</a>
 </li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>maxHP
-: <a class="el" href="class_base_unit.html#ac490e1432261f04eff5f9b2378e54dd7">BaseUnit</a>
+: <a class="el" href="class_monster.html#a21dc0aa9f78dbffb7f1a1e0048dfbd4a">Monster</a>
+</li>
+<li>Monster()
+: <a class="el" href="class_monster.html#ae46ee4a053e4d76e065ac36bd8a32f10">Monster</a>
 </li>
 </ul>
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>Name
-: <a class="el" href="class_base_unit.html#a2ad274f8b04c193c53558570545bcbee">BaseUnit</a>
+: <a class="el" href="class_monster.html#a584140f7e5bd5a12e96658af6a304f42">Monster</a>
 </li>
 <li>NoFileException()
 : <a class="el" href="class_no_file_exception.html#a5d179353b800ead237cdf34f049bcbcd">NoFileException</a>
@@ -160,23 +176,34 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_o"></a>- o -</h3><ul>
+<li>operator=()
+: <a class="el" href="class_j_s_o_n.html#a5ec05d6b745bdbc69475eeadc4662cbf">JSON</a>
+</li>
+</ul>
+
+
 <h3><a id="index_p"></a>- p -</h3><ul>
-<li>parseJson()
-: <a class="el" href="class_json_parser.html#af2560bc6adba0cf08e04c2c2801d2d63">JsonParser</a>
+<li>parse()
+: <a class="el" href="class_hero.html#aac4d67bad651fbeb489905675545bb88">Hero</a>
+, <a class="el" href="class_monster.html#a0b04445ff85b508acd45fa24732e4096">Monster</a>
 </li>
-<li>parseString()
-: <a class="el" href="class_json_parser.html#a892282dcf6fdc75e267beab3bb5407aa">JsonParser</a>
+<li>parseFromFile()
+: <a class="el" href="class_j_s_o_n.html#a08da4513deeeb33198d955895e63dcb8">JSON</a>
 </li>
-<li>parseUnit()
-: <a class="el" href="class_base_unit.html#a3ba2489c8f9d0182b00aace88b843dc6">BaseUnit</a>
+<li>parseFromIstream()
+: <a class="el" href="class_j_s_o_n.html#ac402735523090a14190c2837c017521f">JSON</a>
+</li>
+<li>parseFromString()
+: <a class="el" href="class_j_s_o_n.html#a1bf79e7096c87b1b3479bf4703c6ae34">JSON</a>
 </li>
 </ul>
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
 <li>showStats()
-: <a class="el" href="class_base_unit.html#aed733471d18a109ef64e5ec01af1976e">BaseUnit</a>
-, <a class="el" href="class_player.html#a4191c4ecabb97825cfcbc421a727cf85">Player</a>
+: <a class="el" href="class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd">Hero</a>
+, <a class="el" href="class_monster.html#ab2551a0c8d1857a531df01f35235f7b0">Monster</a>
 </li>
 </ul>
 

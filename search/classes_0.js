@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['baseunit',['BaseUnit',['../class_base_unit.html',1,'']]]
+  ['fileformatexception',['FileFormatException',['../class_file_format_exception.html',1,'']]]
 ];

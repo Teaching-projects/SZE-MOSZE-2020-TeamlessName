@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['parsejson',['parseJson',['../class_json_parser.html#af2560bc6adba0cf08e04c2c2801d2d63',1,'JsonParser::parseJson(std::istream &amp;instream)'],['../class_json_parser.html#a4e0f84a180874df4790bf4e4ced5a516',1,'JsonParser::parseJson(std::string &amp;fname)']]],
-  ['parsestring',['parseString',['../class_json_parser.html#a892282dcf6fdc75e267beab3bb5407aa',1,'JsonParser']]],
-  ['parseunit',['parseUnit',['../class_base_unit.html#a3ba2489c8f9d0182b00aace88b843dc6',1,'BaseUnit']]],
-  ['player',['Player',['../class_player.html',1,'']]]
+  ['sze_2dmosze_2d2020_2dteamlessname',['SZE-MOSZE-2020-TeamlessName',['../autotoc_md0.html',1,'']]],
+  ['showstats',['showStats',['../class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd',1,'Hero::showStats()'],['../class_monster.html#ab2551a0c8d1857a531df01f35235f7b0',1,'Monster::showStats()']]]
 ];

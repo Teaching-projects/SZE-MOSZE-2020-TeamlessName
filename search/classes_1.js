@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fileformatexception',['FileFormatException',['../class_file_format_exception.html',1,'']]]
+  ['hero',['Hero',['../class_hero.html',1,'']]]
 ];

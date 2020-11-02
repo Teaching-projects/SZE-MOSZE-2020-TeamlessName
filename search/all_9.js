@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maxhp',['maxHP',['../class_base_unit.html#ac490e1432261f04eff5f9b2378e54dd7',1,'BaseUnit']]]
+  ['operator_3d',['operator=',['../class_j_s_o_n.html#a5ec05d6b745bdbc69475eeadc4662cbf',1,'JSON']]]
 ];

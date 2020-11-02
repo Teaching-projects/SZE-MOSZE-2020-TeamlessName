@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['fileformatexception',['FileFormatException',['../class_file_format_exception.html',1,'FileFormatException'],['../class_file_format_exception.html#a1cf2bd717f9f1b94e71b833029a54b29',1,'FileFormatException::FileFormatException()']]]
+  ['hero',['Hero',['../class_hero.html',1,'Hero'],['../class_hero.html#af631c89ef78ab19017aaaa79faed99d2',1,'Hero::Hero()']]],
+  ['hp',['HP',['../class_monster.html#a2547ecce29c3ebe93a9b370b7d7bbdd0',1,'Monster']]]
 ];

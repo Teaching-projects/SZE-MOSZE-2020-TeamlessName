@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['as',['AS',['../class_base_unit.html#a1d698a954e248bbd12cc06c79211c68a',1,'BaseUnit']]]
+  ['cd',['CD',['../class_monster.html#a203c0ccd4d605225feaf888a18db2d18',1,'Monster']]]
 ];
