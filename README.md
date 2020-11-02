@@ -2,17 +2,17 @@
 
 ## University Project, basic role-playing game
 
-This little program simulates 2 characters fighting. The program runs until one of characters health points decrease 0 or below 0. These characters and their stats can be defined in separate files, given in command line arguments.
+This little program simulates a hero and some monster characters fighting. The hero starts figth with monsters in 1v1 in a sequence. The program runs until defeat all monster or hero dies.
 
 To start program correctly, start with this format:
 
-./a.out UNITFILE1 UNITFILE2
+./a.out SCENARIOFILE
 
 For example.:
 
-./a.out unit1.json unit2.json
+./a.out units/scenario1.json
 
-After starting program (with correct arguments) the program simulates the fight, then prints out the winners name and remaining hp.
+After starting program (with correct arguments) the program simulates the fight, then prints out the results.
 
 ## Doxygen Doc
 
