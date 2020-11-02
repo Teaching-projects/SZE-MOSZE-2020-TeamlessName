@@ -27,7 +27,7 @@ upgrade-gcc:
 	sudo apt --only-upgrade install g++-10 gcc-10
 
 build: $(OBJS)
-	$(CC) $(CFLAGS) -o a.out *.cpp
+	$(CC) $(CFLAGS) -o a.out $(OBJS)
 	
 static-code-analysis:
 	cppcheck *.cpp --enable=warning --error-exitcode=1
