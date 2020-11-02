@@ -142,7 +142,7 @@ TEST(MonsterTest, TestcauseDamage)
 	Monster Attacker ("Att", 1, 1, 0.2);
 	Monster Defender ("Def", 10, 10, 1.0);
 
-	Attacker.causeDamage(Defender);
+	Attacker.causeDamage(&Defender);
 
 	ASSERT_EQ(Defender.getHealthPoints(), 9);
 }
