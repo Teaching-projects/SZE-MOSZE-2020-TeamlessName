@@ -166,6 +166,38 @@ TEST(MonsterTest, TestshowStats)
 }
 
 
+//*******************Hero tests********************
+
+TEST(HeroTest, TestZeroDamage)
+{
+	Hero tHero("Hero", 100, 0, 5.2, 1000, 10, 1, 0.4);
+	Monster tMonster("MyName", 10, 100, 5.5);
+
+	tHero.causeDamage(&tMonster);
+
+	ASSERT_EQ(tHero.getXP(), 0);
+}
+//Hero.damage >> monster.hp
+TEST(HeroTest, TestGreatDamage)
+{
+	Hero tHero("Hero", 100, 250, 5.2, 1000, 10, 1, 0.4);
+	Monster tMonster("MyName", 10, 100, 5.5);
+
+	tHero.causeDamage(&tMonster);
+
+	ASSERT_EQ(tHero.getXP(), 10);
+}
+
+TEST(HeroTest, TestLevelUp)
+{
+	Hero tHero("Hero", 100, 250, 5.2, 2, 10, 1, 0.4);
+	Monster tMonster("MyName", 10, 100, 5.5);
+
+	tHero.causeDamage(&tMonster);
+
+	ASSERT_EQ(tHero.getLevel(), 5);
+}
+
 
 int main(int argc, char** argv)
 {
