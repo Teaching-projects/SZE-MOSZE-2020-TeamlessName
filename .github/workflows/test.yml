@@ -13,12 +13,14 @@ jobs:
         run: make static-code-analysis
       - name: Static code analysis report
         run: make static-code-analysis-report
+      - name: Update gcc
+        run: make upgrade-gcc
       - name: Build
         run: make build
       - name: Memoryleak check
         run: make memoryleak-check
       - name: Run Test
-        run: make rune-test
+        run: make run-test
       - name: I-O diff test
         run: make io-diff-tests
       - name: Archive artifacts

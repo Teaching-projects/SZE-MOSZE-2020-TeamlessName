@@ -1,6 +1,6 @@
 OBJS = Hero.o JSON.o main.o Monster.o
-CFLAGS = -Wall -std=c++17
-CC = g++
+CFLAGS = -Wall -Werror -std=c++17
+CC = g++-10
 
 add: $(OBJS)
 	$(CC) $(CFLAGS) -o add $(OBJS)
@@ -22,6 +22,9 @@ install-valgrind-and-cppcheck:
 
 memoryleak-check:
 	valgrind --leak-check=full --error-exitcode=1 ./a.out units/scenario1.json
+
+upgrade-gcc:
+	sudo apt --only-upgrade install g++-10 gcc-10
 
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o a.out *.cpp
