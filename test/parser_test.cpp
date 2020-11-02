@@ -97,20 +97,6 @@ TEST(ParserTest, TestInOneLine)
 	std::map<std::string, std::variant<std::string, int, double>> testMap = JSON::parseFromFile(input);
 	ASSERT_EQ(expected, testMap);
 }
-//Empty lines are present in the file
-TEST(ParserTest, TestEmptyLines)
-{
-	std::string input = "unit_Test3.json";
-	std::map<std::string, std::variant<std::string, int, double>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("name", "Zombie"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("health_points", 10));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("damage", 1));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("attack_cooldown", 2.7));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("race", "undead"));
-
-	std::map<std::string, std::variant<std::string, int, double>> testMap = JSON::parseFromFile(input);
-	ASSERT_EQ(expected, testMap);
-}
 //Missing file
 TEST(ParserTest, TestMissingFile)
 {
@@ -195,7 +181,7 @@ TEST(HeroTest, TestLevelUp)
 
 	tHero.causeDamage(&tMonster);
 
-	ASSERT_EQ(tHero.getLevel(), 5);
+	ASSERT_EQ(tHero.getLevel(), 6);
 }
 
 
