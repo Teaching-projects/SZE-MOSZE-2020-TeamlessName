@@ -1,13 +1,7 @@
 {
-
     "name" : "Zombie",
-
-
     "health_points" : 10,
-
-    "damage" : 1, "attack_cooldown" : 2.8,
-
-
-
+    "damage" : 1,
+    "attack_cooldown" : 2.8,
     "race" : "undead"
 }

@@ -151,6 +151,12 @@ TEST(MonsterTest, TestshowStats)
 	ASSERT_EQ(tMonster.showStats(), output);
 }
 
+TEST(MonsterTest, TestParse)
+{
+	Monster tMonster = Monster::parse("unit_Test3.json");
+	ASSERT_TRUE(tMonster.showStats().find("lore") == std::string::npos);
+}
+
 
 //*******************Hero tests********************
 
