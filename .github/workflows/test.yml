@@ -7,24 +7,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install
-        run: sudo apt-get install -y valgrind cppcheck
-      - name: Cppcheck
-        run: cppcheck *.cpp --enable=warning --error-exitcode=1
-      - name: Cppcheck report
-        run: cppcheck *.cpp --enable=warning,style,performance --output-file=checkreport.txt
+      - name: Install Valgrind and Cppcheck
+        run: make install-valgrind-and-cppcheck
+      - name: Static code analysis
+        run: make static-code-analysis
+      - name: Static code analysis report
+        run: make static-code-analysis-report
+      - name: Update gcc
+        run: make upgrade-gcc
+      - name: Build
+        run: make build
+      - name: Memoryleak check
+        run: make memoryleak-check
+      - name: Run Test
+        run: make run-test
+      - name: I-O diff test
+        run: make io-diff-tests
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
             name: checkreport
             path: ./checkreport.txt
-      - name: New gcc version
-        run: sudo apt --only-upgrade install g++-10 gcc-10
-      - name: Build
-        run: g++-10 -std=c++17 -Wall -Werror *.cpp
-      - name: Memory check
-        run: valgrind --leak-check=full --error-exitcode=1 ./a.out units/scenario1.json
-      - name: Run Test
-        run: ./test.sh
-      - name: Diff
-        run: diff ./units/output1.txt Genoutput1.txt && diff ./units/output2.txt Genoutput2.txt
