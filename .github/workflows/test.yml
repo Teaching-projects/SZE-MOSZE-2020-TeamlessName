@@ -5,6 +5,7 @@ on: push
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
+    container: kalmaradam/test:latest
     steps:
       - uses: actions/checkout@v2
       - name: Install Valgrind and Cppcheck
