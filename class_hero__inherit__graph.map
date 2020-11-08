@@ -1,3 +1,4 @@
 <map id="Hero" name="Hero">
-<area shape="rect" id="node2" href="$class_monster.html" title="Monster class. " alt="" coords="5,5,75,32"/>
+<area shape="rect" id="node1" title="Hero class inherited from Monster." alt="" coords="16,80,69,107"/>
+<area shape="rect" id="node2" href="$class_monster.html" title="Monster class." alt="" coords="5,5,80,32"/>
 </map>
