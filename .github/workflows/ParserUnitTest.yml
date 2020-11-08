@@ -5,11 +5,11 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: kalmaradam/test:latest
     steps:
-      - name: Install gtest
-        run: sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
-      - name: New gcc version
-        run: sudo apt --only-upgrade install g++-10 gcc-10
+      - name: Gtest
+        run: cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+        
       - uses: actions/checkout@v2
 
       - name: Build
