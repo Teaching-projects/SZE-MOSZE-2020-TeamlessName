@@ -10,7 +10,7 @@ jobs:
     container: kalmaradam/doxygen:latest
     steps:
       - uses: actions/checkout@master
-      - run: doxygen doxyconf
+      - run: doxygen doxconf
       
       - name: Push git subdir as branch
 
