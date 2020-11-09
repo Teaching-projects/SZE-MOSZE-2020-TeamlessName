@@ -21,6 +21,7 @@ public:
 	*
 	* \param const string filename
 	*/
+	// cppcheck-suppress nullPointer
 	explicit NoFileException(const std::string& fname) : FileName{ fname } {}
 
 	/**
@@ -50,6 +51,7 @@ class InvalidContentOfFileException : public std::exception
 
 public:
 
+	// cppcheck-suppress nullPointer
 	InvalidContentOfFileException(const std::string & fname, const std::string & name, int hp, int dmg, double as) :
 		message("In file <" + fname + "> the following unit parameters are not present or unreadable:\n")
 	{
@@ -101,6 +103,7 @@ class InterpretException : public std::exception
 {
 	std::string message; ///< Message that shown up upon error
 public:
+	// cppcheck-suppress nullPointer
 	InterpretException(const std::string & fname, const std::string & type) :
 		message("In file <" + fname + "> the value associated with <" + type + "> parameter cannot be interpreted properly")
 
@@ -134,6 +137,7 @@ class InputFormatException : public std::exception
 	std::string missing; ///< Character that is not present in input, though required by syntax
 
 public:
+	// cppcheck-suppress nullPointer
 	InputFormatException(const std::string& miss) : missing(miss)
 	{
 
@@ -165,6 +169,7 @@ class FileFormatException : public std::exception
 	std::string message;///< Message that shown up upon error
 
 public:
+	// cppcheck-suppress nullPointer
 	FileFormatException(const std::string& fname, const std::string& missing):
 		message("In file <" + fname + "> the formatting is incorrect. A <" + missing + "> was missing")
 	{
