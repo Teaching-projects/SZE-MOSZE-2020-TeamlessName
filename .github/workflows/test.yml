@@ -8,14 +8,10 @@ jobs:
     container: kalmaradam/test:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Valgrind and Cppcheck
-        run: make install-valgrind-and-cppcheck
       - name: Static code analysis
         run: make static-code-analysis
       - name: Static code analysis report
         run: make static-code-analysis-report
-      - name: Update gcc
-        run: make upgrade-gcc
       - name: Build
         run: make build
       - name: Memoryleak check
