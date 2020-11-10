@@ -5,12 +5,12 @@ CC = g++-10
 add: $(OBJS)
 	$(CC) $(CFLAGS) -o add $(OBJS)
 
-Hero.o: Hero.cpp Hero.h JSON.h Exceptions.h 
+Hero.o: Hero.cpp Hero.h JSON.h Exceptions.h
 	$(CC) $(CFLAGS) -c Hero.cpp
 
 JSON.o: JSON.cpp JSON.h Exceptions.h
 	$(CC) $(CFLAGS) -c JSON.cpp
-	
+
 Monster.o: Monster.cpp Monster.h Exceptions.h JSON.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
@@ -28,12 +28,12 @@ upgrade-gcc:
 
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o a.out $(OBJS)
-	
+
 static-code-analysis:
-	cppcheck *.cpp --enable=warning --error-exitcode=1
+	cppcheck *.cpp --enable=warning --error-exitcode=1 --inline-suppr
 
 static-code-analysis-report:
-	cppcheck *.cpp --enable=warning,style,performance --output-file=checkreport.txt
+	cppcheck *.cpp --enable=warning,style,performance --output-file=checkreport.txt --inline-suppr
 
 io-diff-tests:
 	diff ./units/output1.txt Genoutput1.txt && diff ./units/output2.txt Genoutput2.txt
