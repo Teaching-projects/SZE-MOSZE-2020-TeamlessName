@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['name_20',['Name',['../class_monster.html#a584140f7e5bd5a12e96658af6a304f42',1,'Monster']]],
-  ['nofileexception_21',['NoFileException',['../class_no_file_exception.html',1,'NoFileException'],['../class_no_file_exception.html#a5d179353b800ead237cdf34f049bcbcd',1,'NoFileException::NoFileException()']]]
+  ['maxhp_19',['maxHP',['../class_monster.html#a21dc0aa9f78dbffb7f1a1e0048dfbd4a',1,'Monster']]],
+  ['monster_20',['Monster',['../class_monster.html',1,'Monster'],['../class_monster.html#ae46ee4a053e4d76e065ac36bd8a32f10',1,'Monster::Monster()']]]
 ];

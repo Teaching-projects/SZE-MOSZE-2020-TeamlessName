@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['what_30',['what',['../class_no_file_exception.html#a119941c3e987cd808a30386b11e00322',1,'NoFileException::what()'],['../class_invalid_content_of_file_exception.html#aff76a61a3189b050a1625147de8655b6',1,'InvalidContentOfFileException::what()'],['../class_interpret_exception.html#a09a80cb0e62c749e7303b6e260d980fa',1,'InterpretException::what()'],['../class_input_format_exception.html#a53c79a3ae08837b69f136b41c7e9e380',1,'InputFormatException::what()'],['../class_file_format_exception.html#a1482e953aed010ec7b3c2bdab3032d92',1,'FileFormatException::what()']]]
+  ['sze_2dmosze_2d2020_2dteamlessname_29',['SZE-MOSZE-2020-TeamlessName',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['showstats_30',['showStats',['../class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd',1,'Hero::showStats()'],['../class_monster.html#ab2551a0c8d1857a531df01f35235f7b0',1,'Monster::showStats()']]]
 ];
