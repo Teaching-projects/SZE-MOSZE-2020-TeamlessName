@@ -12,10 +12,10 @@ TEST(ParserTest, TestString)
 {
 	std::string input = "{\n\t\"name\"\t   :  \"isName\",\n\t\"hp\":150,\n\t\"dmg\"   \t\t :\t200,\n\t\"SomethingSpecial\" : 22.45\n}";
 	std::map<std::string, std::variant<std::string, int, double, JSON::list>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double, JSON::list>>("name", "isName"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double, JSON::list>>("hp", 150));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double, JSON::list>>("dmg", 200));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double, JSON::list>>("SomethingSpecial", 22.45));
+	expected["name"] = "isName";
+	expected["hp"] = 150;
+	expected["dmg"] = 200;
+	expected["SomethingSpecial"] = 22.45;
 	std::map<std::string, std::variant<std::string, int, double, JSON::list>> testMap = JSON::parseFromString(input);
 
 	ASSERT_EQ(expected, testMap);
