@@ -13,15 +13,6 @@
  *
  */
 
-/*union listTypes
-{
-	std::string s;
-	int integer;
-	double rational;
-};*/
-
-
-
 class JSON
 {
 public:

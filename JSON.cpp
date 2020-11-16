@@ -87,9 +87,6 @@ MAP JSON::parseFromIstream(std::istream & instream)
 				line = line.substr(line.find_first_of("\n,") + 1);
 			}
 
-			/*line = line.substr(line.find(value)+value.size());
-			line = line.substr(line.find_first_of("\n,")+1);*/
-
 			if (line.find_first_not_of(" ,\n\t\"") == std::string::npos || line[line.find_first_not_of(",\n\t\" ")] == '}')
 			{
 				line = "";
@@ -112,7 +109,6 @@ MAP JSON::parseFromIstream(std::istream & instream)
 				mapvalue = list(listvalues);
 			}
 			content[key] = mapvalue;
-			//content.insert(std::pair<std::string, std::variant<std::string, int, double>>(key, mapvalue));
 		}
 
 	}
