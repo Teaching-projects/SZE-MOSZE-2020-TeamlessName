@@ -11,12 +11,17 @@
 TEST(ParserTest, TestString)
 {
 	std::string input = "{\n\t\"name\"\t   :  \"isName\",\n\t\"hp\":150,\n\t\"dmg\"   \t\t :\t200,\n\t\"SomethingSpecial\" : 22.45\n}";
-	std::map<std::string, std::variant<std::string, int, double>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("name", "isName"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("hp", 150));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("dmg", 200));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("SomethingSpecial", 22.45));
-	std::map<std::string, std::variant<std::string, int, double>> testMap = JSON::parseFromString(input);
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> expected;
+	std::variant<std::string, int, double, JSON::list> value;
+	value = "isName";
+	expected["name"] = value;
+	value = 150;
+	expected["hp"] = value;
+	value = 200;
+	expected["dmg"] = value;
+	value = 22.45;
+	expected["SomethingSpecial"] = value;
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> testMap = JSON::parseFromString(input);
 
 	ASSERT_EQ(expected, testMap);
 }
@@ -25,13 +30,19 @@ TEST(ParserTest, TestString)
 TEST(ParserTest, TestFileName)
 {
 	std::string input = "unit_Test1.json";
-	std::map<std::string, std::variant<std::string, int, double>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("name", "Rick"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("hp", 70));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("dmg", 30));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("mana", 14.25));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("SpecialAttribute", "NeedsAStringForIt"));
-	std::map<std::string, std::variant<std::string, int, double>> testMap = JSON::parseFromFile(input);
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> expected;
+	std::variant<std::string, int, double, JSON::list> value;
+	value = "Rick";
+	expected["name"]= value;
+	value = 70;
+	expected["hp"]= value;
+	value = 30;
+	expected["dmg"]= value;
+	value = 14.25;
+	expected["mana"]= value;
+	value ="NeedsAStringForIt";
+	expected["SpecialAttribute"]= value;
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> testMap = JSON::parseFromFile(input);
 
 	ASSERT_EQ(expected, testMap);
 }
@@ -40,16 +51,22 @@ TEST(ParserTest, TestFileName)
 TEST(ParserTest, TestIstream)
 {
 	std::string fname = "unit_Test1.json";
-	std::map<std::string, std::variant<std::string, int, double>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("name", "Rick"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("hp", 70));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("dmg", 30));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("mana", 14.25));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("SpecialAttribute", "NeedsAStringForIt"));
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> expected;
+	std::variant<std::string, int, double, JSON::list> value;
+	value = "Rick";
+	expected["name"]= value;
+	value = 70;
+	expected["hp"]= value;
+	value = 30;
+	expected["dmg"]= value;
+	value = 14.25;
+	expected["mana"]= value;
+	value = "NeedsAStringForIt";
+	expected["SpecialAttribute"]= value;
 
 	std::ifstream input(fname);
 
-	std::map<std::string, std::variant<std::string, int, double>> testMap = JSON::parseFromIstream(input);
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> testMap = JSON::parseFromIstream(input);
 
 	input.close();
 
@@ -61,11 +78,16 @@ TEST(ParserTest, TestMissingColon)
 {
 									//No ':' between key and value
 	std::string input = "{\n\t\"name\"\t     \"isName\",\n\t\"hp\":150,\n\t\"dmg\"   \t\t :\t200,\n\t\"SomethingSpecial\" : 22.45\n}";
-	std::map<std::string, std::variant<std::string, int, double>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("name", "isName"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("hp", 150));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("dmg", 200));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("SomethingSpecial", 22.45));
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> expected;
+	std::variant<std::string, int, double, JSON::list> value;
+	value = "isName";
+	expected["name"]= value;
+	value = 150;
+	expected["hp"]= value;
+	value = 200;
+	expected["dmg"]= value;
+	value = 22.45;
+	expected["SomethingSpecial"]= value;
 	
 	ASSERT_THROW(JSON::parseFromString(input), InputFormatException);
 }
@@ -75,11 +97,16 @@ TEST(ParserTest, TestMissingQuoteMark)
 {
 														//no quotemark closing for hp
 	std::string input = "{\n\t\"name\"\t:  \"isName\",\n\t\"hp:150,\n\t\"dmg\"   \t\t :\t200,\n\t\"SomethingSpecial\" : 22.45\n}";
-	std::map<std::string, std::variant<std::string, int, double>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("name", "isName"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("hp", 150));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("dmg", 200));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("SomethingSpecial", 22.45));
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> expected;
+	std::variant<std::string, int, double, JSON::list> value;
+	value = "isName";
+	expected["name"]= value;
+	value = 150;
+	expected["hp"]= value;
+	value = 200;
+	expected["dmg"]= value;
+	value = 22.45;
+	expected["SomethingSpecial"]= value;
 
 	ASSERT_THROW(JSON::parseFromString(input), InputFormatException);
 }
@@ -87,14 +114,20 @@ TEST(ParserTest, TestMissingQuoteMark)
 TEST(ParserTest, TestInOneLine)
 {
 	std::string input = "unit_Test2.json";
-	std::map<std::string, std::variant<std::string, int, double>> expected;
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("name", "Blood Raven"));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("health_points", 113));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("damage", 8));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("attack_cooldown", 1.2));
-	expected.insert(std::pair<std::string, std::variant<std::string, int, double>>("race", "undead"));
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> expected;
+	std::variant<std::string, int, double, JSON::list> value;
+	value = "Blood Raven";
+	expected["name"]= value;
+	value = 113;
+	expected["health_points"]= value;
+	value = 8;
+	expected["damage"]= value;
+	value = 1.2;
+	expected["attack_cooldown"]= value;
+	value = "undead";
+	expected["race"]= value;
 
-	std::map<std::string, std::variant<std::string, int, double>> testMap = JSON::parseFromFile(input);
+	std::map<std::string, std::variant<std::string, int, double, JSON::list>> testMap = JSON::parseFromFile(input);
 	ASSERT_EQ(expected, testMap);
 }
 //Missing file
