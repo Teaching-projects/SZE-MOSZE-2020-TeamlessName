@@ -20,7 +20,7 @@ TEST(ParserTest, TestString)
 	value = 200;
 	expected["dmg"] = value;
 	value = 22.45;
-	expected["SomethingSpecial"] = value
+	expected["SomethingSpecial"] = value;
 	std::map<std::string, std::variant<std::string, int, double, JSON::list>> testMap = JSON::parseFromString(input);
 
 	ASSERT_EQ(expected, testMap);
