@@ -44,6 +44,11 @@ public:
 		{
 			return List.end();
 		}
+
+		friend bool operator==(const list& lh, const list& rh)
+		{
+			return lh.List == rh.List;
+		}
 	};
 
 
