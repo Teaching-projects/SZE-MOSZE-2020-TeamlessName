@@ -143,7 +143,7 @@ TEST(ParserTest, TestMissingFile)
 
 TEST(MonsterTest, TestAlive)
 {
-	Monster tMonster ("NAlive", -10, 25, 1.2);
+	Monster tMonster ("NAlive", -10, 25, 1.2, 0);
 
 	ASSERT_EQ(tMonster.isAlive(), false);
 }

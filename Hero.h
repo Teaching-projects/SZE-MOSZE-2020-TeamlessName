@@ -21,7 +21,6 @@ private:
 
 
 	void levelUp();
-	void causeDamage(Monster*) override;
 public:
 	Hero(const std::string& nm, int hp, int dmg,double cd, int df, int xpgap, int hpbonus, int dmgbonus,
 		double cdMulti, int dfbonus); ///< This constructor set the attributes of Hero
@@ -38,6 +37,7 @@ public:
     *
     * \param Enemy Unit (pointer)
     */
+	void causeDamage(Monster*) override;
 	int getLevel() const { return Lvl; } ///< Getter of Hero's level
 	int getXP() const { return XP; } ///< Getter of Hero's XP
 	std::string showStats() const override; ///< Method to print Hero's attributes
