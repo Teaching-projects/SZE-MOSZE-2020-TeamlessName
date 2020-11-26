@@ -15,10 +15,10 @@ protected:
     int HP; ///< Health ponits of unit
     int DMG; ///< Damage of unit, the amount this unit hits with
     double CD; ///< Attackspeed of unit, seconds per attack
-
+    int DF;
 
 public:
-    Monster(const std::string& nm, int hp, int dmg, double cd); ///< This constructor set the attributes of Monster
+    Monster(const std::string& nm, int hp, int dmg, double cd, int df); ///< This constructor set the attributes of Monster
     /**
     * \brief Shows stats of Unit
     *

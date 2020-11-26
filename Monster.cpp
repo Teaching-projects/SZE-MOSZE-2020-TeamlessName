@@ -5,7 +5,8 @@
 
 
 
-Monster::Monster(const std::string & nm, int hp, int dmg, double cd) : Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, CD{ cd }
+Monster::Monster(const std::string & nm, int hp, int dmg, double cd, int df) 
+		: Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, CD{ cd }, DF{df}
 
 {
 }
@@ -40,6 +41,7 @@ Monster Monster::parse(const std::string & file_nam)
 	int hp = -1;
 	int dm = -1;
 	double cd = -1.0;
+	int df = -1;
 
 
 	try
@@ -49,6 +51,7 @@ Monster Monster::parse(const std::string & file_nam)
 		hp = attributes.get<int>("health_points");
 		dm = attributes.get<int>("damage");
 		cd = attributes.get<double>("attack_cooldown");
+		df = attributes.get<int>("defense");
 	}
 	catch (const std::out_of_range&)
 	{
@@ -67,7 +70,7 @@ Monster Monster::parse(const std::string & file_nam)
 	}
 	infile.close();
 
-	return Monster(nm, hp, dm, cd);
+	return Monster(nm, hp, dm, cd, df);
 }
 //returns with true if the unit has 0 HP
 bool Monster::isAlive() const

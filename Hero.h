@@ -14,14 +14,17 @@ private:
 	int HPbonus; ///< The amount of Health Points Bonus of the Hero
 	int DMGbonus; ///< The amount of Damage Bonus of the Hero
 	double CDMultiplier; ///< The amount of Health Points Bonus of the Hero
+	int DFbonus;
 
 	int XP; ///< The amount of XP that is not used yet for level-up
 	int Lvl = 1; ///< The amount of level of Hero
 
 
 	void levelUp();
+	void causeDamage(Monster*) override;
 public:
-	Hero(const std::string& nm, int hp, int dmg,double as, int xpgap, int hpbonus, int dmgbonus, double cdMulti); ///< This constructor set the attributes of Hero
+	Hero(const std::string& nm, int hp, int dmg,double cd, int df, int xpgap, int hpbonus, int dmgbonus,
+		double cdMulti, int dfbonus); ///< This constructor set the attributes of Hero
 	/**
     * \brief Hero parsing from a file
     *
@@ -35,7 +38,6 @@ public:
     *
     * \param Enemy Unit (pointer)
     */
-	void causeDamage(Monster*) override;
 	int getLevel() const { return Lvl; } ///< Getter of Hero's level
 	int getXP() const { return XP; } ///< Getter of Hero's XP
 	std::string showStats() const override; ///< Method to print Hero's attributes
