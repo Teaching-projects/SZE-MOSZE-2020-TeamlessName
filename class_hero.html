@@ -101,6 +101,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hero.html#a65865f77446924240540bb9722913f35">Hero</a> (const std::string &amp;nm, int hp, int dmg, double cd, int df, int xpgap, int hpbonus, int dmgbonus, double cdMulti, int dfbonus)</td></tr>
 <tr class="memdesc:a65865f77446924240540bb9722913f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor set the attributes of <a class="el" href="class_hero.html" title="Hero class inherited from Monster.">Hero</a>. <br /></td></tr>
 <tr class="separator:a65865f77446924240540bb9722913f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2d9c27f8c5ddf91b9124fc7a6fb882f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hero.html#af2d9c27f8c5ddf91b9124fc7a6fb882f">causeDamage</a> (<a class="el" href="class_monster.html">Monster</a> *) override</td></tr>
+<tr class="memdesc:af2d9c27f8c5ddf91b9124fc7a6fb882f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deals damage to enemy unit.  <a href="class_hero.html#af2d9c27f8c5ddf91b9124fc7a6fb882f">More...</a><br /></td></tr>
+<tr class="separator:af2d9c27f8c5ddf91b9124fc7a6fb882f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a730e78d361fe7ef2e31388a6df5a12dd"><td class="memItemLeft" align="right" valign="top"><a id="a730e78d361fe7ef2e31388a6df5a12dd"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd">showStats</a> () const override</td></tr>
 <tr class="memdesc:a730e78d361fe7ef2e31388a6df5a12dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to print <a class="el" href="class_hero.html" title="Hero class inherited from Monster.">Hero</a>'s attributes. <br /></td></tr>
@@ -169,6 +172,42 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DF</b></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_hero.html" title="Hero class inherited from Monster.">Hero</a> class inherited from <a class="el" href="class_monster.html" title="Monster class.">Monster</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af2d9c27f8c5ddf91b9124fc7a6fb882f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2d9c27f8c5ddf91b9124fc7a6fb882f">&#9670;&nbsp;</a></span>causeDamage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Hero::causeDamage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_monster.html">Monster</a> *&#160;</td>
+          <td class="paramname"><em>enemy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deals damage to enemy unit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Enemy</td><td>Unit (pointer) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_monster.html#aa8e777821347df87f71f70460b77e42b">Monster</a>.</p>
+
+</div>
+</div>
 <a id="af76e70bb236599e7a53096f2cd5e193e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af76e70bb236599e7a53096f2cd5e193e">&#9670;&nbsp;</a></span>getAttackCoolDown()</h2>
 
