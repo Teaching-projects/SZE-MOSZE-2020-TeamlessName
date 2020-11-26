@@ -11,10 +11,10 @@ class Hero : public Monster
 private:
 
 	int XPgap; ///< The amount of xp that is needed for a level-up
-	int HPbonus; ///< The amount of Health Points Bonus of the Hero
-	int DMGbonus; ///< The amount of Damage Bonus of the Hero
-	double CDMultiplier; ///< The amount of Health Points Bonus of the Hero
-	int DFbonus;
+	const int HPbonus; ///< The amount of Health Points Bonus of the Hero
+	const int DMGbonus; ///< The amount of Damage Bonus of the Hero
+	const double CDMultiplier; ///< The amount of Health Points Bonus of the Hero
+	const int DFbonus;
 
 	int XP; ///< The amount of XP that is not used yet for level-up
 	int Lvl = 1; ///< The amount of level of Hero
@@ -40,6 +40,8 @@ public:
 	void causeDamage(Monster*) override;
 	int getLevel() const { return Lvl; } ///< Getter of Hero's level
 	int getXP() const { return XP; } ///< Getter of Hero's XP
+	const int getDF() const { return DF; }
+	const int getDFbonus() const { return DFbonus;}
 	std::string showStats() const override; ///< Method to print Hero's attributes
 	/**
     * \brief Getter of Hero's max Health Point

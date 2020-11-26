@@ -43,6 +43,7 @@ public:
     const int getDMG() const { return DMG; } ///< Const Getter of Unit's damage
     const double getCD() const { return CD; } ///< Const Getter of Unit's attackspeed
     const std::string& getName() const { return Name; } ///< Const Getter of Unit's name
+    const int getDefense() const {return DF;}
     /**
     * \brief Unit attacks other unit. This method do the full combat between the 2 units
     *
@@ -61,4 +62,5 @@ public:
     * \param Enemy unit
     */
     void gotHit(const Monster&);
+
 };

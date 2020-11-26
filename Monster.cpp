@@ -13,8 +13,17 @@ Monster::Monster(const std::string & nm, int hp, int dmg, double cd, int df)
 //decreasing the HP of the suffering unit
 void Monster::gotHit(const Monster& other)
 {
-	if (other.getDMG() >= HP) HP = 0;
-	else HP = HP - other.getDMG();
+	if (other.getDMG() - DF >= HP) HP = 0;
+	else
+	{
+		if(DF >= other.getDMG())
+		{
+			return;
+		}
+		
+		HP = HP - (other.getDMG() - DF);
+	}
+	
 }
 //Show current HP and DMG
 std::string Monster::showStats() const

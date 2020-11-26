@@ -21,6 +21,7 @@ void Hero::levelUp()
 		DMG = std::lround(DMG + DMGbonus);
 		HP = maxHP;
 		CD = CD * CDMultiplier;
+		DF += DFbonus;
 		Lvl++;
 		XP = XP - XPgap;
 	}
@@ -92,7 +93,7 @@ Hero Hero::parse(const std::string &file_nam)
 
 void Hero::causeDamage(Monster* enemy)
 {
-	XP += std::min(DMG, enemy->getHealthPoints());
+	XP += std::min(DMG-enemy->getDefense(), enemy->getHealthPoints());
 	enemy->gotHit(*this);
 	levelUp();
 }

@@ -3,7 +3,7 @@
     "base_health_points" : 30,
     "base_damage" : 3,
     "base_attack_cooldown" : 1.1,
-    "defense" : 5,
+    "defense" : 1,
     "experience_per_level" : 20,
     "health_point_bonus_per_level" : 5,
     "damage_bonus_per_level" : 1,
