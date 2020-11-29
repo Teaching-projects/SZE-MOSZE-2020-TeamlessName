@@ -11,11 +11,11 @@
  */
 class Map{
 private:
- std::vector<std::string> vmap; ///< This data structure store the map
+ std::vector<std::string> vmap; ///< This vector store the map (characters from the text file)
 public:
-        enum type {Free, Wall}; ///< Enum "list" that is used by get() to identificate Free space or Wall.
+        enum type {Free, Wall}; ///< Enum "list" that is used by get() getter to identificate Free space or Wall.
         /**
-        * \brief Map constructor
+        * \brief Map constructor for load the map from a text file
         *
         * \param An existing (map) text file
         *
@@ -24,9 +24,9 @@ public:
         /**
         * \brief Getter of the map element (vmap) that takes 2 coord points as parameter.
         *
-        * \param Coord x, Coord y
+        * \param Coord x as unsigned int, Coord y as unsigned int
         *
-        * \return Index of (enum) type
+        * \return Index (integer) of (enum) type
         */
         Map::type get(unsigned int x, unsigned int y) const;
     /**
