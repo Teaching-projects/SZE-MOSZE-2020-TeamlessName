@@ -3,5 +3,6 @@
     "health_points" : 10,
     "damage" : 1,
     "attack_cooldown" : 2.8,
+    "defense" : 1,
     "race" : "undead"
 }
