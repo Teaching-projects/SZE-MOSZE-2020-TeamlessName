@@ -1,19 +1,20 @@
 #pragma once
-#include "Map.h"
+
 #include <string>
 #include <fstream>
 #include <list>
 #include <vector>
+#include "Map.h"
 /**
  * \class MarkedMap
  *
  * \brief MarkedMap class for loading and handling a map from a text file. Inherited from Map class
  *
  */
-class MarkedMap: Map
+class MarkedMap : public Map
 {
-    public:
-    MarkedMap(){}; ///< Default (empty constructor of MarkedMap)
+public:
+    MarkedMap(){}; ///< Default (empty) constructor of MarkedMap class
     /**
     * \brief MarkedMap constructor for load the map from a text file
     *

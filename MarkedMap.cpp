@@ -19,6 +19,10 @@ std::pair<int,int> MarkedMap::getHeroPosition() const
     {
         for(int k = 0; k < (int) vmap[i].length();k++)
         {
+            /*
+                i axis => row idx of vmap
+                k axis => column idx of vmap
+            */
             if(vmap[i][k] == 'H')
                 hero_c = std::make_pair(i,k);
         }
@@ -29,11 +33,14 @@ std::pair<int,int> MarkedMap::getHeroPosition() const
 std::vector<std::pair<int,int>> MarkedMap::getMonsterPositions(char c) const
 {
     std::vector<std::pair<int,int>> monsters_coord;
-    //std::pair<int,int> coordinates;
     for(int i = 0;i < (int) vmap.size();i++)
     {
         for(int k = 0; k < (int) vmap[i].length();k++)
         {
+            /*
+                i axis => row idx of vmap
+                k axis => column idx of vmap
+            */
             if(vmap[i][k] == c)
                 monsters_coord.push_back(std::make_pair(i,k));
         }
