@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['inputformatexception_15',['InputFormatException',['../class_input_format_exception.html',1,'InputFormatException'],['../class_input_format_exception.html#a85c3c8999bbee108ba4acb6ff8ee8a9a',1,'InputFormatException::InputFormatException()']]],
-  ['interpretexception_16',['InterpretException',['../class_interpret_exception.html',1,'InterpretException'],['../class_interpret_exception.html#a8e227b214636fe3f4298bd8e3bda6f4c',1,'InterpretException::InterpretException()']]],
-  ['invalidcontentoffileexception_17',['InvalidContentOfFileException',['../class_invalid_content_of_file_exception.html',1,'InvalidContentOfFileException'],['../class_invalid_content_of_file_exception.html#a69d94b55f31ee8abcb13e6d29c76a02b',1,'InvalidContentOfFileException::InvalidContentOfFileException()']]],
-  ['isalive_18',['isAlive',['../class_monster.html#a77ad18c44b3fb2df92b30ece4dc7847b',1,'Monster']]]
+  ['hero_17',['Hero',['../class_hero.html',1,'Hero'],['../class_hero.html#a65865f77446924240540bb9722913f35',1,'Hero::Hero(const std::string &amp;nm, int hp, int dmg, double cd, int df, int xpgap, int hpbonus, int dmgbonus, double cdMulti, int dfbonus)'],['../class_hero.html#addf4f57ee4e49a8cf5f43681cb31daa1',1,'Hero::Hero(const Hero &amp;)']]],
+  ['hp_18',['HP',['../class_monster.html#a2547ecce29c3ebe93a9b370b7d7bbdd0',1,'Monster']]]
 ];

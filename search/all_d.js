@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vmap_35',['vmap',['../class_map.html#a6aa618cec793996a32efea97ac0df9fd',1,'Map']]]
+  ['sze_2dmosze_2d2020_2dteamlessname_38',['SZE-MOSZE-2020-TeamlessName',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['showstats_39',['showStats',['../class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd',1,'Hero::showStats()'],['../class_monster.html#ab2551a0c8d1857a531df01f35235f7b0',1,'Monster::showStats()']]]
 ];

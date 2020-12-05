@@ -1,4 +1,0 @@
-<map id="Map" name="Map">
-<area shape="rect" id="node1" title="Map class for loading and handling a map from a text file." alt="" coords="29,5,80,32"/>
-<area shape="rect" id="node2" href="$class_marked_map.html" title="MarkedMap class for loading and handling a map from a text file. Inherited from Map class." alt="" coords="5,80,104,107"/>
-</map>
