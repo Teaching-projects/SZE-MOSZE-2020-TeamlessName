@@ -10,10 +10,12 @@
  *
  */
 class Map{
-private:
+protected:
  std::vector<std::string> vmap; ///< This vector store the map (characters from the text file)
 public:
         enum type {Free, Wall}; ///< Enum "list" that is used by get() getter to identificate Free space or Wall.
+        Map(){}; ///< Default (empty) constructor of Map class
+
         /**
         * \brief Map constructor for load the map from a text file
         *
