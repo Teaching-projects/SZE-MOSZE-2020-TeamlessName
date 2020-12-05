@@ -27,7 +27,7 @@ install-valgrind-and-cppcheck:
 	sudo apt-get install -y valgrind cppcheck
 
 memoryleak-check:
-	valgrind --leak-check=full --error-exitcode=1 ./a.out units/scenario1.json
+	valgrind --leak-check=full --error-exitcode=1 cat userinput.txt | ./a.out
 
 upgrade-gcc:
 	sudo apt --only-upgrade install g++-10 gcc-10
