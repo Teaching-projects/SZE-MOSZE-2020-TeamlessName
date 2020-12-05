@@ -10,6 +10,12 @@ Monster::Monster(const std::string & nm, int hp, int dmg, double cd, int df)
 
 {
 }
+
+Monster::Monster(const Monster& other)
+	: Name(other.Name), maxHP(other.maxHP), HP(other.HP), DMG(other.DMG), 
+	  CD(other.CD), DF(other.DF)
+{
+}
 //decreasing the HP of the suffering unit
 void Monster::gotHit(const Monster& other)
 {

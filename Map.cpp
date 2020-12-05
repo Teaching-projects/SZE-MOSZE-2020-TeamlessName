@@ -16,13 +16,13 @@ Map::type Map::get(unsigned int x, unsigned int y) const {
     if(x >= vmap[y].length() || x < 0)
         throw Map::WrongIndexException("coord X is out of range");
     if(y >= vmap.size() || y < 0)
-        throw Map::WrongIndexException("coord X is out of range");
-    if(vmap[y][x] == '#')
+        throw Map::WrongIndexException("coord Y is out of range");
+    if(vmap[y][x] == ' ')
         {
-            return Map::type::Wall;
+            return Map::type::Free;
         }
     else
         {
-            return Map::type::Free;
+            return Map::type::Wall;
         }
 }

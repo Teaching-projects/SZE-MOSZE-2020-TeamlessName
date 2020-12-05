@@ -21,9 +21,12 @@ private:
 
 
 	void levelUp();
+	
 public:
 	Hero(const std::string& nm, int hp, int dmg,double cd, int df, int xpgap, int hpbonus, int dmgbonus,
 		double cdMulti, int dfbonus); ///< This constructor set the attributes of Hero
+
+	Hero(const Hero&); ///< Copy constructor of Hero
 	/**
     * \brief Hero parsing from a file
     *

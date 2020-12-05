@@ -17,6 +17,7 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "Game.h"
 
 
 
@@ -36,7 +37,20 @@ void bad_exit(int exitcode){
 }
 
 int main(int argc, char** argv){
-    if (argc != 2) bad_exit(1);
+    Game game("map.txt");
+    
+    Hero hero{Hero::parse("Dark_Wanderer.json")};
+    
+    
+    game.putHero(hero, 5, 2);
+    Monster monster1{Monster::parse("Zombie.json")};
+    Monster monster2{Monster::parse("Zombie.json")};
+    Monster monster3{Monster::parse("Zombie.json")};
+    game.putMonster(monster1, 3, 3);
+    game.putMonster(monster2, 3, 3);
+    game.putMonster(monster3, 3, 2);
+    game.run();
+  /*if (argc != 2) bad_exit(1);
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
 	std::string hero_file;
@@ -75,5 +89,6 @@ int main(int argc, char** argv){
                   << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
                   ;
     } catch (const JSON::ParseException& e) {bad_exit(4);}
-    return 0;
+
+    return 0;*/
 }

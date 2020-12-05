@@ -1,5 +1,5 @@
-OBJS = Hero.o JSON.o main.o Monster.o
-CFLAGS = -Wall -Werror -std=c++17
+OBJS = Hero.o JSON.o main.o Monster.o Map.o Game.o
+CFLAGS = -Wall -Werror -std=gnu++17
 CC = g++-10
 
 add: $(OBJS)
@@ -14,8 +14,14 @@ JSON.o: JSON.cpp JSON.h Exceptions.h
 Monster.o: Monster.cpp Monster.h Exceptions.h JSON.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
-main.o: main.cpp JSON.h Monster.h Exceptions.h
+main.o: main.cpp JSON.h Monster.h Exceptions.h Map.h Game.h
 	$(CC) $(CFLAGS) -c main.cpp
+
+Map.o: Map.cpp Map.h
+	$(CC) $(CFLAGS) -c Map.cpp
+
+Game.o: Game.cpp Game.h Map.h Monster.h Hero.h
+	$(CC) $(CFLAGS) -c  Game.cpp
 
 install-valgrind-and-cppcheck:
 	sudo apt-get install -y valgrind cppcheck
