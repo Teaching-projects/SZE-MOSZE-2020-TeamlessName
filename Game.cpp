@@ -39,7 +39,7 @@ void Game::putHero(Hero& hero, int x, int y)
 
     if(!hasMap)
     {
-        throw Map::WrongIndexException("wrong index");
+        throw Map::WrongIndexException();
     }
     if(hasHero)
     {
@@ -71,7 +71,7 @@ void Game::putMonster(Monster& monster, int x, int y)
 
     if(!hasMap)
     {
-        throw Map::WrongIndexException("wrong index");
+        throw Map::WrongIndexException();
     }
 
 

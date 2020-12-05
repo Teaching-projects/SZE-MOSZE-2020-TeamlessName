@@ -51,7 +51,7 @@ public:
      * \brief WrongIndexException class for handling pass wrong parameter (index) in get() getter
      *
      */
-    class WrongIndexException : virtual public std::runtime_error {
+    class WrongIndexException :  public std::exception {
         public:
         /**
         * \brief WrongIndexException constructor that inherited from std::runtime_error and throw error upon on wrong index in get() getter.
@@ -59,6 +59,6 @@ public:
         * \param Const string error message.
         *
         */
-        WrongIndexException(const std::string &error) : std::runtime_error( error) {}
+        WrongIndexException() {}
     };
 };
