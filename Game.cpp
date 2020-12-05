@@ -180,6 +180,7 @@ void Game::run()
 
     isRunning = true;
 
+    //The gameloop
     while (hero->isAlive())
     {
 
@@ -275,6 +276,8 @@ void Game::run()
             break;
         }
 
+
+        //fight the monsters on that position
         for (auto& mons : monsters)
         {
             if(mons.second.x == heroPos.x && mons.second.y == heroPos.y)
@@ -296,7 +299,7 @@ void Game::run()
             }
             
         }
-
+        //decide if the map is cleared
         if (monsters.size() == 0)
         {
             print();
