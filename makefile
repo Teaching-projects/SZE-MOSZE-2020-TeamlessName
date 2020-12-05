@@ -27,7 +27,7 @@ install-valgrind-and-cppcheck:
 	sudo apt-get install -y valgrind cppcheck
 
 memoryleak-check:
-	valgrind --leak-check=full --error-exitcode=1 cat userinput.txt | ./a.out
+	valgrind --leak-check=full --error-exitcode=1 ./a.out < userinput.txt
 
 upgrade-gcc:
 	sudo apt --only-upgrade install g++-10 gcc-10
@@ -42,7 +42,7 @@ static-code-analysis-report:
 	cppcheck *.cpp --enable=warning,style,performance --output-file=checkreport.txt --inline-suppr
 
 io-diff-tests:
-	diff ./units/output1.txt Genoutput1.txt && diff ./units/output2.txt Genoutput2.txt
+	diff ./units/output1.txt Genoutput1.txt
 
 run-test:
 	bash -c "./test.sh"
