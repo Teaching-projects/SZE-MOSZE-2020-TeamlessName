@@ -13,5 +13,4 @@ then
 	rm $FILE2
 fi
 
-./a.out ./units/scenario1.json >> $FILE1
-./a.out ./units/scenario2.json >> $FILE2
+cat userinput.txt | ./a.out >> $FILE1

@@ -1,5 +1,5 @@
-OBJS = Hero.o JSON.o main.o Monster.o
-CFLAGS = -Wall -Werror -std=c++17
+OBJS = Hero.o JSON.o main.o Monster.o Map.o Game.o
+CFLAGS = -Wall -Werror -std=gnu++17
 CC = g++-10
 
 add: $(OBJS)
@@ -14,14 +14,20 @@ JSON.o: JSON.cpp JSON.h Exceptions.h
 Monster.o: Monster.cpp Monster.h Exceptions.h JSON.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
-main.o: main.cpp JSON.h Monster.h Exceptions.h
+main.o: main.cpp JSON.h Monster.h Exceptions.h Map.h Game.h
 	$(CC) $(CFLAGS) -c main.cpp
+
+Map.o: Map.cpp Map.h
+	$(CC) $(CFLAGS) -c Map.cpp
+
+Game.o: Game.cpp Game.h Map.h Monster.h Hero.h
+	$(CC) $(CFLAGS) -c  Game.cpp
 
 install-valgrind-and-cppcheck:
 	sudo apt-get install -y valgrind cppcheck
 
 memoryleak-check:
-	valgrind --leak-check=full --error-exitcode=1 ./a.out units/scenario1.json
+	valgrind --leak-check=full --error-exitcode=1 ./a.out < userinput.txt
 
 upgrade-gcc:
 	sudo apt --only-upgrade install g++-10 gcc-10
@@ -36,7 +42,7 @@ static-code-analysis-report:
 	cppcheck *.cpp --enable=warning,style,performance --output-file=checkreport.txt --inline-suppr
 
 io-diff-tests:
-	diff ./units/output1.txt Genoutput1.txt && diff ./units/output2.txt Genoutput2.txt
+	diff ./units/output1.txt Genoutput1.txt
 
 run-test:
 	bash -c "./test.sh"

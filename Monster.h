@@ -19,6 +19,10 @@ protected:
 
 public:
     Monster(const std::string& nm, int hp, int dmg, double cd, int df); ///< This constructor set the attributes of Monster
+    Monster(const Monster&); ///< Copy constructor of Monster
+    Monster() ///< Empty constructor of Monster
+    {
+    }
     /**
     * \brief Shows stats of Unit
     *
@@ -62,5 +66,11 @@ public:
     * \param Enemy unit
     */
     void gotHit(const Monster&);
+
+
+    bool operator<(const Monster& other) const
+    {
+        return this < &other;
+    }
 
 };

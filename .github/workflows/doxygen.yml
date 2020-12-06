@@ -2,6 +2,8 @@ name: Doxygen doc
 
 on:
   push:
+    branches:
+      - master
 
 jobs:
   deploy:

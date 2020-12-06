@@ -5,11 +5,20 @@
 #include <algorithm>
 #include <fstream>
 
+#include <iostream>
+
 
 
 Hero::Hero(const std::string & nm, int hp, int dmg,double cd, int df, int xpgap, int hpbonus, int dmgbonus,double cdMulti, int dfbonus) 
 		: Monster(nm, hp, dmg, cd, df), XPgap(xpgap), HPbonus(hpbonus),
 		  DMGbonus(dmgbonus), CDMultiplier(cdMulti), DFbonus(dfbonus), XP(0)
+{
+}
+
+Hero::Hero(const Hero& other)
+		: Hero(other.Name, other.maxHP, other.DMG, other.CD, other.DF,
+			   other.XPgap, other.HPbonus, other.DMGbonus, other.CDMultiplier,
+			   other.DFbonus)
 {
 }
 
@@ -50,7 +59,6 @@ Hero Hero::parse(const std::string &file_nam)
 	int dmb = -1;
 	double cdm = -0.1;
 	int dfb = -1;
-
 
 	try
 	{

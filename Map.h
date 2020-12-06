@@ -17,6 +17,10 @@ public:
         Map(){}; ///< Default (empty) constructor of Map class
 
         /**
+        * \brief Map empty constructor 
+        */
+        Map(){}
+        /**
         * \brief Map constructor for load the map from a text file
         *
         * \param An existing (map) text file
@@ -31,13 +35,25 @@ public:
         * \return Index (integer) of (enum) type
         */
         Map::type get(unsigned int x, unsigned int y) const;
+
+
+        /**
+         * \brief Getter of the height of the map
+         * \return height of the map
+        */ 
+        int getHeight() const {return vmap.size();}
+        /**
+         * \brief Getter of the width of the map
+         * \return width of the map
+        */ 
+        int getWidth() const {return vmap[0].size();}
     /**
      * \class WrongIndexException
      *
      * \brief WrongIndexException class for handling pass wrong parameter (index) in get() getter
      *
      */
-    class WrongIndexException : virtual public std::runtime_error {
+    class WrongIndexException :  public std::exception {
         public:
         /**
         * \brief WrongIndexException constructor that inherited from std::runtime_error and throw error upon on wrong index in get() getter.
@@ -45,6 +61,6 @@ public:
         * \param Const string error message.
         *
         */
-        WrongIndexException(const std::string &error) : std::runtime_error( error) {}
+        WrongIndexException() {}
     };
 };
