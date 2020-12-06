@@ -35,6 +35,11 @@ void Monster::gotHit(const Monster& other)
 			}
 			
 		}
+		else
+		{
+			HP = 0;
+		}
+		
 	}
 	else
 	{

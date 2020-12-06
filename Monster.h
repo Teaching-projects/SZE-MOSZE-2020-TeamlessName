@@ -19,7 +19,7 @@ protected:
     int DF; ///< Defense
 
 public:
-    Monster(const std::string& nm, int hp, int pdmg, int hdmg, double cd, int df); ///< This constructor set the attributes of Monster
+    Monster(const std::string& nm, int hp, int pdmg, int mdmg, double cd, int df); ///< This constructor set the attributes of Monster
     Monster(const Monster&); ///< Copy constructor of Monster
     Monster() ///< Empty constructor of Monster
     {
