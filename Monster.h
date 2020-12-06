@@ -1,24 +1,25 @@
+#pragma once
+#include<string>
+#include "Damage.h"
+
 /**
  * \class Monster
  *
  * \brief Monster class
  *
  */
-#pragma once
-#include<string>
-// Base(Monster) of all unit types, specialized units may derive from this
 class Monster
 {
 protected:
     const std::string Name; ///< Name of unit
     int maxHP; ///< Maximum Health ponits of unit
     int HP; ///< Health ponits of unit
-    int DMG; ///< Damage of unit, the amount this unit hits with
+    Damage DMG; ///< Combined physical and magical damage
     double CD; ///< Attackspeed of unit, seconds per attack
-    int DF;
+    int DF; ///< Defense
 
 public:
-    Monster(const std::string& nm, int hp, int dmg, double cd, int df); ///< This constructor set the attributes of Monster
+    Monster(const std::string& nm, int hp, int pdmg, int hdmg, double cd, int df); ///< This constructor set the attributes of Monster
     Monster(const Monster&); ///< Copy constructor of Monster
     Monster() ///< Empty constructor of Monster
     {
@@ -44,7 +45,8 @@ public:
     */
     static Monster parse(const std::string& /** [in] The (string)filename param*/);
     const int getHealthPoints() const { return HP; } ///< Const Getter of Unit's health points
-    const int getDMG() const { return DMG; } ///< Const Getter of Unit's damage
+    const int getPhysicalDMG() const { return DMG.physical; } ///< Const Getter of Unit's physical damage
+    const int getMagicalDMG() const { return DMG.magical; } ///< Const Getter of Unit's magical damage
     const double getCD() const { return CD; } ///< Const Getter of Unit's attackspeed
     const std::string& getName() const { return Name; } ///< Const Getter of Unit's name
     const int getDefense() const {return DF;}

@@ -9,15 +9,16 @@
 
 
 
-Hero::Hero(const std::string & nm, int hp, int dmg,double cd, int df, int xpgap, int hpbonus, int dmgbonus,double cdMulti, int dfbonus) 
-		: Monster(nm, hp, dmg, cd, df), XPgap(xpgap), HPbonus(hpbonus),
-		  DMGbonus(dmgbonus), CDMultiplier(cdMulti), DFbonus(dfbonus), XP(0)
+Hero::Hero(const std::string & nm, int hp, int pdmg, int mdmg, double cd, int df, int xpgap, int hpbonus,
+		int dmgbonus, int mdmgbonus, double cdMulti, int dfbonus) 
+		: Monster(nm, hp, pdmg, mdmg, cd, df), XPgap(xpgap), HPbonus(hpbonus),
+		  PDMGbonus(dmgbonus), MDMGbonus(mdmgbonus), CDMultiplier(cdMulti), DFbonus(dfbonus), XP(0)
 {
 }
 
 Hero::Hero(const Hero& other)
-		: Hero(other.Name, other.maxHP, other.DMG, other.CD, other.DF,
-			   other.XPgap, other.HPbonus, other.DMGbonus, other.CDMultiplier,
+		: Hero(other.Name, other.maxHP, other.DMG.physical, other.DMG.magical, other.CD, other.DF,
+			   other.XPgap, other.HPbonus, other.PDMGbonus, other.MDMGbonus, other.CDMultiplier,
 			   other.DFbonus)
 {
 }
@@ -27,7 +28,7 @@ void Hero::levelUp()
 	while (XP >= XPgap)
 	{
 		maxHP = std::lround(maxHP + HPbonus);
-		DMG = std::lround(DMG + DMGbonus);
+		DMG += Damage(PDMGbonus, MDMGbonus);
 		HP = maxHP;
 		CD = CD * CDMultiplier;
 		DF += DFbonus;
@@ -51,12 +52,14 @@ Hero Hero::parse(const std::string &file_nam)
 
 	std::string nm = "";
 	int hp = -1;
-	int dm = -1;
+	int pdm = 0;
+	int mdm = 0;
 	double cd = -1.0;
 	int df = -1;
 	int xp = -1;
 	int hpb = -1;
-	int dmb = -1;
+	int dmb = 0;
+	int mdb = 0;
 	double cdm = -0.1;
 	int dfb = -1;
 
@@ -65,12 +68,47 @@ Hero Hero::parse(const std::string &file_nam)
 		JSON attributes = JSON::parseFromIstream(infile);
 		nm = attributes.get<std::string>("name");
 		hp = attributes.get<int>("base_health_points");
-		dm = attributes.get<int>("base_damage");
+
+		try
+		{
+			pdm = attributes.get<int>("base_damage");
+		}
+		catch(const std::out_of_range&)
+		{
+			pdm = 0;
+		}
+		try
+		{
+			mdm = attributes.get<int>("base_magical-damage");
+		}
+		catch(const std::out_of_range&)
+		{
+			mdm = 0;
+		}
+
 		cd = attributes.get<double>("base_attack_cooldown");
 		df = attributes.get<int>("defense");
 		xp = attributes.get<int>("experience_per_level");
 		hpb = attributes.get<int>("health_point_bonus_per_level");
-		dmb = attributes.get<int>("damage_bonus_per_level");
+
+
+		try
+		{
+			dmb = attributes.get<int>("damage_bonus_per_level");
+		}
+		catch(const std::out_of_range&)
+		{
+			dmb = 0;
+		}
+		try
+		{
+			mdb = attributes.get<int>("magical-damage_bonus_per_level");
+		}
+		catch(const std::out_of_range&)
+		{
+			mdb = 0;
+		}
+
 		cdm = attributes.get<double>("cooldown_multiplier_per_level");
 		dfb = attributes.get<int>("defense_bonus_per_level");
 	}
@@ -95,18 +133,37 @@ Hero Hero::parse(const std::string &file_nam)
 	}
 	infile.close();
 
-	return Hero(nm, hp, dm, cd, df, xp, hpb, dmb, cdm, dfb);
+	return Hero(nm, hp, pdm, mdm, cd, df, xp, hpb, dmb, mdb, cdm, dfb);
 
 }
 
 void Hero::causeDamage(Monster* enemy)
 {
-	XP += std::min(DMG-enemy->getDefense(), enemy->getHealthPoints());
+	int tmpHP;
+	if(enemy->getHealthPoints() < DMG.magical)
+	{
+		XP += enemy->getHealthPoints();
+		return;
+	}
+	else
+	{
+		tmpHP = enemy->getHealthPoints() - DMG.magical;
+		XP += DMG.magical;
+		if(tmpHP + enemy->getDefense() > DMG.physical)
+		{
+			XP += DMG.physical;
+		}
+		else
+		{
+			XP += tmpHP;
+		}
+		
+	}
 	enemy->gotHit(*this);
 	levelUp();
 }
 std::string Hero::showStats() const {
 
-	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG)
+	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG.physical)
 		+ " EXP: " + std::to_string(XP) + " LVL: " + std::to_string(Lvl);
 }
