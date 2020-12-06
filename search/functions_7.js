@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d_91',['operator=',['../class_j_s_o_n.html#abf33296e97b6f8fe3b7df6ff208d6ce8',1,'JSON']]]
+  ['nofileexception_94',['NoFileException',['../class_no_file_exception.html#a5d179353b800ead237cdf34f049bcbcd',1,'NoFileException']]]
 ];

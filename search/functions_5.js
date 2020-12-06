@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['map_87',['Map',['../class_map.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()'],['../class_map.html#a3c85a58b954573af577e406395d8bfe4',1,'Map::Map(std::string fname)']]],
-  ['markedmap_88',['MarkedMap',['../class_marked_map.html#a56c97e41553b4f4a6618141662484ec6',1,'MarkedMap']]],
-  ['monster_89',['Monster',['../class_monster.html#a8f3d1255acd0700369132e03e5cb49ee',1,'Monster::Monster(const std::string &amp;nm, int hp, int dmg, double cd, int df)'],['../class_monster.html#a243d20ff08564c2b45e4c1c7cef65a8b',1,'Monster::Monster(const Monster &amp;)']]]
+  ['inputformatexception_87',['InputFormatException',['../class_input_format_exception.html#a85c3c8999bbee108ba4acb6ff8ee8a9a',1,'InputFormatException']]],
+  ['interpretexception_88',['InterpretException',['../class_interpret_exception.html#a8e227b214636fe3f4298bd8e3bda6f4c',1,'InterpretException']]],
+  ['invalidcontentoffileexception_89',['InvalidContentOfFileException',['../class_invalid_content_of_file_exception.html#a69d94b55f31ee8abcb13e6d29c76a02b',1,'InvalidContentOfFileException']]],
+  ['isalive_90',['isAlive',['../class_monster.html#a77ad18c44b3fb2df92b30ece4dc7847b',1,'Monster']]]
 ];

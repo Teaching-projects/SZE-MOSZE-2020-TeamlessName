@@ -1,4 +1,5 @@
 <map id="Hero" name="Hero">
-<area shape="rect" id="node1" title="Hero class inherited from Monster." alt="" coords="16,80,69,107"/>
-<area shape="rect" id="node2" href="$class_monster.html" title="Monster class." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node1" title="Hero class inherited from Monster." alt="" coords="17,171,71,197"/>
+<area shape="rect" id="node2" href="$class_monster.html" title="Monster class." alt="" coords="7,95,81,121"/>
+<area shape="rect" id="node3" href="$struct_damage.html" title="Contains the physical and the magical aspect of damage." alt="" coords="5,5,83,32"/>
 </map>

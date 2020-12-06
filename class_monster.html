@@ -86,13 +86,22 @@ Inheritance diagram for Monster:</div>
 <area shape="rect" href="class_hero.html" title="Hero class inherited from Monster." alt="" coords="16,80,69,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Monster:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_monster__coll__graph.png" border="0" usemap="#_monster_coll__map" alt="Collaboration graph"/></div>
+<map name="_monster_coll__map" id="_monster_coll__map">
+<area shape="rect" title="Monster class." alt="" coords="7,95,81,121"/>
+<area shape="rect" href="struct_damage.html" title="Contains the physical and the magical aspect of damage." alt="" coords="5,5,83,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8f3d1255acd0700369132e03e5cb49ee"><td class="memItemLeft" align="right" valign="top"><a id="a8f3d1255acd0700369132e03e5cb49ee"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a8f3d1255acd0700369132e03e5cb49ee">Monster</a> (const std::string &amp;nm, int hp, int dmg, double cd, int df)</td></tr>
-<tr class="memdesc:a8f3d1255acd0700369132e03e5cb49ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor set the attributes of <a class="el" href="class_monster.html" title="Monster class.">Monster</a>. <br /></td></tr>
-<tr class="separator:a8f3d1255acd0700369132e03e5cb49ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33e8a746ad50fe786b2080e74e83fc16"><td class="memItemLeft" align="right" valign="top"><a id="a33e8a746ad50fe786b2080e74e83fc16"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a33e8a746ad50fe786b2080e74e83fc16">Monster</a> (const std::string &amp;nm, int hp, int pdmg, int mdmg, double cd, int df)</td></tr>
+<tr class="memdesc:a33e8a746ad50fe786b2080e74e83fc16"><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor set the attributes of <a class="el" href="class_monster.html" title="Monster class.">Monster</a>. <br /></td></tr>
+<tr class="separator:a33e8a746ad50fe786b2080e74e83fc16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a243d20ff08564c2b45e4c1c7cef65a8b"><td class="memItemLeft" align="right" valign="top"><a id="a243d20ff08564c2b45e4c1c7cef65a8b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a243d20ff08564c2b45e4c1c7cef65a8b">Monster</a> (const <a class="el" href="class_monster.html">Monster</a> &amp;)</td></tr>
 <tr class="memdesc:a243d20ff08564c2b45e4c1c7cef65a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor of <a class="el" href="class_monster.html" title="Monster class.">Monster</a>. <br /></td></tr>
@@ -139,16 +148,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a2547ecce29c3ebe93a9b370b7d7bbdd0">HP</a></td></tr>
 <tr class="memdesc:a2547ecce29c3ebe93a9b370b7d7bbdd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Health ponits of unit. <br /></td></tr>
 <tr class="separator:a2547ecce29c3ebe93a9b370b7d7bbdd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bff364d6ef08c37d957a119e410fbe6"><td class="memItemLeft" align="right" valign="top"><a id="a7bff364d6ef08c37d957a119e410fbe6"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a7bff364d6ef08c37d957a119e410fbe6">DMG</a></td></tr>
-<tr class="memdesc:a7bff364d6ef08c37d957a119e410fbe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Damage of unit, the amount this unit hits with. <br /></td></tr>
-<tr class="separator:a7bff364d6ef08c37d957a119e410fbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad00c655ddfd5681084b5fc314f29d6e9"><td class="memItemLeft" align="right" valign="top"><a id="ad00c655ddfd5681084b5fc314f29d6e9"></a>
+<a class="el" href="struct_damage.html">Damage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#ad00c655ddfd5681084b5fc314f29d6e9">DMG</a></td></tr>
+<tr class="memdesc:ad00c655ddfd5681084b5fc314f29d6e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combined physical and magical damage. <br /></td></tr>
+<tr class="separator:ad00c655ddfd5681084b5fc314f29d6e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a203c0ccd4d605225feaf888a18db2d18"><td class="memItemLeft" align="right" valign="top"><a id="a203c0ccd4d605225feaf888a18db2d18"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a203c0ccd4d605225feaf888a18db2d18">CD</a></td></tr>
 <tr class="memdesc:a203c0ccd4d605225feaf888a18db2d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attackspeed of unit, seconds per attack. <br /></td></tr>
 <tr class="separator:a203c0ccd4d605225feaf888a18db2d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27b7a8fe45e253f3acc0df931436b928"><td class="memItemLeft" align="right" valign="top"><a id="a27b7a8fe45e253f3acc0df931436b928"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>DF</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_monster.html#a27b7a8fe45e253f3acc0df931436b928">DF</a></td></tr>
+<tr class="memdesc:a27b7a8fe45e253f3acc0df931436b928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defense. <br /></td></tr>
 <tr class="separator:a27b7a8fe45e253f3acc0df931436b928"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

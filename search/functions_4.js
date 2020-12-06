@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['inputformatexception_83',['InputFormatException',['../class_input_format_exception.html#a85c3c8999bbee108ba4acb6ff8ee8a9a',1,'InputFormatException']]],
-  ['interpretexception_84',['InterpretException',['../class_interpret_exception.html#a8e227b214636fe3f4298bd8e3bda6f4c',1,'InterpretException']]],
-  ['invalidcontentoffileexception_85',['InvalidContentOfFileException',['../class_invalid_content_of_file_exception.html#a69d94b55f31ee8abcb13e6d29c76a02b',1,'InvalidContentOfFileException']]],
-  ['isalive_86',['isAlive',['../class_monster.html#a77ad18c44b3fb2df92b30ece4dc7847b',1,'Monster']]]
+  ['hero_86',['Hero',['../class_hero.html#aefc098f8138ab7e7d75ac7c5ba1cf7df',1,'Hero::Hero(const std::string &amp;nm, int hp, int pdmg, int mdmg, double cd, int df, int xpgap, int hpbonus, int dmgbonus, int mdamagebonus, double cdMulti, int dfbonus)'],['../class_hero.html#addf4f57ee4e49a8cf5f43681cb31daa1',1,'Hero::Hero(const Hero &amp;)']]]
 ];

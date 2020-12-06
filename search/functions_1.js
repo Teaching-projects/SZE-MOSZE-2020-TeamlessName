@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['fighttildeath_70',['fightTilDeath',['../class_monster.html#aa47d4844baa751a937a2d85ea7dfb54f',1,'Monster']]],
-  ['fileformatexception_71',['FileFormatException',['../class_file_format_exception.html#a1cf2bd717f9f1b94e71b833029a54b29',1,'FileFormatException']]]
+  ['damage_74',['Damage',['../struct_damage.html#a740be9fef8dd4802474671b226e57b8b',1,'Damage']]]
 ];
