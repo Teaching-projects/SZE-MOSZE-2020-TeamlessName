@@ -204,7 +204,7 @@ TEST(HeroTest, TestZeroDamage)
 
 	ASSERT_EQ(tHero.getXP(), 0);
 }
-//Hero.damage >> monster.hp
+//Hero.damage > monster.hp
 TEST(HeroTest, TestGreatDamage)
 {
 	Hero tHero("Hero", 100, 250, 0, 5.2, 0, 1000, 10, 1, 0, 0.4, 0);
@@ -223,6 +223,24 @@ TEST(HeroTest, TestLevelUp)
 	tHero.causeDamage(&tMonster);
 
 	ASSERT_EQ(tHero.getLevel(), 6);
+}
+
+TEST(HeroTest, TestDefense)
+{
+	Hero tHero("Hero", 100, 5, 0, 1.0, 0, 10, 0, 0, 0, 1.0, 0);
+	Monster tMonster("Monster", 10, 1, 1, 1.0, 4);
+	tHero.causeDamage(&tMonster);
+
+	ASSERT_EQ(tMonster.getHealthPoints(), 9);
+}
+
+TEST(HeroTest, TestMagicDamage)
+{
+	Hero tHero("Hero", 100, 0, 5, 1.0, 0, 10, 0, 0, 0, 1.0, 0);
+	Monster tMonster("Monster", 10, 1, 1, 1.0, 100);
+	tHero.causeDamage(&tMonster);
+
+	ASSERT_EQ(tMonster.getHealthPoints(), 5);
 }
 
 
