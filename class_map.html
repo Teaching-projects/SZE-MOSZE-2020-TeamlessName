@@ -67,6 +67,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_map-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Map Class Reference</div>  </div>
@@ -77,6 +78,15 @@ $(function() {
  <a href="class_map.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_map_8h_source.html">Map.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Map:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_map__inherit__graph.png" border="0" usemap="#_map_inherit__map" alt="Inheritance graph"/></div>
+<map name="_map_inherit__map" id="_map_inherit__map">
+<area shape="rect" title="Map class for loading and handling a map from a text file." alt="" coords="29,5,80,32"/>
+<area shape="rect" href="class_marked_map.html" title="MarkedMap class for loading and handling a map from a text file. Inherited from Map class." alt="" coords="5,80,104,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -93,9 +103,8 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0f5ad0fd4563497b4214038cbca8b582"><td class="memItemLeft" align="right" valign="top"><a id="a0f5ad0fd4563497b4214038cbca8b582"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a0f5ad0fd4563497b4214038cbca8b582">Map</a> ()</td></tr>
-<tr class="memdesc:a0f5ad0fd4563497b4214038cbca8b582"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_map.html" title="Map class for loading and handling a map from a text file.">Map</a> empty constructor. <br /></td></tr>
+<tr class="memitem:a0f5ad0fd4563497b4214038cbca8b582"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a0f5ad0fd4563497b4214038cbca8b582">Map</a> ()</td></tr>
+<tr class="memdesc:a0f5ad0fd4563497b4214038cbca8b582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default (empty) constructor of <a class="el" href="class_map.html" title="Map class for loading and handling a map from a text file.">Map</a> class.  <a href="class_map.html#a0f5ad0fd4563497b4214038cbca8b582">More...</a><br /></td></tr>
 <tr class="separator:a0f5ad0fd4563497b4214038cbca8b582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c85a58b954573af577e406395d8bfe4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a3c85a58b954573af577e406395d8bfe4">Map</a> (std::string fname)</td></tr>
 <tr class="memdesc:a3c85a58b954573af577e406395d8bfe4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_map.html" title="Map class for loading and handling a map from a text file.">Map</a> constructor for load the map from a text file.  <a href="class_map.html#a3c85a58b954573af577e406395d8bfe4">More...</a><br /></td></tr>
@@ -109,12 +118,47 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab3181204ba96eb15b96ee1ced85e198e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#ab3181204ba96eb15b96ee1ced85e198e">getWidth</a> () const</td></tr>
 <tr class="memdesc:ab3181204ba96eb15b96ee1ced85e198e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the width of the map.  <a href="class_map.html#ab3181204ba96eb15b96ee1ced85e198e">More...</a><br /></td></tr>
 <tr class="separator:ab3181204ba96eb15b96ee1ced85e198e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a6aa618cec793996a32efea97ac0df9fd"><td class="memItemLeft" align="right" valign="top"><a id="a6aa618cec793996a32efea97ac0df9fd"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a6aa618cec793996a32efea97ac0df9fd">vmap</a></td></tr>
+<tr class="memdesc:a6aa618cec793996a32efea97ac0df9fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This vector store the map (characters from the text file) <br /></td></tr>
+<tr class="separator:a6aa618cec793996a32efea97ac0df9fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_map.html" title="Map class for loading and handling a map from a text file.">Map</a> class for loading and handling a map from a text file. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0f5ad0fd4563497b4214038cbca8b582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f5ad0fd4563497b4214038cbca8b582">&#9670;&nbsp;</a></span>Map() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Map::Map </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default (empty) constructor of <a class="el" href="class_map.html" title="Map class for loading and handling a map from a text file.">Map</a> class. </p>
+<p><a class="el" href="class_map.html" title="Map class for loading and handling a map from a text file.">Map</a> empty constructor </p>
+
+</div>
+</div>
 <a id="a3c85a58b954573af577e406395d8bfe4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c85a58b954573af577e406395d8bfe4">&#9670;&nbsp;</a></span>Map()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c85a58b954573af577e406395d8bfe4">&#9670;&nbsp;</a></span>Map() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

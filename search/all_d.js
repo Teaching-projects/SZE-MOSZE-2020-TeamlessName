@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sze_2dmosze_2d2020_2dteamlessname_38',['SZE-MOSZE-2020-TeamlessName',['../md__r_e_a_d_m_e.html',1,'']]],
-  ['showstats_39',['showStats',['../class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd',1,'Hero::showStats()'],['../class_monster.html#ab2551a0c8d1857a531df01f35235f7b0',1,'Monster::showStats()']]]
+  ['run_42',['run',['../class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa',1,'Game']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['showstats_84',['showStats',['../class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd',1,'Hero::showStats()'],['../class_monster.html#ab2551a0c8d1857a531df01f35235f7b0',1,'Monster::showStats()']]]
+  ['run_97',['run',['../class_game.html#a1ab78f5ed0d5ea879157357cf2fb2afa',1,'Game']]]
 ];

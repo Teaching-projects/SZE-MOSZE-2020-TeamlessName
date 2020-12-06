@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['what_40',['what',['../class_no_file_exception.html#a119941c3e987cd808a30386b11e00322',1,'NoFileException::what()'],['../class_invalid_content_of_file_exception.html#aff76a61a3189b050a1625147de8655b6',1,'InvalidContentOfFileException::what()'],['../class_interpret_exception.html#a09a80cb0e62c749e7303b6e260d980fa',1,'InterpretException::what()'],['../class_input_format_exception.html#a53c79a3ae08837b69f136b41c7e9e380',1,'InputFormatException::what()'],['../class_file_format_exception.html#a1482e953aed010ec7b3c2bdab3032d92',1,'FileFormatException::what()']]],
-  ['wrongindexexception_41',['WrongIndexException',['../class_map_1_1_wrong_index_exception.html',1,'Map::WrongIndexException'],['../class_map_1_1_wrong_index_exception.html#aeebaf6a2269de443f9ed95dba18a0410',1,'Map::WrongIndexException::WrongIndexException()']]]
+  ['sze_2dmosze_2d2020_2dteamlessname_43',['SZE-MOSZE-2020-TeamlessName',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['setmap_44',['setMap',['../class_game.html#ab83e25f737717d7bb4ec95b22efc82d9',1,'Game']]],
+  ['showstats_45',['showStats',['../class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd',1,'Hero::showStats()'],['../class_monster.html#ab2551a0c8d1857a531df01f35235f7b0',1,'Monster::showStats()']]]
 ];
