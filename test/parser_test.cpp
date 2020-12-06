@@ -143,15 +143,15 @@ TEST(ParserTest, TestMissingFile)
 
 TEST(MonsterTest, TestAlive)
 {
-	Monster tMonster ("NAlive", -10, 25, 1.2, 0);
+	Monster tMonster ("NAlive", -10, 25, 0, 1.2, 0);
 
 	ASSERT_EQ(tMonster.isAlive(), false);
 }
 
 TEST(MonsterTest, TestgotHit)
 {
-	Monster Attacker ("Att", 10, 10, 1.0, 0);
-	Monster Defender ("Def", 1, 1, 0.2, 0);
+	Monster Attacker ("Att", 10, 10, 0, 1.0, 0);
+	Monster Defender ("Def", 1, 1, 0, 0.2, 0);
 
 	Defender.gotHit(Attacker);
 
@@ -160,8 +160,8 @@ TEST(MonsterTest, TestgotHit)
 
 TEST(MonsterTest, TestcauseDamage)
 {
-	Monster Attacker ("Att", 1, 1, 0.2, 0);
-	Monster Defender ("Def", 10, 10, 1.0, 0);
+	Monster Attacker ("Att", 1, 1, 0, 0.2, 0);
+	Monster Defender ("Def", 10, 10, 0, 1.0, 0);
 
 	Attacker.causeDamage(&Defender);
 
@@ -170,8 +170,8 @@ TEST(MonsterTest, TestcauseDamage)
 
 TEST(MonsterTest, TestfightTilDeath)
 {
-	Monster Attacker ("Att", 5, 1, 0.2, 0);
-	Monster Defender ("Def", 10, 2, 1.0, 0);
+	Monster Attacker ("Att", 5, 1, 0, 0.2, 0);
+	Monster Defender ("Def", 10, 2, 0, 1.0, 0);
 
 	Attacker.fightTilDeath(Defender);
 
@@ -180,8 +180,8 @@ TEST(MonsterTest, TestfightTilDeath)
 
 TEST(MonsterTest, TestshowStats)
 {
-	Monster tMonster("MyName", 10, 100, 5.5, 0);
-	std::string output =  tMonster.getName() + ": HP:" + std::to_string(tMonster.getHealthPoints()) + " DMG: " + std::to_string(tMonster.getDMG());
+	Monster tMonster("MyName", 10, 100, 0, 5.5, 0);
+	std::string output =  tMonster.getName() + ": HP:" + std::to_string(tMonster.getHealthPoints()) + " DMG: " + std::to_string(tMonster.getPhysicalDMG());
 
 	ASSERT_EQ(tMonster.showStats(), output);
 }
@@ -198,7 +198,7 @@ TEST(MonsterTest, TestParse)
 TEST(HeroTest, TestZeroDamage)
 {
 	Hero tHero("Hero", 100, 0, 5.2, 0, 1000, 10, 1, 0.4, 0);
-	Monster tMonster("MyName", 10, 100, 5.5, 0);
+	Monster tMonster("MyName", 10, 100, 0, 5.5, 0);
 
 	tHero.causeDamage(&tMonster);
 
@@ -207,8 +207,8 @@ TEST(HeroTest, TestZeroDamage)
 //Hero.damage >> monster.hp
 TEST(HeroTest, TestGreatDamage)
 {
-	Hero tHero("Hero", 100, 250, 5.2, 0, 1000, 10, 1, 0.4, 0);
-	Monster tMonster("MyName", 10, 100, 5.5, 0);
+	Hero tHero("Hero", 100, 250, 0, 5.2, 0, 1000, 10, 1, 0.4, 0);
+	Monster tMonster("MyName", 10, 100, 0, 5.5, 0);
 
 	tHero.causeDamage(&tMonster);
 
@@ -217,8 +217,8 @@ TEST(HeroTest, TestGreatDamage)
 
 TEST(HeroTest, TestLevelUp)
 {
-	Hero tHero("Hero", 100, 250, 5.2, 0, 2, 10, 1, 0.4, 0);
-	Monster tMonster("MyName", 10, 100, 5.5, 0);
+	Hero tHero("Hero", 100, 250, 0, 5.2, 0, 2, 10, 1, 0.4, 0);
+	Monster tMonster("MyName", 10, 100, 0, 5.5, 0);
 
 	tHero.causeDamage(&tMonster);
 
