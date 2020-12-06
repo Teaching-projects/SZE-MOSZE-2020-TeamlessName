@@ -197,7 +197,7 @@ TEST(MonsterTest, TestParse)
 
 TEST(HeroTest, TestZeroDamage)
 {
-	Hero tHero("Hero", 100, 0, 5.2, 0, 1000, 10, 1, 0.4, 0);
+	Hero tHero("Hero", 100, 0, 0, 5.2, 0, 1000, 10, 1, 0, 0.4, 0);
 	Monster tMonster("MyName", 10, 100, 0, 5.5, 0);
 
 	tHero.causeDamage(&tMonster);
@@ -207,7 +207,7 @@ TEST(HeroTest, TestZeroDamage)
 //Hero.damage >> monster.hp
 TEST(HeroTest, TestGreatDamage)
 {
-	Hero tHero("Hero", 100, 250, 0, 5.2, 0, 1000, 10, 1, 0.4, 0);
+	Hero tHero("Hero", 100, 250, 0, 5.2, 0, 1000, 10, 1, 0, 0.4, 0);
 	Monster tMonster("MyName", 10, 100, 0, 5.5, 0);
 
 	tHero.causeDamage(&tMonster);
@@ -217,7 +217,7 @@ TEST(HeroTest, TestGreatDamage)
 
 TEST(HeroTest, TestLevelUp)
 {
-	Hero tHero("Hero", 100, 250, 0, 5.2, 0, 2, 10, 1, 0.4, 0);
+	Hero tHero("Hero", 100, 250, 0, 5.2, 0, 2, 10, 1, 0, 0.4, 0);
 	Monster tMonster("MyName", 10, 100, 0, 5.5, 0);
 
 	tHero.causeDamage(&tMonster);
