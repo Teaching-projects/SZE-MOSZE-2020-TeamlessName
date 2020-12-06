@@ -5,16 +5,16 @@ CC = g++-10
 add: $(OBJS)
 	$(CC) $(CFLAGS) -o add $(OBJS)
 
-Hero.o: Hero.cpp Hero.h JSON.h Exceptions.h
+Hero.o: Hero.cpp Hero.h Monster.h JSON.h Exceptions.h Damage.h
 	$(CC) $(CFLAGS) -c Hero.cpp
 
 JSON.o: JSON.cpp JSON.h Exceptions.h
 	$(CC) $(CFLAGS) -c JSON.cpp
 
-Monster.o: Monster.cpp Monster.h Exceptions.h JSON.h
+Monster.o: Monster.cpp Monster.h Exceptions.h JSON.h Damage.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
-main.o: main.cpp JSON.h Monster.h Exceptions.h Map.h Game.h
+main.o: main.cpp JSON.h Monster.h Exceptions.h Map.h Game.h Damage.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 Map.o: Map.cpp Map.h

@@ -40,15 +40,15 @@ int main(int argc, char** argv){
     Game game("map.txt");
     
     Hero hero{Hero::parse("Dark_Wanderer.json")};
-    
-    
     game.putHero(hero, 5, 2);
+
     Monster monster1{Monster::parse("Zombie.json")};
     Monster monster2{Monster::parse("Zombie.json")};
     Monster monster3{Monster::parse("Zombie.json")};
     game.putMonster(monster1, 3, 3);
     game.putMonster(monster2, 3, 3);
     game.putMonster(monster3, 3, 2);
+    
     game.run();
 
     return 0;

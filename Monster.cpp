@@ -3,10 +3,10 @@
 #include "JSON.h"
 #include <fstream>
 
+#include <iostream>
 
-
-Monster::Monster(const std::string & nm, int hp, int dmg, double cd, int df) 
-		: Name{ nm }, maxHP(hp), HP{ hp }, DMG{ dmg }, CD{ cd }, DF{df}
+Monster::Monster(const std::string & nm, int hp, int pdmg, int mdmg, double cd, int df) 
+		: Name{ nm }, maxHP(hp), HP{ hp }, DMG{ pdmg, mdmg }, CD{ cd }, DF{df}
 
 {
 }
@@ -19,22 +19,39 @@ Monster::Monster(const Monster& other)
 //decreasing the HP of the suffering unit
 void Monster::gotHit(const Monster& other)
 {
-	if (other.getDMG() - DF >= HP) HP = 0;
-	else
+	if(HP > other.getMagicalDMG())
 	{
-		if(DF >= other.getDMG())
+		HP -= other.getMagicalDMG();
+
+		if (HP + DF > other.getPhysicalDMG())
 		{
-			return;
+			if(DF >= other.getPhysicalDMG())
+			{
+				/*Empty part*/
+			}
+			else
+			{
+				HP -= other.getPhysicalDMG() - DF;
+			}
+			
+		}
+		else
+		{
+			HP = 0;
 		}
 		
-		HP = HP - (other.getDMG() - DF);
 	}
-	
+	else
+	{
+		
+		HP = 0;
+	}
+
 }
 //Show current HP and DMG
 std::string Monster::showStats() const
 {
-	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG);
+	return Name + ": HP:" + std::to_string(HP) + " DMG: " + std::to_string(DMG.physical);
 }
 
 void Monster::causeDamage(Monster* enemy)
@@ -54,7 +71,8 @@ Monster Monster::parse(const std::string & file_nam)
 
 	std::string nm = "";
 	int hp = -1;
-	int dm = -1;
+	int pdm = 0;
+	int mdm = 0;
 	double cd = -1.0;
 	int df = -1;
 
@@ -64,7 +82,22 @@ Monster Monster::parse(const std::string & file_nam)
 		JSON attributes = JSON::parseFromIstream(infile);
 		nm = attributes.get<std::string>("name");
 		hp = attributes.get<int>("health_points");
-		dm = attributes.get<int>("damage");
+		try
+		{
+			pdm = attributes.get<int>("damage");
+		}
+		catch(const std::out_of_range&)
+		{
+			pdm = 0;
+		}
+		try
+		{
+			mdm = attributes.get<int>("magical-damage");
+		}
+		catch(const std::out_of_range&)
+		{
+			mdm = 0;
+		}
 		cd = attributes.get<double>("attack_cooldown");
 		df = attributes.get<int>("defense");
 	}
@@ -85,7 +118,7 @@ Monster Monster::parse(const std::string & file_nam)
 	}
 	infile.close();
 
-	return Monster(nm, hp, dm, cd, df);
+	return Monster(nm, hp, pdm, mdm, cd, df);
 }
 //returns with true if the unit has 0 HP
 bool Monster::isAlive() const

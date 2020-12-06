@@ -12,7 +12,8 @@ private:
 
 	int XPgap; ///< The amount of xp that is needed for a level-up
 	const int HPbonus; ///< The amount of Health Points Bonus of the Hero
-	const int DMGbonus; ///< The amount of Damage Bonus of the Hero
+	const int PDMGbonus; ///< The amount of Physical Damage Bonus of the Hero
+	const int MDMGbonus; ///< The amount of Magical Damage Bonus of the Hero
 	const double CDMultiplier; ///< The amount of Health Points Bonus of the Hero
 	const int DFbonus;
 
@@ -23,8 +24,8 @@ private:
 	void levelUp();
 	
 public:
-	Hero(const std::string& nm, int hp, int dmg,double cd, int df, int xpgap, int hpbonus, int dmgbonus,
-		double cdMulti, int dfbonus); ///< This constructor set the attributes of Hero
+	Hero(const std::string& nm, int hp, int pdmg, int mdmg, double cd, int df, int xpgap, int hpbonus, int dmgbonus,
+		int mdamagebonus ,double cdMulti, int dfbonus); ///< This constructor set the attributes of Hero
 
 	Hero(const Hero&); ///< Copy constructor of Hero
 	/**
@@ -60,10 +61,10 @@ public:
     *
     * \return Hero's damage
     */
-	int getDamage() const
+	/*int getDamage() const
 	{
 		return DMG;
-	}
+	}*/
 	/**
     * \brief Getter of Hero's Attack Cooldown
     *
