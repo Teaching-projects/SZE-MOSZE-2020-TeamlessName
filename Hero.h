@@ -21,13 +21,16 @@ private:
 	int Lvl = 1; ///< The amount of level of Hero
 
 
-	void levelUp();
+	void levelUp(); ///< Decide if needed to level-up. If it is, modify stats.
 	
 public:
 	Hero(const std::string& nm, int hp, int pdmg, int mdmg, double cd, int df, int xpgap, int hpbonus, int dmgbonus,
 		int mdamagebonus ,double cdMulti, int dfbonus); ///< This constructor set the attributes of Hero
 
 	Hero(const Hero&); ///< Copy constructor of Hero
+
+	void operator=(const Hero&);
+
 	/**
     * \brief Hero parsing from a file
     *

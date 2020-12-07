@@ -14,6 +14,9 @@
  */
 class Game
 {
+    Map map; ///< Storing the level
+
+protected:
     /**
     * \struct Position
     * 
@@ -45,7 +48,7 @@ class Game
         }
     };
 
-    Map map; ///< Storing the level
+private:
     Hero* hero; ///< Pointer to the only hero
     Position heroPos; ///< Position of the hero
     std::map<Monster, Position> monsters; ///< Instances and postions of Monsters on the level
@@ -64,7 +67,7 @@ public:
     void setMap(Map map); ///< Set the map
     void putHero(Hero& hero, int x, int y);
     void putMonster(Monster& monster, int x, int y);
-    void run(); ///< Handles the game loop
+    virtual void run(); ///< Handles the game loop
 
     /**
      * \class OccupiedException
