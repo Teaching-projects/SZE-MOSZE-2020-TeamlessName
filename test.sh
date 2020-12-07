@@ -13,4 +13,4 @@ then
 	rm $FILE2
 fi
 
-cat userinput.txt | ./add.exe ./units/prepared_game.json >> $FILE1
+cat userinput.txt | ./a.out ./units/prepared_game.json >> $FILE1
