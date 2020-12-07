@@ -6,5 +6,7 @@ var searchData=
   ['parsefromistream_41',['parseFromIstream',['../class_j_s_o_n.html#ac402735523090a14190c2837c017521f',1,'JSON']]],
   ['parsefromstring_42',['parseFromString',['../class_j_s_o_n.html#a1bf79e7096c87b1b3479bf4703c6ae34',1,'JSON']]],
   ['physical_43',['physical',['../struct_damage.html#aee70c6c924eac810d02f61efbc90c719',1,'Damage']]],
-  ['print_44',['print',['../class_game.html#a78e1a17440eace186f6ae1109e09db2c',1,'Game']]]
+  ['position_44',['Position',['../struct_game_1_1_position.html',1,'Game']]],
+  ['preparedgame_45',['PreparedGame',['../class_prepared_game.html',1,'']]],
+  ['print_46',['print',['../class_game.html#a78e1a17440eace186f6ae1109e09db2c',1,'Game']]]
 ];

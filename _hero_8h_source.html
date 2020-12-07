@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> Lvl = 1; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> levelUp();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> levelUp(); </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_hero.html#aefc098f8138ab7e7d75ac7c5ba1cf7df">Hero</a>(<span class="keyword">const</span> std::string&amp; nm, <span class="keywordtype">int</span> hp, <span class="keywordtype">int</span> pdmg, <span class="keywordtype">int</span> mdmg, <span class="keywordtype">double</span> cd, <span class="keywordtype">int</span> df, <span class="keywordtype">int</span> xpgap, <span class="keywordtype">int</span> hpbonus, <span class="keywordtype">int</span> dmgbonus,</div>
@@ -92,31 +92,33 @@ $(function() {
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_hero.html#aefc098f8138ab7e7d75ac7c5ba1cf7df">Hero</a>(<span class="keyword">const</span> <a class="code" href="class_hero.html">Hero</a>&amp;); </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_hero.html">Hero</a> <a class="code" href="class_hero.html#aac4d67bad651fbeb489905675545bb88">parse</a>(<span class="keyword">const</span> std::string&amp;);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hero.html#af2d9c27f8c5ddf91b9124fc7a6fb882f">causeDamage</a>(<a class="code" href="class_monster.html">Monster</a>*) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> getLevel()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Lvl; } </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> getXP()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> XP; } </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> getDF()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="class_monster.html#a27b7a8fe45e253f3acc0df931436b928">DF</a>; }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> getDFbonus()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> DFbonus;}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::string <a class="code" href="class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd">showStats</a>() <span class="keyword">const override</span>; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_hero.html#ac6a7deeb6e390a23536d622042f4c48e">   55</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_hero.html#ac6a7deeb6e390a23536d622042f4c48e">getMaxHealthPoints</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_monster.html#a21dc0aa9f78dbffb7f1a1e0048dfbd4a">maxHP</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">/*int getDamage() const</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">    {</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">        return DMG;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">    }*/</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_hero.html#af76e70bb236599e7a53096f2cd5e193e">   73</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_hero.html#af76e70bb236599e7a53096f2cd5e193e">getAttackCoolDown</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_monster.html#a203c0ccd4d605225feaf888a18db2d18">CD</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> operator=(<span class="keyword">const</span> <a class="code" href="class_hero.html">Hero</a>&amp;);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_hero.html">Hero</a> <a class="code" href="class_hero.html#aac4d67bad651fbeb489905675545bb88">parse</a>(<span class="keyword">const</span> std::string&amp;);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hero.html#af2d9c27f8c5ddf91b9124fc7a6fb882f">causeDamage</a>(<a class="code" href="class_monster.html">Monster</a>*) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">int</span> getLevel()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Lvl; } </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> getXP()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> XP; } </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> getDF()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="class_monster.html#a27b7a8fe45e253f3acc0df931436b928">DF</a>; }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> getDFbonus()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> DFbonus;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::string <a class="code" href="class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd">showStats</a>() <span class="keyword">const override</span>; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_hero.html#ac6a7deeb6e390a23536d622042f4c48e">   58</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_hero.html#ac6a7deeb6e390a23536d622042f4c48e">getMaxHealthPoints</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_monster.html#a21dc0aa9f78dbffb7f1a1e0048dfbd4a">maxHP</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">/*int getDamage() const</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">        return DMG;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_hero.html#af76e70bb236599e7a53096f2cd5e193e">   76</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_hero.html#af76e70bb236599e7a53096f2cd5e193e">getAttackCoolDown</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_monster.html#a203c0ccd4d605225feaf888a18db2d18">CD</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;};</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_monster_html_a21dc0aa9f78dbffb7f1a1e0048dfbd4a"><div class="ttname"><a href="class_monster.html#a21dc0aa9f78dbffb7f1a1e0048dfbd4a">Monster::maxHP</a></div><div class="ttdeci">int maxHP</div><div class="ttdoc">Maximum Health ponits of unit.</div><div class="ttdef"><b>Definition:</b> Monster.h:15</div></div>
-<div class="ttc" id="aclass_hero_html_ac6a7deeb6e390a23536d622042f4c48e"><div class="ttname"><a href="class_hero.html#ac6a7deeb6e390a23536d622042f4c48e">Hero::getMaxHealthPoints</a></div><div class="ttdeci">int getMaxHealthPoints() const</div><div class="ttdoc">Getter of Hero's max Health Point.</div><div class="ttdef"><b>Definition:</b> Hero.h:55</div></div>
+<div class="ttc" id="aclass_hero_html_ac6a7deeb6e390a23536d622042f4c48e"><div class="ttname"><a href="class_hero.html#ac6a7deeb6e390a23536d622042f4c48e">Hero::getMaxHealthPoints</a></div><div class="ttdeci">int getMaxHealthPoints() const</div><div class="ttdoc">Getter of Hero's max Health Point.</div><div class="ttdef"><b>Definition:</b> Hero.h:58</div></div>
 <div class="ttc" id="aclass_monster_html_a203c0ccd4d605225feaf888a18db2d18"><div class="ttname"><a href="class_monster.html#a203c0ccd4d605225feaf888a18db2d18">Monster::CD</a></div><div class="ttdeci">double CD</div><div class="ttdoc">Attackspeed of unit, seconds per attack.</div><div class="ttdef"><b>Definition:</b> Monster.h:18</div></div>
 <div class="ttc" id="aclass_monster_html"><div class="ttname"><a href="class_monster.html">Monster</a></div><div class="ttdoc">Monster class.</div><div class="ttdef"><b>Definition:</b> Monster.h:11</div></div>
 <div class="ttc" id="aclass_hero_html_af2d9c27f8c5ddf91b9124fc7a6fb882f"><div class="ttname"><a href="class_hero.html#af2d9c27f8c5ddf91b9124fc7a6fb882f">Hero::causeDamage</a></div><div class="ttdeci">void causeDamage(Monster *) override</div><div class="ttdoc">Deals damage to enemy unit.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:140</div></div>
@@ -125,7 +127,7 @@ $(function() {
 <div class="ttc" id="aclass_monster_html_a27b7a8fe45e253f3acc0df931436b928"><div class="ttname"><a href="class_monster.html#a27b7a8fe45e253f3acc0df931436b928">Monster::DF</a></div><div class="ttdeci">int DF</div><div class="ttdoc">Defense.</div><div class="ttdef"><b>Definition:</b> Monster.h:19</div></div>
 <div class="ttc" id="aclass_hero_html_a730e78d361fe7ef2e31388a6df5a12dd"><div class="ttname"><a href="class_hero.html#a730e78d361fe7ef2e31388a6df5a12dd">Hero::showStats</a></div><div class="ttdeci">std::string showStats() const override</div><div class="ttdoc">Method to print Hero's attributes.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:165</div></div>
 <div class="ttc" id="aclass_hero_html_aac4d67bad651fbeb489905675545bb88"><div class="ttname"><a href="class_hero.html#aac4d67bad651fbeb489905675545bb88">Hero::parse</a></div><div class="ttdeci">static Hero parse(const std::string &amp;)</div><div class="ttdoc">Hero parsing from a file.</div><div class="ttdef"><b>Definition:</b> Hero.cpp:42</div></div>
-<div class="ttc" id="aclass_hero_html_af76e70bb236599e7a53096f2cd5e193e"><div class="ttname"><a href="class_hero.html#af76e70bb236599e7a53096f2cd5e193e">Hero::getAttackCoolDown</a></div><div class="ttdeci">double getAttackCoolDown() const</div><div class="ttdoc">Getter of Hero's damage.</div><div class="ttdef"><b>Definition:</b> Hero.h:73</div></div>
+<div class="ttc" id="aclass_hero_html_af76e70bb236599e7a53096f2cd5e193e"><div class="ttname"><a href="class_hero.html#af76e70bb236599e7a53096f2cd5e193e">Hero::getAttackCoolDown</a></div><div class="ttdeci">double getAttackCoolDown() const</div><div class="ttdoc">Getter of Hero's damage.</div><div class="ttdef"><b>Definition:</b> Hero.h:76</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

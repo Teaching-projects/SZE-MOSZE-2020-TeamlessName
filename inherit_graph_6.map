@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_monster.html" title="Monster class." alt="" coords="5,5,80,32"/>
-<area shape="rect" id="node2" href="$class_hero.html" title="Hero class inherited from Monster." alt="" coords="128,5,181,32"/>
+<area shape="rect" id="node1" href="$class_map.html" title="Map class for loading and handling a map from a text file." alt="" coords="5,5,56,32"/>
+<area shape="rect" id="node2" href="$class_marked_map.html" title="MarkedMap class for loading and handling a map from a text file. Inherited from Map class." alt="" coords="104,5,203,32"/>
 </map>
