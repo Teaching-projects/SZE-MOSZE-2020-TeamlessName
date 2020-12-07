@@ -39,22 +39,24 @@ void bad_exit(int exitcode){
 
 int main(int argc, char** argv){
 
-    PreparedGame PGame("./units/prepared_game.json");
-    PGame.run();
+    if (argc != 2) bad_exit(1);
+    if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
-    /*Game game("map.txt");
+    std::string fname = argv[1];
+    try
+    {
+        PreparedGame PGame(fname);
+        PGame.run();
+    }
+    catch(const JSON::ParseException&)
+    {
+        bad_exit(4);
+    }
+    catch(const std::out_of_range&)
+    {
+        bad_exit(3);
+    }
     
-    Hero hero{Hero::parse("Dark_Wanderer.json")};
-    game.putHero(hero, 5, 2);
-
-    Monster monster1{Monster::parse("Zombie.json")};
-    Monster monster2{Monster::parse("Zombie.json")};
-    Monster monster3{Monster::parse("Zombie.json")};
-    game.putMonster(monster1, 3, 3);
-    game.putMonster(monster2, 3, 3);
-    game.putMonster(monster3, 3, 2);
-    
-    game.run();*/
 
     return 0;
 }

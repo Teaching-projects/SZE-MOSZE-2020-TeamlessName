@@ -275,6 +275,11 @@ void Game::run()
         {
             break;
         }
+        else
+        {
+            std::cout << "I don't know what to do\n";
+        }
+        
 
 
         //fight the monsters on that position

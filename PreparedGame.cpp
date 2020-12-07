@@ -133,6 +133,11 @@ void PreparedGame::run()
         {
             break;
         }
+        else
+        {
+            std::cout << "I don't know what to do\n";
+        }
+        
 
 
         //fight the monsters on that position
@@ -206,10 +211,6 @@ void PreparedGame::print()
                     if(monsterCount == 1)
                     {
                         std::cout << "M░";
-                    }
-                    else if (monsterCount > 1)
-                    {
-                        std::cout << "MM";
                     }
                     else
                     {

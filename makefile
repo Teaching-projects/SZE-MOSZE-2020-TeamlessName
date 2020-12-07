@@ -33,7 +33,7 @@ install-valgrind-and-cppcheck:
 	sudo apt-get install -y valgrind cppcheck
 
 memoryleak-check:
-	valgrind --leak-check=full --error-exitcode=1 ./a.out < userinput.txt
+	valgrind --leak-check=full --error-exitcode=1 ./a.out ./units/prepared_game.json < userinput.txt
 
 upgrade-gcc:
 	sudo apt --only-upgrade install g++-10 gcc-10
