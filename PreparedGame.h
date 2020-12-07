@@ -14,9 +14,10 @@ class PreparedGame : virtual protected Game
 
 
     void initMonsters();
+    void print();
 
 public:
-    PreparedGame(std::string&);
+    PreparedGame(std::string);
     void run() override;
 
 };

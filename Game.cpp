@@ -311,4 +311,5 @@ void Game::run()
     std::cout << "The hero died";
     hero = nullptr;
     hasHero = false;
+    isRunning = false;
 }

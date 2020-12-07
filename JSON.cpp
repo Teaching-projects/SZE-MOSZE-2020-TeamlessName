@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 
+
 enum vartypes {string, integer, doubl, ls}; ///< enumerate to seperate different datatypes of keys's values
 
 using MAP = std::map<std::string, std::variant<std::string, int, double, JSON::list>>;

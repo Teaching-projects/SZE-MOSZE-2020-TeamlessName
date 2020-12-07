@@ -17,12 +17,12 @@ Map::type Map::get(unsigned int x, unsigned int y) const {
         throw Map::WrongIndexException();
     if(y >= vmap.size() || y < 0)
         throw Map::WrongIndexException();
-    if(vmap[y][x] == ' ')
+    if(vmap[y][x] == '#')
         {
-            return Map::type::Free;
+            return Map::type::Wall;
         }
     else
         {
-            return Map::type::Wall;
+            return Map::type::Free;
         }
 }

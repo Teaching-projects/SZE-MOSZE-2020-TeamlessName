@@ -18,6 +18,7 @@
 #include "Hero.h"
 #include "Monster.h"
 #include "Game.h"
+#include "PreparedGame.h"
 
 
 
@@ -37,7 +38,11 @@ void bad_exit(int exitcode){
 }
 
 int main(int argc, char** argv){
-    Game game("map.txt");
+
+    PreparedGame PGame("./units/prepared_game.json");
+    PGame.run();
+
+    /*Game game("map.txt");
     
     Hero hero{Hero::parse("Dark_Wanderer.json")};
     game.putHero(hero, 5, 2);
@@ -49,7 +54,7 @@ int main(int argc, char** argv){
     game.putMonster(monster2, 3, 3);
     game.putMonster(monster3, 3, 2);
     
-    game.run();
+    game.run();*/
 
     return 0;
 }
