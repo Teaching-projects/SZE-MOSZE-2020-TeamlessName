@@ -64,7 +64,7 @@ Hero Hero::parse(const std::string &file_nam)
 
 	try
 	{
-		JSON attributes = JSON::parseFromIstream(infile);
+		JSON attributes =JSON(JSON::parseFromIstream(infile));
 		nm = attributes.get<std::string>("name");
 		hp = attributes.get<int>("base_health_points");
 

@@ -1,23 +1,7 @@
 #include <iostream>
-#include "JSON.h"
-#include "Monster.h"
-#include "Exceptions.h"
-#include "Hero.h"
-
-
-#include <iostream>
-#include <map>
 #include <string>
 #include <filesystem>
-#include <sstream>
-#include <algorithm>
-#include <iterator>
-#include <list>
 
-#include "JSON.h"
-#include "Hero.h"
-#include "Monster.h"
-#include "Game.h"
 #include "PreparedGame.h"
 
 

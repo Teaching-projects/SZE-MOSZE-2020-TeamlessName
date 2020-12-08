@@ -138,7 +138,7 @@ class InputFormatException : public std::exception
 
 public:
 	// cppcheck-suppress nullPointer
-	InputFormatException(const std::string& miss) : missing(miss)
+	explicit InputFormatException(const std::string& miss) : missing(miss)
 	{
 
 		/**

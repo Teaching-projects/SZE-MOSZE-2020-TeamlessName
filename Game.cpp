@@ -7,13 +7,13 @@ Game::Game() : map(Map()), hero(nullptr), hasMap(false), hasHero(false), hasMons
 
 }
 
-Game::Game(std::string mapfile) : map(Map(mapfile)), hero(nullptr), hasMap(true),
+Game::Game(const std::string& mapfile) : map(Map(mapfile)), hero(nullptr), hasMap(true),
         hasHero(false), hasMonsters(false), isRunning(false)
 {
 
 }
 
-void Game::setMap(Map map)
+void Game::setMap(Map& map)
 {
     if(isRunning)
     {

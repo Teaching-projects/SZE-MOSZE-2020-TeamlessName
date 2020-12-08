@@ -18,10 +18,10 @@ public:
     /**
     * \brief MarkedMap constructor for load the map from a text file
     *
-    * \param An existing (map) text file
+    * \param fname An existing (map) text file's name
     *
     */
-    MarkedMap(std::string fname);
+    explicit MarkedMap(std::string fname);
     /**
     * \brief Search the Hero coordinate on the map
     *
