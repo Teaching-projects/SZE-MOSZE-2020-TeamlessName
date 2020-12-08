@@ -132,7 +132,7 @@ MAP JSON::parseFromFile(const std::string & fname)
 	return content;
 }
 
-MAP JSON::parseFromString(std::string & data)
+MAP JSON::parseFromString(const std::string & data)
 {
 	std::stringstream sstream;
 	sstream << data;

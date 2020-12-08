@@ -84,7 +84,7 @@ public:
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::variant<std::string, int, double, JSON::list>> parseFromString(std::string& data); //string input
+	static std::map<std::string, std::variant<std::string, int, double, JSON::list>> parseFromString(const std::string& data); //string input
 
     /**
 	* \brief Equal operator of JSON that takes content (contructor) as parameter

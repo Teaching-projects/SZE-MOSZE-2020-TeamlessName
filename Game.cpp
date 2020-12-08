@@ -13,7 +13,7 @@ Game::Game(const std::string& mapfile) : map(Map(mapfile)), hero(nullptr), hasMa
 
 }
 
-void Game::setMap(Map& map)
+void Game::setMap(const Map& map)
 {
     if(isRunning)
     {
