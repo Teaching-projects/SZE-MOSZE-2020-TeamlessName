@@ -75,27 +75,28 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_prepared_game.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_prepared_game.html">PreparedGame</a> : <span class="keyword">virtual</span> <span class="keyword">protected</span> <a class="code" href="class_game.html">Game</a></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="class_j_s_o_n.html">JSON</a> json;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="class_marked_map.html">MarkedMap</a> map;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="class_hero.html">Hero</a> hero;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    Position heroPos;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::map&lt;Monster, Position&gt; monsters;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="class_j_s_o_n.html">JSON</a> json; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="class_marked_map.html">MarkedMap</a> map; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="class_hero.html">Hero</a> hero; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    Position heroPos; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    std::map&lt;Monster, Position&gt; monsters; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> initMonsters();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> print();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> initMonsters(); </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> print() <span class="keyword">const</span>; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_prepared_game.html">PreparedGame</a>(std::string);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_prepared_game.html#a02413695b736024b5c1b45abdbf3024c">run</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_prepared_game.html#ab6b8e9839324d1038cf45a0b8e2349d5">PreparedGame</a>(std::string Mapfile);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_prepared_game.html#a02413695b736024b5c1b45abdbf3024c">run</a>() <span class="keyword">override</span>; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_marked_map_html"><div class="ttname"><a href="class_marked_map.html">MarkedMap</a></div><div class="ttdoc">MarkedMap class for loading and handling a map from a text file. Inherited from Map class.</div><div class="ttdef"><b>Definition:</b> MarkedMap.h:14</div></div>
-<div class="ttc" id="aclass_prepared_game_html_a02413695b736024b5c1b45abdbf3024c"><div class="ttname"><a href="class_prepared_game.html#a02413695b736024b5c1b45abdbf3024c">PreparedGame::run</a></div><div class="ttdeci">void run() override</div><div class="ttdoc">Handles the game loop.</div><div class="ttdef"><b>Definition:</b> PreparedGame.cpp:191</div></div>
+<div class="ttc" id="aclass_prepared_game_html_a02413695b736024b5c1b45abdbf3024c"><div class="ttname"><a href="class_prepared_game.html#a02413695b736024b5c1b45abdbf3024c">PreparedGame::run</a></div><div class="ttdeci">void run() override</div><div class="ttdoc">Handles the game loop.</div><div class="ttdef"><b>Definition:</b> PreparedGame.cpp:190</div></div>
 <div class="ttc" id="aclass_prepared_game_html"><div class="ttname"><a href="class_prepared_game.html">PreparedGame</a></div><div class="ttdef"><b>Definition:</b> PreparedGame.h:7</div></div>
 <div class="ttc" id="aclass_j_s_o_n_html"><div class="ttname"><a href="class_j_s_o_n.html">JSON</a></div><div class="ttdoc">JSON class.</div><div class="ttdef"><b>Definition:</b> JSON.h:16</div></div>
 <div class="ttc" id="aclass_hero_html"><div class="ttname"><a href="class_hero.html">Hero</a></div><div class="ttdoc">Hero class inherited from Monster.</div><div class="ttdef"><b>Definition:</b> Hero.h:9</div></div>
+<div class="ttc" id="aclass_prepared_game_html_ab6b8e9839324d1038cf45a0b8e2349d5"><div class="ttname"><a href="class_prepared_game.html#ab6b8e9839324d1038cf45a0b8e2349d5">PreparedGame::PreparedGame</a></div><div class="ttdeci">PreparedGame(std::string Mapfile)</div><div class="ttdoc">Constructor of PreparedGame.</div><div class="ttdef"><b>Definition:</b> PreparedGame.cpp:9</div></div>
 <div class="ttc" id="aclass_game_html"><div class="ttname"><a href="class_game.html">Game</a></div><div class="ttdoc">A class that controls the game.</div><div class="ttdef"><b>Definition:</b> Game.h:15</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
