@@ -39,12 +39,12 @@ public:
          * \brief Getter of the height of the map
          * \return height of the map
         */ 
-        int getHeight() const {return vmap.size();}
+        unsigned int getHeight() const {return vmap.size();}
         /**
          * \brief Getter of the width of the map
          * \return width of the map
         */ 
-        int getWidth() const {return vmap[0].size();}
+        unsigned int getWidth() const {return vmap[0].size();}
     /**
      * \class WrongIndexException
      *

@@ -104,16 +104,16 @@ void Game::print() const
 {
     std::cout << "╔";
 
-    for (int i = 0; i < map.getWidth(); ++i)
+    for (unsigned int i = 0; i < map.getWidth(); ++i)
     {
         std::cout << "══";
     }
     std::cout << "╗\n";
 
-    for(int i = 0; i < map.getHeight(); ++i)
+    for(unsigned int i = 0; i < map.getHeight(); ++i)
     {
         std::cout << "║";
-        for(int j = 0; j < map.getWidth(); ++j)
+        for(unsigned int j = 0; j < map.getWidth(); ++j)
         {
             try
             {
@@ -162,7 +162,7 @@ void Game::print() const
 
     std::cout << "╚";
 
-    for (int i = 0; i < map.getWidth(); ++i)
+    for (unsigned int i = 0; i < map.getWidth(); ++i)
     {
         std::cout << "══";
     }

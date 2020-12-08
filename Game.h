@@ -25,12 +25,12 @@ protected:
     */
     struct Position
     {
-        int x, y;
+        unsigned int x, y;
 
         Position() ///< Default constructor of Position
         {}
 
-        Position(int x, int y): x(x), y(y)
+        Position(unsigned int x, unsigned int y): x(x), y(y)
         {
 
         }

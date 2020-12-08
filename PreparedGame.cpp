@@ -11,7 +11,6 @@ PreparedGame::PreparedGame(std::string fname):json(JSON::parseFromFile(fname)), 
         heroPos(map.getHeroPosition().first, map.getHeroPosition().second)
 {
     initMonsters();
-    print();
 }
 
 void PreparedGame::initMonsters()
@@ -35,6 +34,158 @@ void PreparedGame::initMonsters()
     }
 
     
+}
+
+void PreparedGame::print()
+{
+    std::vector<std::vector<std::string>> level;
+    std::vector<std::string> mapElement;
+
+    for(unsigned int i = 0; i < map.getHeight(); ++i)
+    {
+        std::string line = "";
+        for(unsigned int j = 0; j < map.getWidth(); ++j)
+        {
+            try
+            {
+                if(i == heroPos.x && j == heroPos.y)
+                {
+                    line = "┣┫";
+                }
+                else if(map.get(j,i) == Map::Free)
+                {
+                    int monsterCount = 0;
+                    for(auto& mons : monsters)
+                    {
+                        
+                        if (mons.second.x == i && mons.second.y == j)
+                        {
+                            ++monsterCount;
+                        }
+
+                    }
+                    if(monsterCount == 1)
+                    {
+                        line = "M░";
+                    }
+                    else
+                    {
+                        line = "░░";
+                    }
+                }
+                else if(map.get(j,i) == Map::Wall)
+                {
+                    line = "██";
+                }
+            }
+            catch(const Map::WrongIndexException&)
+            {
+                line = "██";
+            }
+            mapElement.push_back(line);
+            
+        }
+        level.push_back(mapElement);
+        mapElement.clear();
+    }
+    std::string lline = "";
+
+    unsigned int printlength;
+
+    if(heroPos.y <= hero.getLightRadius())
+    {
+        printlength = heroPos.y;
+
+        if(heroPos.y + hero.getLightRadius() >= level[0].size())
+        {
+            printlength += level[0].size() - heroPos.y; 
+        }
+        else
+        {
+            printlength += hero.getLightRadius() + 1;
+        }
+        
+    }
+    else
+    {
+        printlength = hero.getLightRadius();
+
+        if(heroPos.y + hero.getLightRadius() >= level[0].size())
+        {
+            printlength += level[0].size() - heroPos.y; 
+        }
+        else
+        {
+            printlength += hero.getLightRadius() + 1;
+        }
+    }
+
+    std::cout << "╔";
+    for(unsigned int i = 0; i < printlength; ++i)
+    {
+        std::cout << "══";
+    }
+    std::cout << "╗\n";
+
+    for(unsigned int i = 0; i < level.size(); ++i)
+    {
+        bool printed_first_character = false;
+        for(unsigned int j = 0; j < level[i].size(); ++j)
+        {
+            if(heroPos.x <= hero.getLightRadius() && i <= heroPos.x)
+            {
+                if(heroPos.y <= hero.getLightRadius() && j <= heroPos.y)
+                {
+                    if(!printed_first_character)
+                    {
+                        printed_first_character = true;
+                        std::cout << "║";
+                    }
+                    std::cout << level[i][j];
+                }
+                else if((j >= heroPos.y && heroPos.y + hero.getLightRadius() >= j) || (j <= heroPos.y && heroPos.y - hero.getLightRadius() <= j))
+                {
+                    if(!printed_first_character)
+                    {
+                        printed_first_character = true;
+                        std::cout << "║";
+                    }
+                    std::cout << level[i][j];
+                }
+            }
+            else if((i >= heroPos.x && heroPos.x + hero.getLightRadius() >= i) ||( i<= heroPos.x && heroPos.x - hero.getLightRadius() <= i))
+            {
+                if(heroPos.y <= hero.getLightRadius() && j <= heroPos.y)
+                {
+                    if(!printed_first_character)
+                    {
+                        printed_first_character = true;
+                        std::cout << "║";
+                    }
+                    std::cout << level[i][j];
+                }
+                else if((j >= heroPos.y && heroPos.y + hero.getLightRadius() >= j) || (j <= heroPos.y && heroPos.y - hero.getLightRadius() <= j))
+                {
+                    if(!printed_first_character)
+                    {
+                        printed_first_character = true;
+                        std::cout << "║";
+                    }
+                    std::cout << level[i][j];
+                }
+            }
+        }
+        if(printed_first_character)
+        std::cout << "║\n";
+    }
+
+
+    std::cout << "╚";
+    for(unsigned int i = 0; i < printlength; ++i)
+    {
+        std::cout << "══";
+    }
+    std::cout << "╝\n";
 }
 
 void PreparedGame::run()
@@ -172,70 +323,4 @@ void PreparedGame::run()
     }
 
     std::cout << "The hero died";
-}
-
-
-void PreparedGame::print()
-{
-        std::cout << "╔";
-
-    for (int i = 0; i < map.getWidth(); ++i)
-    {
-        std::cout << "══";
-    }
-    std::cout << "╗\n";
-
-    for(int i = 0; i < map.getHeight(); ++i)
-    {
-        std::cout << "║";
-        for(int j = 0; j < map.getWidth(); ++j)
-        {
-            try
-            {
-                if(i == heroPos.x && j == heroPos.y)
-                {
-                    std::cout << "┣┫";
-                }
-                else if(map.get(j,i) == Map::Free)
-                {
-                    int monsterCount = 0;
-                    for(auto& mons : monsters)
-                    {
-                        
-                        if (mons.second.x == i && mons.second.y == j)
-                        {
-                            ++monsterCount;
-                        }
-
-                    }
-                    if(monsterCount == 1)
-                    {
-                        std::cout << "M░";
-                    }
-                    else
-                    {
-                        std::cout << "░░";
-                    }
-                }
-                else if(map.get(j,i) == Map::Wall)
-                {
-                    std::cout << "██";
-                }
-            }
-            catch(const Map::WrongIndexException&)
-            {
-                std::cout << "██";
-            }
-            
-        }
-        std::cout << "║" << std::endl;
-    }
-
-    std::cout << "╚";
-
-    for (int i = 0; i < map.getWidth(); ++i)
-    {
-        std::cout << "══";
-    }
-    std::cout << "╝\n";
 }
