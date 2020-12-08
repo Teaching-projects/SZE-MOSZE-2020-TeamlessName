@@ -2,7 +2,7 @@
 
 ## University Project, basic role-playing game
 
-This little program simulates a hero and some monster characters fighting. The hero starts figth with monsters in 1v1 in a sequence. The program runs until defeat all monster or hero dies.
+This is a simple Role Playing Game, that can be played in a console or terminal window.
 
 To start program correctly, start with this format:
 
@@ -10,9 +10,12 @@ To start program correctly, start with this format:
 
 For example.:
 
-./a.out units/scenario1.json
+./a.out units/prepared_game.json
 
-After starting program (with correct arguments) the program simulates the fight, then prints out the results.
+After starting program (with correct argument) the program prints out the initial state of the game. It shows a level, with walls and corridors.  
+The player(user) can give commands (north, west, south, east) to the hero character, who is represented by an "H" on the map. The hero can move in corridors, but cannot traverse walls.  
+The objective is to defeat all monsters that are represented by "M"s on the map.  
+The game lasts while the hero is alive, or until all monsters have been slain.
 
 ## Doxygen Doc
 
