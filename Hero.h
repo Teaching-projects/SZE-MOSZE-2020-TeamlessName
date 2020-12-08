@@ -19,13 +19,15 @@ private:
 
 	int XP; ///< The amount of XP that is not used yet for level-up
 	int Lvl = 1; ///< The amount of level of Hero
+	int LightRadius; ///< How far the hero can see on the map
+	const int LightRaiusbonus; ///< Added to LightRadius every level-up
 
 
 	void levelUp(); ///< Decide if needed to level-up. If it is, modify stats.
 	
 public:
 	Hero(const std::string& nm, int hp, int pdmg, int mdmg, double cd, int df, int xpgap, int hpbonus, int dmgbonus,
-		int mdamagebonus ,double cdMulti, int dfbonus); ///< This constructor set the attributes of Hero
+		int mdamagebonus ,double cdMulti, int dfbonus, unsigned int lr, unsigned int lrbonus); ///< This constructor set the attributes of Hero
 
 	Hero(const Hero&); ///< Copy constructor of Hero
 
@@ -47,8 +49,9 @@ public:
 	void causeDamage(Monster*) override;
 	int getLevel() const { return Lvl; } ///< Getter of Hero's level
 	int getXP() const { return XP; } ///< Getter of Hero's XP
-	const int getDF() const { return DF; }
-	const int getDFbonus() const { return DFbonus;}
+	const int getDF() const { return DF; } ///< Getter of Hero's Defense
+	const int getDFbonus() const { return DFbonus;} ///< Getter of Hero's Defense bonus
+	const unsigned int getLightRadius() const {return LightRadius;} ///< Getter of Hero's Light Radius
 	std::string showStats() const override; ///< Method to print Hero's attributes
 	/**
     * \brief Getter of Hero's max Health Point

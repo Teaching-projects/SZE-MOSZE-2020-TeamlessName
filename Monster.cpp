@@ -3,8 +3,6 @@
 #include "JSON.h"
 #include <fstream>
 
-#include <iostream>
-
 Monster::Monster(const std::string & nm, int hp, int pdmg, int mdmg, double cd, int df) 
 		: Name{ nm }, maxHP(hp), HP{ hp }, DMG{ pdmg, mdmg }, CD{ cd }, DF{df}
 

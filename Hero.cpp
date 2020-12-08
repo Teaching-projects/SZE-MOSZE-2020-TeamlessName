@@ -5,21 +5,17 @@
 #include <algorithm>
 #include <fstream>
 
-#include <iostream>
-
-
-
 Hero::Hero(const std::string & nm, int hp, int pdmg, int mdmg, double cd, int df, int xpgap, int hpbonus,
-		int dmgbonus, int mdmgbonus, double cdMulti, int dfbonus) 
+		int dmgbonus, int mdmgbonus, double cdMulti, int dfbonus, unsigned int lr, unsigned int lrbonus) 
 		: Monster(nm, hp, pdmg, mdmg, cd, df), XPgap(xpgap), HPbonus(hpbonus),
-		  PDMGbonus(dmgbonus), MDMGbonus(mdmgbonus), CDMultiplier(cdMulti), DFbonus(dfbonus), XP(0)
+		  PDMGbonus(dmgbonus), MDMGbonus(mdmgbonus), CDMultiplier(cdMulti), DFbonus(dfbonus), XP(0), LightRadius(lr), LightRaiusbonus(lrbonus)
 {
 }
 
 Hero::Hero(const Hero& other)
 		: Hero(other.Name, other.maxHP, other.DMG.physical, other.DMG.magical, other.CD, other.DF,
 			   other.XPgap, other.HPbonus, other.PDMGbonus, other.MDMGbonus, other.CDMultiplier,
-			   other.DFbonus)
+			   other.DFbonus, other.LightRadius, other.LightRaiusbonus)
 {
 }
 
@@ -33,6 +29,7 @@ void Hero::levelUp()
 		CD = CD * CDMultiplier;
 		DF += DFbonus;
 		Lvl++;
+		LightRadius += LightRaiusbonus;
 		XP = XP - XPgap;
 	}
 
@@ -62,6 +59,8 @@ Hero Hero::parse(const std::string &file_nam)
 	int mdb = 0;
 	double cdm = -0.1;
 	int dfb = -1;
+	int lradius = 0;
+	int lradbonus = 1;
 
 	try
 	{
@@ -111,6 +110,17 @@ Hero Hero::parse(const std::string &file_nam)
 
 		cdm = attributes.get<double>("cooldown_multiplier_per_level");
 		dfb = attributes.get<int>("defense_bonus_per_level");
+		lradius = attributes.get<int>("light-radius");
+		try
+		{
+			lradbonus = attributes.get<int>("light_radius_bonus_per_level");
+		}
+		catch(const std::exception& e)
+		{
+			lradbonus = 1;
+		}
+		
+		
 	}
 	catch(const std::out_of_range&)
 	{
@@ -133,7 +143,7 @@ Hero Hero::parse(const std::string &file_nam)
 	}
 	infile.close();
 
-	return Hero(nm, hp, pdm, mdm, cd, df, xp, hpb, dmb, mdb, cdm, dfb);
+	return Hero(nm, hp, pdm, mdm, cd, df, xp, hpb, dmb, mdb, cdm, dfb, lradius, lradbonus);
 
 }
 
