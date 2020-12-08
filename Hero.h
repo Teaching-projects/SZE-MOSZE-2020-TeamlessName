@@ -31,8 +31,6 @@ public:
 
 	Hero(const Hero&); ///< Copy constructor of Hero
 
-	void operator=(const Hero&);
-
 	/**
     * \brief Hero parsing from a file
     *
@@ -62,15 +60,6 @@ public:
 	{
 		return maxHP;
 	}
-	/**
-    * \brief Getter of Hero's damage
-    *
-    * \return Hero's damage
-    */
-	/*int getDamage() const
-	{
-		return DMG;
-	}*/
 	/**
     * \brief Getter of Hero's Attack Cooldown
     *

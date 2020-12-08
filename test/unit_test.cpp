@@ -6,6 +6,8 @@
 #include "../Exceptions.h"
 #include "../Monster.h"
 #include "../Hero.h"
+#include "../Map.h"
+#include "../MarkedMap.h"
 
 //testing with all data in the string
 TEST(ParserTest, TestString)
@@ -243,6 +245,28 @@ TEST(HeroTest, TestMagicDamage)
 	ASSERT_EQ(tMonster.getHealthPoints(), 5);
 }
 
+//*************Map tests***************
+TEST(MapTest, TestNoMapFile)
+{
+	ASSERT_THROW(Map("IsThereAFile"), std::runtime_error);
+}
+
+TEST(MapTest, TestMapGet)
+{
+	Map map("../map.txt");
+
+	ASSERT_EQ(map.get(1,1), Map::type::Free);
+}
+
+
+//*************MarkedMap tests*****************
+TEST(MarkedMapTest, TestMarkedMapGetHero)
+{
+	MarkedMap map("../mmap.txt");
+
+	ASSERT_EQ(map.getHeroPosition().first, 1);
+	ASSERT_EQ(map.getHeroPosition().second, 2);
+}
 
 int main(int argc, char** argv)
 {

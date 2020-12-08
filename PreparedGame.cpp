@@ -36,7 +36,7 @@ void PreparedGame::initMonsters()
     
 }
 
-void PreparedGame::print()
+void PreparedGame::print() const
 {
     std::vector<std::vector<std::string>> level;
     std::vector<std::string> mapElement;
@@ -88,7 +88,6 @@ void PreparedGame::print()
         level.push_back(mapElement);
         mapElement.clear();
     }
-    std::string lline = "";
 
     unsigned int printlength;
 

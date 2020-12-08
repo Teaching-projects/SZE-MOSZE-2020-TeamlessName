@@ -40,7 +40,7 @@ protected:
          * 
          * \param other const Position& to be equal with
          */
-        Game::Position operator=(const Position& other)
+        Position& operator=(const Position& other)
         {
             x = other.x;
             y = other.y;
@@ -63,8 +63,8 @@ private:
 public:
     void print() const; ///< Prints the current state of the game
     Game(); ///< Default empty constructor of Game
-    Game(std::string mapfile); ///< Constructor of Game with the Map initialized
-    void setMap(Map map); ///< Set the map
+    explicit Game(const std::string& mapfile); ///< Constructor of Game with the Map initialized
+    void setMap(const Map& map); ///< Set the map
     void putHero(Hero& hero, int x, int y);
     void putMonster(Monster& monster, int x, int y);
     virtual void run(); ///< Handles the game loop

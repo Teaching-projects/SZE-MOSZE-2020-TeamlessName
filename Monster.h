@@ -49,7 +49,7 @@ public:
     const int getMagicalDMG() const { return DMG.magical; } ///< Const Getter of Unit's magical damage
     const double getCD() const { return CD; } ///< Const Getter of Unit's attackspeed
     const std::string& getName() const { return Name; } ///< Const Getter of Unit's name
-    const int getDefense() const {return DF;}
+    const int getDefense() const {return DF;} ///< Const Getter of defense
     /**
     * \brief Unit attacks other unit. This method do the full combat between the 2 units
     *
@@ -69,7 +69,9 @@ public:
     */
     void gotHit(const Monster&);
 
-
+    /**
+     * \brief Less-than operator, used to differentiate monsters in a map
+    */
     bool operator<(const Monster& other) const
     {
         return this < &other;

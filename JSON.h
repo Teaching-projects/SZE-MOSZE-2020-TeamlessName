@@ -21,7 +21,7 @@ public:
 	{
 		std::list<std::variant<std::string, int, double>> List;
 	public:
-		list(std::list<std::variant<std::string, int, double>> ls) : List(ls)
+		explicit list(const std::list<std::variant<std::string, int, double>>& ls) : List(ls)
 		{
 
 		}
@@ -53,7 +53,7 @@ public:
 	}
 
 
-	JSON(std::map<std::string, std::variant<std::string, int, double, JSON::list>> cont) : content(cont) ///< Another constructor of JSON that takes MAP content as parameter
+	explicit JSON(const std::map<std::string, std::variant<std::string, int, double, JSON::list>>& cont) : content(cont) ///< Another constructor of JSON that takes MAP content as parameter
 	{
 
 	}
@@ -61,7 +61,7 @@ public:
 	/**
 	* \brief Parsing from an istream
 	*
-	* \param istream with JSON-like content
+	* \param instream istream with JSON-like content
 	*
 	* \return Map of key-value pairs
 	*/
@@ -71,7 +71,7 @@ public:
 	/**
 	* \brief Parsing from a file
 	*
-	* \param string JSON textfile's name
+	* \param fname string: JSON textfile's name
 	*
 	* \return Map of key-value pairs
 	*/
@@ -80,20 +80,20 @@ public:
 	/**
 	* \brief Parsing from a string
 	*
-	* \param string with JSON-like content
+	* \param data string with JSON-like content
 	*
 	* \return Map of key-value pairs
 	*/
-	static std::map<std::string, std::variant<std::string, int, double, JSON::list>> parseFromString(std::string& data); //string input
+	static std::map<std::string, std::variant<std::string, int, double, JSON::list>> parseFromString(const std::string& data); //string input
 
     /**
 	* \brief Equal operator of JSON that takes content (contructor) as parameter
 	*
-	* \param MAP content
+	* \param content content
 	*
 	* \return JSON object
 	*/
-	JSON operator= (std::map<std::string, std::variant<std::string, int, double, JSON::list>> other)
+	JSON operator= (const std::map<std::string, std::variant<std::string, int, double, JSON::list>>& other)
 	{
 		JSON json(other);
 		return json;

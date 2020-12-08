@@ -27,13 +27,23 @@ struct Damage
     {
 
     }
-
+    /**
+     * \brief Addition operator.
+     * 
+     * \param other const Damage&
+     * \return Sum of the two Damages in a struct. (Physical+Pyhsical, Magical+Magical)
+     */
     Damage operator+(const Damage& other)
     {
         Damage nDamage (physical + other.physical, magical + other.magical);
         return nDamage;
     }
 
+    /**
+     * \brief Plus-equals operator
+     * \param other const Damage&
+     * \return Sum of the two Damages in a struct. (Physical+Pyhsical, Magical+Magical)
+     */
     Damage& operator+=(const Damage& other)
     {
         physical += other.physical;
@@ -41,7 +51,11 @@ struct Damage
 
         return *this;
     }
-
+    /**
+     * \brief Multiply-equals operator
+     * \param multipiler int
+     * \return Product of the Damages in a struct. (Physical*multiplier, Magical*multiplier)
+     */
     Damage& operator*=(int multiplier)
     {
         physical *= multiplier;
