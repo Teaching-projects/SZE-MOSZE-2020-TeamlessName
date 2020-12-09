@@ -10,7 +10,7 @@
 # Videók
 
  - [Gameplay](/videos/gameplay.mp4)
- - [CodeBaseDefense](/videos/codebasedefense.mp4)
+ - [CodeBaseDefense](/videos/TeamlessName-Codebasedefense.mp4)
 
 # Befejezett feladatok
 
@@ -52,11 +52,10 @@
 
 | Teljesen dokumentált osztályok | Részben dokumentált osztályok | Nem dokumentált osztályok |
 | --- | --- | --- | 
-| `Monster` |  
+| `Monster` | `Game`| 
 | `Hero` |   
 | `JSON` |
 | `Map` |
-| `Game` |
 | `MarkedMap` |
 | `PreparedGame` |
 
@@ -78,14 +77,18 @@ Olyanok, amik nem a tárgy anyaga, de muszáj/hasznos volt elsajátítani:
  - `std::variant`
  - Markdown szintaxis
  - STL osztályok különböző függvényei
- - 
+ - Rendes Exception-handling
+ - Kimozdulni az IDE-k bűvköréből (-> VSCode + g++)
 
-# Feedback (optional)
- 
-Melyik részt találtátok a leghasznosabbnak, miért. Használtátok-e az itt megszerzett dolgokat esetleg közben máskor. Volt-e olyan, amit hiányoltatok a tárgyból. Utólag visszagondolva is jó volt-e az online videósdi?
+# Feedback
+Talán ez volt leghasznosabb tárgy az összes közül. Épít a csapatmunkára és közben egy kontrollált mederben próbálhatjuk ki az újonnan szezett ismereteinket. (Nem jön egyből a mélyvíz)  
 
-Ha szívesebben írnátok meg anoním módon, OHV-nál várom.
+A videósdi kifejezetten jól állt neki, talán még hasznosabb is volt így, hogy ha valami elsőre nem volt világos, akkor bármikor visszanézhettem azt a részt.  
 
-# Üzenet a jövőbe (optional)
+Talán annyit tennék hozzá, hogy lehet érdemes volna (akár online) konzultációs időpontokat tartani, ha valakinek extrább, vagy nem kifejezetten publikus kérdése van. Vagy valami még okosabb módszert foganatosítani, amivel elkerülhető a MOGyA utáni kérdésáradat.
 
-Így, hogy túlvagytok rajta, mi az, aminek örültetek volna, ha első héten elmondom, avagy: jövőre mit lenne jó, ha elmondanék majd?
+# Üzenet a jövőbe
+
+Apróság, de például jó lett volna előre tudni, hogy figyeljek arra, hogy mennyit foglakozok a projekttel. Tudom, hogy nem sok minden múlik rajta, de így visszanézve még csak megbecsülni sem tudom.
+
+Nem az első hétre, hanem még a tárgyfelvételre vonatkozóan pedig jó lenne valahogy kiemelni, hogy ez a tárgy OOP nélkül bizony nehéz lesz.
