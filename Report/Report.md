@@ -3,7 +3,7 @@
 | Név | Github azonosito  | Javasolt relatív érdemjegy | Becsült óra | Indoklás  | 
 | --- | ---- | --- | ------------------ | --------- |
 | Kalmár Ádám | @kalmar-adam | 0 | 25-30 | Szépen csinálta a dolgát. |
-| Lőrincz Erik | @eriklorincz | +1 | 40-60 | Mindent megcsinált, valamint a másik csapatnak a bírálatok zömét Ő csinálta |
+| Lőrincz Erik | @eriklorincz | +1 | 40-60 | Mindent megcsinált, segítségért lehetett hozzá fordulni, valamint a másik csapatnak a bírálatok zömét Ő csinálta |
 | Molnár Máté | @molmat | 0 | ??? | Szépen csinálta a dolgát. |
 
 
@@ -62,8 +62,8 @@
 
 # Mindenféle számok
 
- - Összes cpp kódsor :
- - Egyéb kódsor (make,doxyfile,shellscript, ...) :
+ - Összes cpp kódsor : 1860 (kommentekkel, {}-ekkel, de felesleges üres sorok nélkül)
+ - Egyéb kódsor (make,doxyfile,shellscript, ...) : 530 (Doxyfile kommentekkel)
  - cppcheck
    - warning : 0
    - style : 7
