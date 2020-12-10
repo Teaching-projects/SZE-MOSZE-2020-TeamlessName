@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['df_120',['DF',['../class_monster.html#a27b7a8fe45e253f3acc0df931436b928',1,'Monster']]],
-  ['dmg_121',['DMG',['../class_monster.html#ad00c655ddfd5681084b5fc314f29d6e9',1,'Monster']]]
+  ['df_121',['DF',['../class_monster.html#a27b7a8fe45e253f3acc0df931436b928',1,'Monster']]],
+  ['dmg_122',['DMG',['../class_monster.html#ad00c655ddfd5681084b5fc314f29d6e9',1,'Monster']]]
 ];
