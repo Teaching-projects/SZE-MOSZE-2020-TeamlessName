@@ -10,7 +10,7 @@
 # Videók
 
  - [Gameplay](/videos/gameplay.mp4)
- - [CodeBaseDefense](/videos/Teamlessname-Codebasedefense.mp4)
+ - [CodeBaseDefense](/videos/codebasedefense.mp4)
 
 # Befejezett feladatok
 
