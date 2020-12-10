@@ -4,7 +4,7 @@
 | --- | ---- | --- | ------------------ | --------- |
 | Kalmár Ádám | @kalmar-adam | 0 | 25-30 | Szépen csinálta a dolgát. |
 | Lőrincz Erik | @eriklorincz | +1 | 40-60 | Mindent megcsinált, segítségért lehetett hozzá fordulni, valamint a másik csapatnak a bírálatok zömét Ő csinálta |
-| Molnár Máté | @molmat | 0 | ??? | Szépen csinálta a dolgát. |
+| Molnár Máté | @molmat | 0 | 10 | Többnyire szépen csinálta a dolgát. |
 
 
 # Videók
